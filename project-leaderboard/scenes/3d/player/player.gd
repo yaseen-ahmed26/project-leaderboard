@@ -16,6 +16,7 @@ var speed : float
 @onready var camera = $head/Camera3D
 
 var original_camera_transform: Transform3D
+var on_terminal: bool = false
 
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -29,7 +30,9 @@ func _unhandled_input(event):
 		camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-80), deg_to_rad(80))
 
 	if Input.is_action_just_pressed("release_mouse"):
-		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+		if on_terminal:
+			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+			_restore_camera()
 
 	# if event is InputEventMouseButton and event.pressed:
 	#	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -78,3 +81,11 @@ func _on_change_camera(new_position: Transform3D):
 	tween.tween_property(camera, "global_transform", new_position, 0.5)
 	
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	on_terminal = true
+
+func _restore_camera():
+	var tween := create_tween().set_parallel(true).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
+	tween.tween_property(camera, "transform", original_camera_transform, 0.5)
+	
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	on_terminal = false
