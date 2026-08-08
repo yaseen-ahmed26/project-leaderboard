@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="project-leaderboard"
-run/main_scene="uid://b82klctai8qrl"
+run/main_scene="uid://bt7xykuclie22"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://icon.svg"
 
