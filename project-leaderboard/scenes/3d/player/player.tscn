@@ -30,3 +30,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.12547386, -0.3000967)
 [node name="RayCast3D" type="RayCast3D" parent="head/Camera3D" unique_id=582776265]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.07042897, -0.1967754)
 target_position = Vector3(0, 0, -1.5)
+collision_mask = 5
+collide_with_areas = true

@@ -27,8 +27,8 @@ func _unhandled_input(event):
 	if Input.is_action_just_pressed("release_mouse"):
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 
-	if event is InputEventMouseButton and event.pressed:
-		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	# if event is InputEventMouseButton and event.pressed:
+	#	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 func _physics_process(delta):
 	if not is_on_floor():

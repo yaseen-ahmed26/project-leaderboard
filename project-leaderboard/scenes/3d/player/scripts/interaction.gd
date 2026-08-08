@@ -10,7 +10,7 @@ func _physics_process(_delta: float) -> void:
 		var hit_object = raycast.get_collider()
 		var _hit_point = raycast.get_collision_point()
 		
-		var parent: Interactable = hit_object.get_parent()
+		var parent = hit_object.get_parent()
 		
 		if parent.is_in_group("Interactables"):
 			current_raycast_hit = parent
@@ -20,5 +20,7 @@ func _physics_process(_delta: float) -> void:
 	
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("interact"):
+		if current_raycast_hit.name == "main_monitor": return
+		
 		if current_raycast_hit.has_method("on_interaction"):
 			current_raycast_hit.call("on_interaction")
