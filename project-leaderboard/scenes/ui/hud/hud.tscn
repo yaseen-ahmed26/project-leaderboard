@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://gq8pjikacaul"]
+
+[ext_resource type="Script" uid="uid://c5ge463tqon1w" path="res://scenes/ui/hud/hud.gd" id="1_bngdn"]
+
+[node name="hud" type="Control" unique_id=922040254]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_bngdn")
+
+[node name="hover_prompt" type="RichTextLabel" parent="." unique_id=1317357804]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -560.0
+offset_top = 247.0
+offset_right = 560.0
+offset_bottom = 369.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 48
+bbcode_enabled = true
+text = "HOVER TEXT HERE"
+horizontal_alignment = 1
+vertical_alignment = 1

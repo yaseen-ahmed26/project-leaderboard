@@ -1,14 +1,18 @@
 [gd_scene format=3 uid="uid://cnsk2cfmoiwhy"]
 
-[ext_resource type="Script" uid="uid://csmeo0q8o3yyt" path="res://scenes/player/player.gd" id="1_8afob"]
-[ext_resource type="Script" uid="uid://bbrvbk0qqwg01" path="res://scenes/player/scripts/interaction.gd" id="2_dovo2"]
+[ext_resource type="Script" uid="uid://csmeo0q8o3yyt" path="res://scenes/3d/player/player.gd" id="1_s6smf"]
+[ext_resource type="Script" uid="uid://bbrvbk0qqwg01" path="res://scenes/3d/player/scripts/interaction.gd" id="2_bdlui"]
+[ext_resource type="PackedScene" uid="uid://gq8pjikacaul" path="res://scenes/ui/hud/hud.tscn" id="3_arw13"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_l7yjw"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_l7yjw"]
 
 [node name="player" type="CharacterBody3D" unique_id=634988134]
-script = ExtResource("1_8afob")
+collision_mask = 3
+script = ExtResource("1_s6smf")
+
+[node name="hud" parent="." unique_id=922040254 instance=ExtResource("3_arw13")]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=699587306]
 mesh = SubResource("CapsuleMesh_l7yjw")
@@ -18,7 +22,7 @@ shape = SubResource("CapsuleShape3D_l7yjw")
 
 [node name="head" type="Node3D" parent="." unique_id=571936968]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.78712106, 0)
-script = ExtResource("2_dovo2")
+script = ExtResource("2_bdlui")
 
 [node name="Camera3D" type="Camera3D" parent="head" unique_id=1026836517]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.12547386, -0.3000967)
