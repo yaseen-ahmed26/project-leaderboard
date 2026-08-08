@@ -11,6 +11,7 @@ var speed : float
 @export var jump_velocity = 4.5
 @export var air_control = 5.0
 @export var air_resistance = 2.0
+@export var lock_movement: bool = false
 
 @onready var head = $head
 @onready var camera = $head/Camera3D
@@ -39,6 +40,8 @@ func _unhandled_input(event):
 	#	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 func _physics_process(delta):
+	if lock_movement: return
+	
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 
@@ -83,6 +86,7 @@ func _on_change_camera(new_position: Transform3D):
 	
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	on_terminal = true
+	lock_movement = true
 	PlayerManager.entered_desk()
 
 func _restore_camera():
@@ -91,3 +95,4 @@ func _restore_camera():
 	
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	on_terminal = false
+	lock_movement = false

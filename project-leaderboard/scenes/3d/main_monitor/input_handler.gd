@@ -31,5 +31,4 @@ func _input_event(_camera: Camera3D, event: InputEvent, event_position: Vector3,
 	sub_viewport.push_input(local_event)
 
 func on_interaction():
-	print("CLICKED")
 	Signals.change_camera.emit(camera_marker.global_transform)
