@@ -1,4 +1,4 @@
-extends Node3D
+extends CollisionObject3D
 class_name Interactable
 
 @export var hover_text: String = "None Set"

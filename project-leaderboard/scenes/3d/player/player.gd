@@ -15,8 +15,12 @@ var speed : float
 @onready var head = $head
 @onready var camera = $head/Camera3D
 
+var original_camera_transform: Transform3D
+
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	
+	Signals.change_camera.connect(_on_change_camera)
 
 func _unhandled_input(event):
 	if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
@@ -65,3 +69,12 @@ func _physics_process(delta):
 		velocity.z = horizontal_velocity.z
 	
 	move_and_slide()
+
+# Signals
+func _on_change_camera(new_position: Transform3D):
+	original_camera_transform = camera.transform
+	
+	var tween := create_tween().set_parallel(true).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
+	tween.tween_property(camera, "global_transform", new_position, 0.5)
+	
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE

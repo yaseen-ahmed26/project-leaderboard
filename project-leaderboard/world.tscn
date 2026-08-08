@@ -25,6 +25,7 @@ transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545
 shadow_enabled = true
 
 [node name="room" parent="." unique_id=2007177851 instance=ExtResource("1_fj7yv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.013739228, 0.0001219511, -0.003205061)
 
 [node name="player" parent="." unique_id=634988134 instance=ExtResource("2_tlwt5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2057056, 1.0455159, 1.5440006)
