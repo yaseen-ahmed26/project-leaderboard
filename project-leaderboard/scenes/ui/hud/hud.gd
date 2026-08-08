@@ -5,6 +5,7 @@ extends Control
 
 func _ready() -> void:
 	Signals.stats_changed.connect(_on_stats_changed)
+	Signals.autoclicker_decayed.connect(_on_autoclicker_decayed)
 
 func show_hover_prompt(new_text: String):
 	hover_prompt.text = new_text
@@ -14,4 +15,7 @@ func hide_hover_prompt():
 	hover_prompt.visible = false
 
 func _on_stats_changed(new_stats: Dictionary):
-	cookie_counter.text = "COOKIES: %d" % new_stats.get("cookies")
+	cookie_counter.text = "COOKIES: %.1f" % new_stats.get("cookies")
+
+func _on_autoclicker_decayed(new_rate):
+	$decay.text = "AUTOCLICKER DECAY: %s" % str(new_rate)

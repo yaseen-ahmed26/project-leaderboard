@@ -33,6 +33,7 @@ func _unhandled_input(event):
 		if on_terminal:
 			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 			_restore_camera()
+			PlayerManager.left_desk()
 
 	# if event is InputEventMouseButton and event.pressed:
 	#	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -82,6 +83,7 @@ func _on_change_camera(new_position: Transform3D):
 	
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	on_terminal = true
+	PlayerManager.entered_desk()
 
 func _restore_camera():
 	var tween := create_tween().set_parallel(true).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
