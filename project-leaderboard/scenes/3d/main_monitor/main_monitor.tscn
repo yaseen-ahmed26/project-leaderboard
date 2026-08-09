@@ -19,6 +19,7 @@ albedo_texture = SubResource("ViewportTexture_84oj4")
 script = ExtResource("2_w1s8o")
 sub_viewport = NodePath("SubViewport")
 mesh = NodePath("MeshInstance3D")
+hover_text = "[E] Start Afternoon"
 
 [node name="SubViewport" type="SubViewport" parent="." unique_id=2017176015]
 size = Vector2i(1920, 1080)

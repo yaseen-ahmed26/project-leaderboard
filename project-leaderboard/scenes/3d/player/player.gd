@@ -22,7 +22,7 @@ var on_terminal: bool = false
 
 func _ready():	
 	Signals.change_camera.connect(_on_change_camera)
-	Signals.main_menu_exit.connect(_on_main_menu_exit)
+	Signals.day_started.connect(_on_main_menu_exit)
 	
 func _unhandled_input(event):
 	if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:

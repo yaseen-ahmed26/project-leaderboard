@@ -14,4 +14,4 @@ func _on_play_btn_pressed():
 	await tween.finished
 	self.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	self.hide()
-	Signals.main_menu_exit.emit()
+	DayManager.start_day()

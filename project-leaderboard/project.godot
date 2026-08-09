@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 Signals="*uid://bpoi7q8kfp3p6"
 PlayerManager="*uid://teocpow8u311"
+DayManager="*uid://cvknwl3k3d4du"
 
 [display]
 
