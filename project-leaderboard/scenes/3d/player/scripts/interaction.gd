@@ -10,6 +10,8 @@ func _physics_process(_delta: float) -> void:
 		var hit_object = raycast.get_collider()
 		var _hit_point = raycast.get_collision_point()
 		
+		if not hit_object or hit_object == null: return
+		
 		if hit_object.is_in_group("Interactables"):
 			if not hit_object.get_interact_status(): return
 			
