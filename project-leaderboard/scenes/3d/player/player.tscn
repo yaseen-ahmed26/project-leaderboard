@@ -11,6 +11,7 @@
 [node name="player" type="CharacterBody3D" unique_id=634988134]
 collision_mask = 3
 script = ExtResource("1_s6smf")
+lock_movement = true
 
 [node name="hud" parent="." unique_id=922040254 instance=ExtResource("3_arw13")]
 

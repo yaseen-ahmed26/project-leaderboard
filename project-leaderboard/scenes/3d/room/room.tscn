@@ -11,13 +11,10 @@ data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0
 
 [node name="room" unique_id=2007177851 instance=ExtResource("1_yaf3v")]
 
-[node name="StaticBody3D" parent="build/floor" parent_id_path=PackedInt32Array(1119707377) index="0" unique_id=1566819746]
+[node name="StaticBody3D" parent="build/floor" parent_id_path=PackedInt32Array(1540740592) index="0" unique_id=1970233197]
 collision_layer = 2
 
-[node name="StaticBody3D" parent="build/front_back_walls" parent_id_path=PackedInt32Array(622755786) index="0" unique_id=809252044]
-collision_layer = 2
-
-[node name="StaticBody3D" parent="build/left_right_walls" parent_id_path=PackedInt32Array(451242121) index="0" unique_id=1158969649]
+[node name="StaticBody3D" parent="build/left_right_walls" parent_id_path=PackedInt32Array(1589253415) index="0" unique_id=1716431890]
 collision_layer = 2
 
 [node name="box2" type="StaticBody3D" parent="." index="2" unique_id=147758803 groups=["Interactables"]]
@@ -42,5 +39,5 @@ shape = SubResource("ConcavePolygonShape3D_kxljb")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="box1" index="1" unique_id=1078155339]
 mesh = SubResource("BoxMesh_nny7t")
 
-[node name="main_monitor" parent="computer" parent_id_path=PackedInt32Array(636982357) index="2" unique_id=433812210 instance=ExtResource("4_d1eyb")]
+[node name="main_monitor" parent="computer" parent_id_path=PackedInt32Array(1423548540) index="2" unique_id=433812210 instance=ExtResource("4_d1eyb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.007089287, 0.5623894, 0.14503264)

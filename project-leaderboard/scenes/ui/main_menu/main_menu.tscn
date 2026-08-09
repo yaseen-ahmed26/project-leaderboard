@@ -1,0 +1,57 @@
+[gd_scene format=3 uid="uid://c357kmk2h4x2p"]
+
+[ext_resource type="Script" uid="uid://n8sgpsa86v4j" path="res://scenes/ui/main_menu/main_menu.gd" id="1_1ch07"]
+
+[node name="main_menu" type="Control" unique_id=318754658]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1ch07")
+
+[node name="background" type="ColorRect" parent="." unique_id=1441299005]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.45490196)
+
+[node name="play_btn" type="Button" parent="background" unique_id=839961715]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -256.0
+offset_top = -58.0
+offset_right = 256.0
+offset_bottom = 58.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 54
+text = "Start Day"
+
+[node name="title" type="RichTextLabel" parent="background" unique_id=994185327]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -564.0
+offset_top = -418.0
+offset_right = 564.0
+offset_bottom = -279.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 54
+text = "Trust Me, I'm Busy"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="background/play_btn" to="." method="_on_play_btn_pressed"]
