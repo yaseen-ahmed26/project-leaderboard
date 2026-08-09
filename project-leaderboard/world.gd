@@ -5,5 +5,5 @@ extends Node3D
 func _ready() -> void:
 	Signals.day_ended.connect(_on_day_ended)
 
-func _on_day_ended(day_stats: Dictionary):
+func _on_day_ended(_day_stats: Dictionary):
 	day_end.visible = true

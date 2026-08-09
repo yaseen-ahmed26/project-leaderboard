@@ -19,6 +19,7 @@ var speed : float
 
 var original_camera_transform: Transform3D
 var on_terminal: bool = false
+var camera_source: String
 
 func _ready():	
 	Signals.change_camera.connect(_on_change_camera)
@@ -35,7 +36,9 @@ func _unhandled_input(event):
 		if on_terminal:
 			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 			_restore_camera()
-			PlayerManager.left_desk()
+			
+			if camera_source == "main_monitor":
+				PlayerManager.left_desk()
 
 	# if event is InputEventMouseButton and event.pressed:
 	#	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -79,8 +82,9 @@ func _physics_process(delta):
 	move_and_slide()
 
 # Signals
-func _on_change_camera(new_position: Transform3D):
+func _on_change_camera(new_position: Transform3D, source: String):
 	original_camera_transform = camera.transform
+	camera_source = source
 	
 	var tween := create_tween().set_parallel(true).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
 	tween.tween_property(camera, "global_transform", new_position, 0.5)
@@ -88,7 +92,9 @@ func _on_change_camera(new_position: Transform3D):
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	on_terminal = true
 	lock_movement = true
-	PlayerManager.entered_desk()
+
+	if source == "main_monitor":
+		PlayerManager.entered_desk()
 
 func _restore_camera():
 	var tween := create_tween().set_parallel(true).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)

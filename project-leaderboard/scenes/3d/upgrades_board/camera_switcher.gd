@@ -33,9 +33,3 @@ func _input_event(_camera: Camera3D, event: InputEvent, event_position: Vector3,
 
 func on_interaction():
 	Signals.change_camera.emit(camera_marker.global_transform, self.name)
-	
-	var current_phase = DayManager.get_current_phase()
-	
-	if current_phase == "morning":
-		DayManager.change_phase("afternoon")
-		self.hover_text = "[E] Cookie Clicker"

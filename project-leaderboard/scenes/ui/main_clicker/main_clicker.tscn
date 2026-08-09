@@ -11,6 +11,15 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_spcf1")
 
+[node name="ColorRect" type="ColorRect" parent="." unique_id=658938313]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.049030848, 0.55873525, 1, 1)
+
 [node name="Button" type="Button" parent="." unique_id=601818736]
 layout_mode = 1
 anchors_preset = 8

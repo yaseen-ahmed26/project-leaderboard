@@ -1,7 +1,7 @@
-[gd_scene format=3 uid="uid://dr53k1y5sgl71"]
+[gd_scene format=3 uid="uid://c4iew6umqecxi"]
 
-[ext_resource type="PackedScene" uid="uid://dfqr223tctvtt" path="res://scenes/ui/main_clicker/main_clicker.tscn" id="1_84oj4"]
-[ext_resource type="Script" uid="uid://b40q67yasfpk" path="res://scenes/3d/main_monitor/input_handler.gd" id="2_w1s8o"]
+[ext_resource type="Script" uid="uid://ckl3yd0fonq5j" path="res://scenes/3d/upgrades_board/camera_switcher.gd" id="1_s8p0k"]
+[ext_resource type="PackedScene" uid="uid://cme1a03y8yacj" path="res://scenes/ui/upgrades/upgrades.tscn" id="2_3uh6k"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_nny7t"]
 size = Vector3(1.7246094, 1, 0.09790039)
@@ -16,17 +16,17 @@ resource_local_to_scene = true
 albedo_color = Color(1, 1, 1, 0)
 albedo_texture = SubResource("ViewportTexture_84oj4")
 
-[node name="main_monitor" type="Area3D" unique_id=1943268639 node_paths=PackedStringArray("sub_viewport", "mesh") groups=["Interactables"]]
-script = ExtResource("2_w1s8o")
+[node name="upgrades_board" type="Area3D" unique_id=1943268639 node_paths=PackedStringArray("sub_viewport", "mesh") groups=["Interactables"]]
+script = ExtResource("1_s8p0k")
 sub_viewport = NodePath("SubViewport")
 mesh = NodePath("MeshInstance3D")
-hover_text = "[E] Start Afternoon"
-disable_at = 4
+hover_text = "[E] View Upgrades"
+disable_at = 3
 
 [node name="SubViewport" type="SubViewport" parent="." unique_id=2017176015]
 size = Vector2i(1920, 1080)
 
-[node name="main_clicker" parent="SubViewport" unique_id=64477514 instance=ExtResource("1_84oj4")]
+[node name="upgrades" parent="SubViewport" unique_id=1845973147 instance=ExtResource("2_3uh6k")]
 
 [node name="Marker3D" type="Marker3D" parent="." unique_id=188186575]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.84398985)
