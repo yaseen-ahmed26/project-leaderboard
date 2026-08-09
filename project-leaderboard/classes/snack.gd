@@ -5,5 +5,8 @@ class_name Snack
 @export var description: String
 
 func on_interaction():
+	if ConsumableManager.used_snack: 
+		return
+	
 	hover_text = "Used"
 	ConsumableManager.use_snack(id)

@@ -1,6 +1,6 @@
 extends Node
 
-const AFTERNOON_LENGTH: int = 120
+const AFTERNOON_LENGTH: int = 5
 var seconds_away = 0
 
 var current_phase: String = "morning"
@@ -23,10 +23,11 @@ func start_day():
 
 func change_phase(new_phase: String):
 	if new_phase == current_phase: return
-	
+		
 	current_phase = new_phase
-	
+
 	if current_phase == "afternoon":
+		seconds_away = 0
 		afternoon_timer.start()
 	
 	Signals.phase_changed.emit(new_phase)
@@ -38,6 +39,6 @@ func _on_timer_timeout():
 	seconds_away += 1
 	Signals.afternoon_timer.emit(seconds_away)
 	
-	if seconds_away == 120:
+	if seconds_away >= AFTERNOON_LENGTH:
 		afternoon_timer.stop()
 		change_phase("night")

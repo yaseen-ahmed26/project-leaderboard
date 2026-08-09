@@ -22,6 +22,8 @@ func _ready() -> void:
 	timer.one_shot = false
 	timer.wait_time = 1.0
 	timer.timeout.connect(_on_timer_timeout)
+	
+	Signals.phase_changed.connect(_on_phase_changed)
 
 func add_cookies():
 	var amount = 1 * runtime_stats["multiplier"]
@@ -62,3 +64,7 @@ func parse_snack(id: String):
 		"orange":
 			default_multipler = 1.2
 			runtime_stats["multiplier"] = default_multipler
+
+func _on_phase_changed(new_phase: String):
+	if new_phase == "night":
+		timer.stop()

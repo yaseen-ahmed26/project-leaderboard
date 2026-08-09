@@ -6,10 +6,10 @@
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_l7yjw"]
 
-[node name="apple" type="StaticBody3D" unique_id=1557339447]
+[node name="apple" type="StaticBody3D" unique_id=1557339447 groups=["Interactables"]]
 script = ExtResource("1_fgkix")
 id = "apple"
-description = "Apple: Lose 10% less after 5s when leaving your desk"
+description = "Apple: Gain 10% extra after 5s when leaving your desk"
 hover_text = "[E] Use Apple"
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1090331479]
