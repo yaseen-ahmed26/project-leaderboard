@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://dln2yhc2pgtns"]
+
+[ext_resource type="Script" uid="uid://dqqnfjlmdm0ue" path="res://scenes/3d/snacks/food/apple/apple.gd" id="1_fgkix"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_l7yjw"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_l7yjw"]
+
+[node name="apple" type="StaticBody3D" unique_id=1557339447]
+script = ExtResource("1_fgkix")
+hover_text = "[E] Apple: +20% More Cookies"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1090331479]
+mesh = SubResource("BoxMesh_l7yjw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=740546886]
+shape = SubResource("BoxShape3D_l7yjw")
+
+[node name="Label3D" type="Label3D" parent="." unique_id=1064977335]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7082497, 0)
+text = "Apple"

@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://duotesb10xk14"]
+
+[ext_resource type="PackedScene" uid="uid://dln2yhc2pgtns" path="res://scenes/3d/snacks/food/apple/apple.tscn" id="1_db6gx"]
+[ext_resource type="PackedScene" uid="uid://dj6ocw3ousgac" path="res://scenes/3d/snacks/food/orange/orange.tscn" id="2_4vd2c"]
+
+[node name="fridge" type="Node3D" unique_id=834808288]
+
+[node name="apple" parent="." unique_id=1557339447 instance=ExtResource("1_db6gx")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, -1.0438532)
+id = "apple"
+
+[node name="apple2" parent="." unique_id=2071383033 instance=ExtResource("2_4vd2c")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, 0.49776244)
