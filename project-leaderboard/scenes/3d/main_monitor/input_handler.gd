@@ -5,6 +5,7 @@ extends Interactable
 @onready var camera_marker: Marker3D = $Marker3D
 
 func _ready() -> void:
+	super()
 	self.input_ray_pickable = true
 
 func _input_event(_camera: Camera3D, event: InputEvent, event_position: Vector3, _normal: Vector3, _shape_idx: int) -> void:

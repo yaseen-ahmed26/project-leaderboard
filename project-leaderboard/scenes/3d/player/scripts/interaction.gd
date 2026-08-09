@@ -11,9 +11,12 @@ func _physics_process(_delta: float) -> void:
 		var _hit_point = raycast.get_collision_point()
 		
 		if hit_object.is_in_group("Interactables"):
+			if not hit_object.get_interact_status(): return
+			
 			current_raycast_hit = hit_object
 			hud.call("show_hover_prompt", hit_object.get_hover_text())
 	else:
+		current_raycast_hit = null
 		hud.call("hide_hover_prompt")
 	
 func _unhandled_input(event: InputEvent) -> void:

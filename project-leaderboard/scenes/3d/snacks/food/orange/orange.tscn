@@ -15,6 +15,7 @@ script = ExtResource("1_4j07t")
 id = "orange"
 description = "Orange: When clicking at your desk, earn 1.2x Cookies"
 hover_text = "[E] Use Orange"
+disable_at = 6
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1090331479]
 mesh = SubResource("BoxMesh_l7yjw")
