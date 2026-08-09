@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://dqaqtk7xjt0d4" path="res://assets/blend/room.blend" id="1_yaf3v"]
 [ext_resource type="Script" uid="uid://0pndiglh3pwu" path="res://box.gd" id="2_d1eyb"]
 [ext_resource type="PackedScene" uid="uid://dr53k1y5sgl71" path="res://scenes/3d/main_monitor/main_monitor.tscn" id="4_d1eyb"]
+[ext_resource type="PackedScene" uid="uid://duotesb10xk14" path="res://scenes/3d/snacks/fridge.tscn" id="4_luy83"]
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_kxljb"]
 data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
@@ -41,3 +42,6 @@ mesh = SubResource("BoxMesh_nny7t")
 
 [node name="main_monitor" parent="computer" parent_id_path=PackedInt32Array(1423548540) index="2" unique_id=433812210 instance=ExtResource("4_d1eyb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.007089287, 0.5623894, 0.14503264)
+
+[node name="fridge" parent="." index="6" unique_id=834808288 instance=ExtResource("4_luy83")]
+transform = Transform3D(-0.9768864, 0, -0.21375929, 0, 1, 0, 0.21375929, 0, -0.9768864, -4.0973425, 0.545516, 2.6889837)

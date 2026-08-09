@@ -10,10 +10,11 @@ material = SubResource("StandardMaterial3D_jr136")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_l7yjw"]
 
-[node name="orange" type="StaticBody3D" unique_id=1557339447]
+[node name="orange" type="StaticBody3D" unique_id=1557339447 groups=["Interactables"]]
 script = ExtResource("1_4j07t")
 id = "orange"
-hover_text = "[E] Apple: +20% More Cookies"
+description = "Orange: When clicking at your desk, earn 1.2x Cookies"
+hover_text = "[E] Use Orange"
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1090331479]
 mesh = SubResource("BoxMesh_l7yjw")
@@ -22,5 +23,7 @@ mesh = SubResource("BoxMesh_l7yjw")
 shape = SubResource("BoxShape3D_l7yjw")
 
 [node name="Label3D" type="Label3D" parent="." unique_id=1064977335]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7082497, 0)
-text = "Orange"
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8819665, 0)
+text = "Orange: When clicking at your desk, earn 1.2x Cookies"
+autowrap_mode = 3
+width = 400.0

@@ -4,6 +4,9 @@ var runtime_stats: Dictionary = {
 	"cookies": 0.0,
 	"multiplier": 1
 }
+
+var default_multipler: float = 1
+
 var autoclicker_decay: Dictionary = {
 	5: 1,
 	15: 0.5,
@@ -30,7 +33,7 @@ func entered_desk():
 	timer.stop()
 	seconds_away = 0
 	Signals.autoclicker_decayed.emit("NONE")
-	runtime_stats["multiplier"] = 1
+	runtime_stats["multiplier"] = default_multipler
 	
 func left_desk():
 	timer.start()
@@ -49,3 +52,13 @@ func _on_timer_timeout():
 	
 	if seconds_away >= 45:
 		timer.stop()
+
+func parse_snack(id: String):
+	match id:
+		"apple":
+			for k in autoclicker_decay.keys():
+				var v = autoclicker_decay.get(k)
+				autoclicker_decay[k] = v + 0.1
+		"orange":
+			default_multipler = 1.2
+			runtime_stats["multiplier"] = default_multipler
