@@ -13,6 +13,7 @@ func _ready() -> void:
 	Signals.phase_changed.connect(_on_phase_changed)
 	Signals.afternoon_timer.connect(_on_afternoon_timer)
 	Signals.event_added.connect(_on_event_added)
+	Signals.event_removed.connect(_on_event_removed)
 
 func show_hover_prompt(new_text: String):
 	hover_prompt.text = new_text
@@ -54,9 +55,18 @@ func _on_afternoon_timer(seconds_elapsed: int):
 
 func _on_event_added(details: Dictionary):
 	var clone: RichTextLabel = template.duplicate()
+	
 	clone.name = details.get("name")
 	clone.text = details.get("hud_description")
 	clone.visible = true
 	
 	event_list.add_child(clone)
 	event_counter.text = "%d/4" % (event_list.get_child_count() - 1)
+
+func _on_event_removed(details: Dictionary):
+	var label = event_list.get_node_or_null(details.get("name"))
+	
+	if label:
+		label.queue_free()
+	
+	event_counter.text = "%d/4" % (event_list.get_child_count() - 2)
