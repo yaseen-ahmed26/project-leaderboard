@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://i7fmebb1c3vu"]
+
+[ext_resource type="Script" uid="uid://cf1ciiys342xj" path="res://scenes/3d/bed/bed.gd" id="1_2b7db"]
+[ext_resource type="PackedScene" uid="uid://dr6fr22h31ycj" path="res://scenes/3d/bed/bed.glb" id="1_rqmxk"]
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_2b7db"]
+data = PackedVector3Array(-1, -1, 0.74899995, -1, 1, -0.74899995, -1, 1, 0.74899995, -1, -1, 0.74899995, -1, -1, -0.74899995, -1, 1, -0.74899995, -1, -1, -0.74899995, 1, 1, -0.74899995, -1, 1, -0.74899995, -1, -1, -0.74899995, 1, -1, -0.74899995, 1, 1, -0.74899995, 1, -1, -0.74899995, 1, 1, 0.74899995, 1, 1, -0.74899995, 1, -1, -0.74899995, 1, -1, 0.74899995, 1, 1, 0.74899995, 1, -1, 0.74899995, -1, 1, 0.74899995, 1, 1, 0.74899995, 1, -1, 0.74899995, -1, -1, 0.74899995, -1, 1, 0.74899995, -1, -1, -0.74899995, 1, -1, 0.74899995, 1, -1, -0.74899995, -1, -1, -0.74899995, -1, -1, 0.74899995, 1, -1, 0.74899995, 1, 1, -0.74899995, -1, 1, 0.74899995, -1, 1, -0.74899995, 1, 1, -0.74899995, 1, 1, 0.74899995, -1, 1, 0.74899995)
+
+[node name="bed" type="StaticBody3D" unique_id=778414298]
+script = ExtResource("1_2b7db")
+hover_text = "[E] End Day"
+disable_at = 3
+
+[node name="bed_mesh" parent="." unique_id=1087422031 instance=ExtResource("1_rqmxk")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=688690850]
+transform = Transform3D(0.98514104, 0, 0, 0, 0.087935515, 0, 0, 0, 2.2366176, 0.929694, 1.0379341, 1.7382259)
+shape = SubResource("ConcavePolygonShape3D_2b7db")
+
+[editable path="bed_mesh"]

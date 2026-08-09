@@ -23,6 +23,7 @@ var on_terminal: bool = false
 func _ready():	
 	Signals.change_camera.connect(_on_change_camera)
 	Signals.day_started.connect(_on_main_menu_exit)
+	Signals.day_ended.connect(_on_day_ended)
 	
 func _unhandled_input(event):
 	if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
@@ -101,3 +102,8 @@ func _on_main_menu_exit():
 	lock_movement = false
 	hud.visible = true
 	Input.set_mouse_mode.call_deferred(Input.MOUSE_MODE_CAPTURED)
+
+func _on_day_ended(_details):
+	lock_movement = true
+	hud.visible = false
+	Input.set_mouse_mode.call_deferred(Input.MOUSE_MODE_VISIBLE)

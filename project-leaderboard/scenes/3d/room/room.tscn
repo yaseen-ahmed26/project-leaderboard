@@ -4,26 +4,30 @@
 [ext_resource type="Script" uid="uid://dailly3kh30hc" path="res://scenes/3d/room/room.gd" id="2_luy83"]
 [ext_resource type="PackedScene" uid="uid://dr53k1y5sgl71" path="res://scenes/3d/main_monitor/main_monitor.tscn" id="4_d1eyb"]
 [ext_resource type="PackedScene" uid="uid://duotesb10xk14" path="res://scenes/3d/snacks/fridge.tscn" id="4_luy83"]
+[ext_resource type="PackedScene" uid="uid://i7fmebb1c3vu" path="res://scenes/3d/bed/bed.tscn" id="5_luy83"]
 
 [node name="room" unique_id=2007177851 instance=ExtResource("1_yaf3v")]
 script = ExtResource("2_luy83")
 
-[node name="StaticBody3D" parent="build/floor" parent_id_path=PackedInt32Array(1540740592) index="0" unique_id=1970233197]
+[node name="StaticBody3D" parent="build/floor" parent_id_path=PackedInt32Array(1091123723) index="0" unique_id=1565105767]
 collision_layer = 2
 
-[node name="StaticBody3D" parent="build/left_right_walls" parent_id_path=PackedInt32Array(1589253415) index="0" unique_id=1716431890]
+[node name="StaticBody3D" parent="build/left_right_walls" parent_id_path=PackedInt32Array(625522424) index="0" unique_id=216546940]
 collision_layer = 2
 
-[node name="main_monitor" parent="computer" parent_id_path=PackedInt32Array(1423548540) index="2" unique_id=433812210 instance=ExtResource("4_d1eyb")]
+[node name="main_monitor" parent="computer" parent_id_path=PackedInt32Array(1093560622) index="2" unique_id=433812210 instance=ExtResource("4_d1eyb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.007089287, 0.5623894, 0.14503264)
 
-[node name="door" parent="interactables" parent_id_path=PackedInt32Array(455532675) index="0" unique_id=2134117327]
+[node name="door" parent="interactables" parent_id_path=PackedInt32Array(607855513) index="0" unique_id=527583500]
 transform = Transform3D(-0.80836064, 0, 0.01802746, 0, 1.7134999, 0, -0.7773446, 0, -0.018746754, 0, 0, 0)
 
 [node name="fridge" parent="." index="4" unique_id=834808288 instance=ExtResource("4_luy83")]
 transform = Transform3D(-0.9768864, 0, -0.21375929, 0, 1, 0, 0.21375929, 0, -0.9768864, -4.0973425, 0.545516, 2.6889837)
 
-[node name="markers" type="Node" parent="." index="5" unique_id=1855916130]
+[node name="bed" parent="." index="5" unique_id=778414298 instance=ExtResource("5_luy83")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.2592854, 0.15485394, -3.9664288)
+
+[node name="markers" type="Node" parent="." index="6" unique_id=1855916130]
 
 [node name="delivery" type="Node" parent="markers" index="0" unique_id=1329826211]
 

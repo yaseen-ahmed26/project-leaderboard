@@ -1,0 +1,113 @@
+[gd_scene format=3 uid="uid://bctk608adfe52"]
+
+[ext_resource type="Script" uid="uid://3fs03jffx26n" path="res://scenes/ui/day_end/day_end.gd" id="1_objty"]
+
+[node name="day_end" type="Control" unique_id=1918697368]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_objty")
+
+[node name="background" type="ColorRect" parent="." unique_id=1374491303]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.45490196)
+
+[node name="title" type="RichTextLabel" parent="background" unique_id=181909396]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -564.0
+offset_top = -418.0
+offset_right = 564.0
+offset_bottom = -279.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 54
+text = "Trust Me, I'm Busy"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="day" type="RichTextLabel" parent="background" unique_id=294378160]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -564.0
+offset_top = -196.0
+offset_right = 564.0
+offset_bottom = -57.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 54
+text = "Day 1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="cookies_earnt" type="RichTextLabel" parent="background" unique_id=302132763]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -564.0
+offset_top = -95.0
+offset_right = 564.0
+offset_bottom = 44.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 54
+text = "Cookies Earnt: 100"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="left_desk" type="RichTextLabel" parent="background" unique_id=1102616586]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -564.0
+offset_top = 11.0
+offset_right = 564.0
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 54
+text = "Left Desk: 1 time"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="cookies_earnt3" type="RichTextLabel" parent="background" unique_id=1670955420]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -564.0
+offset_top = 110.0
+offset_right = 564.0
+offset_bottom = 369.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 54
+bbcode_enabled = true
+text = "Distractions Solved: 
+Delivery"
+horizontal_alignment = 1
+vertical_alignment = 1

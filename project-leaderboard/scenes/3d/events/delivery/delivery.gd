@@ -11,3 +11,4 @@ func _ready() -> void:
 func on_interaction():
 	queue_free()
 	Signals.event_removed.emit(details)
+	PlayerManager.solved_distraction(details)

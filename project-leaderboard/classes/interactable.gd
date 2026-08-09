@@ -14,6 +14,7 @@ func _ready() -> void:
 	self.add_to_group("Interactables")
 	
 	Signals.phase_changed.connect(_on_phase_changed)
+	Signals.day_started.connect(_on_phase_changed.bind("morning"))
 
 func get_hover_text():
 	return hover_text

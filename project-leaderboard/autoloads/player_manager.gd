@@ -2,7 +2,10 @@ extends Node
 
 var runtime_stats: Dictionary = {
 	"cookies": 0.0,
-	"multiplier": 1
+	"multiplier": 1,
+	"left_desk": 0,
+	"leaderboard_position": 0,
+	"distractions_solved": []
 }
 
 var default_multipler: float = 1
@@ -41,6 +44,7 @@ func left_desk():
 	timer.start()
 	seconds_away = 0
 	runtime_stats["multiplier"] = 1.2
+	runtime_stats["left_desk"] += 1
 	Signals.autoclicker_decayed.emit(runtime_stats["multiplier"])
 	
 func _on_timer_timeout():
@@ -68,3 +72,9 @@ func parse_snack(id: String):
 func _on_phase_changed(new_phase: String):
 	if new_phase == "night":
 		timer.stop()
+
+func solved_distraction(details: Dictionary):
+	runtime_stats["distractions_solved"].append(details.get("name"))
+	
+func get_runtime_stats():
+	return runtime_stats

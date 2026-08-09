@@ -1,8 +1,10 @@
 [gd_scene format=3 uid="uid://bt7xykuclie22"]
 
+[ext_resource type="Script" uid="uid://dvfxxfrbjlb2t" path="res://world.gd" id="1_aqk2v"]
 [ext_resource type="PackedScene" uid="uid://b82klctai8qrl" path="res://scenes/3d/room/room.tscn" id="1_fj7yv"]
 [ext_resource type="PackedScene" uid="uid://c357kmk2h4x2p" path="res://scenes/ui/main_menu/main_menu.tscn" id="1_tlwt5"]
 [ext_resource type="PackedScene" uid="uid://cnsk2cfmoiwhy" path="res://scenes/3d/player/player.tscn" id="2_tlwt5"]
+[ext_resource type="PackedScene" uid="uid://bctk608adfe52" path="res://scenes/ui/day_end/day_end.tscn" id="3_036b0"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ckv8d"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -17,6 +19,7 @@ sky = SubResource("Sky_y372y")
 glow_enabled = true
 
 [node name="world" type="Node3D" unique_id=1878423917]
+script = ExtResource("1_aqk2v")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=581328462]
 environment = SubResource("Environment_kq1an")
@@ -26,6 +29,10 @@ transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545
 shadow_enabled = true
 
 [node name="main_menu" parent="." unique_id=318754658 instance=ExtResource("1_tlwt5")]
+
+[node name="day_end" parent="." unique_id=1918697368 instance=ExtResource("3_036b0")]
+visible = false
+mouse_filter = 2
 
 [node name="room" parent="." unique_id=2007177851 instance=ExtResource("1_fj7yv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.013739228, 0.0001219511, -0.003205061)

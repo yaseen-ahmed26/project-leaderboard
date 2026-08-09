@@ -1,6 +1,6 @@
 extends Node
 
-const AFTERNOON_LENGTH: int = 100
+const AFTERNOON_LENGTH: int = 6
 var seconds_away = 0
 
 var current_phase: String = "morning"
@@ -31,6 +31,12 @@ func change_phase(new_phase: String):
 		afternoon_timer.start()
 	
 	Signals.phase_changed.emit(new_phase)
+
+func end_day():
+	day_started = false
+	var runtime_stats = PlayerManager.get_runtime_stats()
+	
+	Signals.day_ended.emit(runtime_stats)
 
 func get_current_phase():
 	return current_phase
