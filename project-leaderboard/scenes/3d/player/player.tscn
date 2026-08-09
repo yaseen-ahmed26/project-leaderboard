@@ -14,6 +14,7 @@ script = ExtResource("1_s6smf")
 lock_movement = true
 
 [node name="hud" parent="." unique_id=922040254 instance=ExtResource("3_arw13")]
+visible = false
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=699587306]
 mesh = SubResource("CapsuleMesh_l7yjw")

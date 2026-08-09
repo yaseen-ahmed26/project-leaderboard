@@ -15,15 +15,15 @@ var speed : float
 
 @onready var head = $head
 @onready var camera = $head/Camera3D
+@onready var hud: Control = $hud
 
 var original_camera_transform: Transform3D
 var on_terminal: bool = false
 
-func _ready():
-	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-	
+func _ready():	
 	Signals.change_camera.connect(_on_change_camera)
-
+	Signals.main_menu_exit.connect(_on_main_menu_exit)
+	
 func _unhandled_input(event):
 	if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
 		head.rotate_y(-event.relative.x * look_sensitivity)
@@ -96,3 +96,8 @@ func _restore_camera():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	on_terminal = false
 	lock_movement = false
+
+func _on_main_menu_exit():
+	lock_movement = false
+	hud.visible = true
+	Input.set_mouse_mode.call_deferred(Input.MOUSE_MODE_CAPTURED)
