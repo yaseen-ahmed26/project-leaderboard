@@ -2,8 +2,8 @@ extends Node
 
 var autoclicker_decay: Dictionary = {
 	5: 1,
-	15: 0.5,
-	30: 0.2,
+	10: 0.5,
+	15: 0.2,
 	45: 0.1,
 }
 
