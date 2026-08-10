@@ -9,7 +9,7 @@ func _ready():
 		upgrade_levels[upgrade.id] = 0
 
 func buy_upgrade(upgrade: UpgradeData):
-	var current_level = get_upgrade_level(upgrade.id) + 1
+	var current_level = get_upgrade_level(upgrade.id)
 	
 	if current_level >= upgrade.total_levels: 
 		print("Upgrade maxed or exceeds current max: ", current_level)
@@ -19,6 +19,17 @@ func buy_upgrade(upgrade: UpgradeData):
 
 	if PlayerManager.purchase(level_data.cost):
 		upgrade_levels[upgrade.id] += 1
+		
+		if level_data is UnlockEffect:
+			# This will be given to the RoomManager
+			pass
+		elif level_data is StatEffect:
+			PlayerManager.edit_stat({
+				"operation": level_data.get_operation(),
+				"value": level_data.value,
+				"stat": level_data.stat
+			}, "")
+		
 		return [true, level_data]
 	
 	return [false]
@@ -27,6 +38,6 @@ func get_upgrade_pool():
 	return base_available_upgrades
 
 func get_upgrade_level(id: String):
-	if not upgrade_levels.has(id): return 
+	if not upgrade_levels.has(id): return 0
 	
 	return upgrade_levels.get(id)

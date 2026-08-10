@@ -47,6 +47,7 @@ func left_desk():
 	ClickerManager.activate_decay()
 
 func edit_stat(effect: Dictionary, snack_id: String):
+	print(effect)
 	if not runtime_stats.has(effect.get("stat")):
 		print("No stat found '%s' requested by Snack %s" % [effect.get("stat"), snack_id]) 
 		return

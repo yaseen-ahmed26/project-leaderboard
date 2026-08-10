@@ -26,18 +26,19 @@ func _setup_btns():
 		
 		btn_holder.add_child(clone)
 
-func _refresh_btn(btn, new_level: UpgradeEffect):
+func _refresh_btn(btn, upgrade: UpgradeData):
 	print("REFRESHING")
 	var current_level: int = UpgradeManager.get_upgrade_level(btn.name)
-		
-	btn.text = "[%d] %s: %s" % [
-		current_level,
-		btn.name.capitalize(),
-		new_level.get("description")
-	]
+	
+	if current_level >= upgrade.total_levels:
+		btn.text = "[MAX] %s: Maxed Out" % upgrade.display_name
+		btn.disabled = true
+	else:
+		var next_effect = upgrade.level_effects[current_level]
+		btn.text = "[%d] %s: %s" % [current_level, upgrade.display_name, next_effect.description]
 
 func _on_upgrade_btn_pressed(btn: Button, upgrade: UpgradeData):
 	var details = UpgradeManager.buy_upgrade(upgrade)
 	
 	if details[0]:
-		_refresh_btn(btn, details[1])
+		_refresh_btn(btn, upgrade)
