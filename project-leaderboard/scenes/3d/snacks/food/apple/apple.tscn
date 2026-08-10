@@ -1,15 +1,16 @@
 [gd_scene format=3 uid="uid://dln2yhc2pgtns"]
 
 [ext_resource type="Script" uid="uid://dqqnfjlmdm0ue" path="res://scenes/3d/snacks/food/apple/apple.gd" id="1_fgkix"]
+[ext_resource type="Resource" uid="uid://bsgp454sf3pep" path="res://resources/snacks/apple.tres" id="2_rmavt"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_l7yjw"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_l7yjw"]
 
 [node name="apple" type="StaticBody3D" unique_id=1557339447 groups=["Interactables"]]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
 script = ExtResource("1_fgkix")
-id = "apple"
-description = "Apple: Gain 10% extra after 5s when leaving your desk"
+snack_data = ExtResource("2_rmavt")
 hover_text = "[E] Use Apple"
 disable_at = 6
 
@@ -20,7 +21,7 @@ mesh = SubResource("BoxMesh_l7yjw")
 shape = SubResource("BoxShape3D_l7yjw")
 
 [node name="Label3D" type="Label3D" parent="." unique_id=1064977335]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.90080595, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.10096705, 0.73126465)
 text = "Apple: Lose 10% less after 5s when leaving your desk"
 autowrap_mode = 3
 width = 350.0

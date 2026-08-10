@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="SnackData" format=3 uid="uid://bsgp454sf3pep"]
+
+[ext_resource type="Script" uid="uid://c78mvh07yxtri" path="res://resources/bases/snack_data.gd" id="1_3seq6"]
+
+[resource]
+script = ExtResource("1_3seq6")
+id = "snack_apple"
+display_name = "Apple"
+description = "Apple: Lose 10% less after 5s when leaving your desk"
+stat_change = "Lose 10% Less after 5s"
+effect = 3
+effect_info = {
+"operation": "add",
+"value": 0.1
+}
+metadata/_custom_type_script = "uid://c78mvh07yxtri"

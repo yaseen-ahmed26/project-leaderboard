@@ -2,8 +2,9 @@ extends Node
 
 var runtime_stats: Dictionary = {
 	"cookies": 0.0,
-	"click_multiplier": 1,
-	"multiplier": 1,
+	"cookies_per_click": 1.0,
+	"click_multiplier": 1.0,
+	"multiplier": 1.0,
 	"left_desk": 0,
 	"leaderboard_position": 0,
 	"distractions_solved": [],
@@ -46,7 +47,7 @@ func _apply_upgrades(amount):
 	return amount
 
 func add_cookies():
-	var amount: float = 1.0
+	var amount: float = runtime_stats["cookies_per_click"] * runtime_stats["click_multiplier"]
 	
 	amount = _apply_upgrades(amount)
 	amount *= runtime_stats["multiplier"]
@@ -79,15 +80,22 @@ func _on_timer_timeout():
 	if seconds_away >= 45:
 		timer.stop()
 
-func parse_snack(id: String):
-	match id:
-		"apple":
-			for k in autoclicker_decay.keys():
-				var v = autoclicker_decay.get(k)
-				autoclicker_decay[k] = v + 0.1
-		"orange":
-			default_multipler = 1.2
-			runtime_stats["multiplier"] = default_multipler
+func edit_stat(effect: Dictionary, snack_id: String):
+	if not runtime_stats.get(effect.get("stat")):
+		print("No stat found '%s' requested by Snack %s" % [effect.get("stat"), snack_id]) 
+		return
+
+	match effect.get("operation"):
+		"add": runtime_stats[effect.get("stat")] += effect.get("value")
+		"subtract": runtime_stats[effect.get("stat")] -= effect.get("value")
+		"multiply": runtime_stats[effect.get("stat")] *= effect.get("value")
+		"divide": runtime_stats[effect.get("stat")] /= effect.get("value")
+	
+# Custom Snack: Apple
+func edit_autoclick_decay(value: float):
+	for k in autoclicker_decay.keys():
+		var v = autoclicker_decay.get(k)
+		autoclicker_decay[k] = v + value
 
 func parse_upgrade(upgrade_name: String, cost):
 	runtime_stats["cookies"] -= cost

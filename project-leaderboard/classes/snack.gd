@@ -1,15 +1,16 @@
 extends Interactable
 class_name Snack
 
-@export var id: String
-@export var description: String
+## The SnackData associated with this scene.
+@export var snack_data: SnackData
 
 func _ready() -> void:
 	super()
 
 func on_interaction():
-	if ConsumableManager.used_snack: 
-		return
+	var success = ConsumableManager.use_snack(snack_data)
 	
-	hover_text = "Used"
-	ConsumableManager.use_snack(id)
+	if success:
+		hover_text = "Used"
+	else:
+		hover_text = "Cannot use snack"

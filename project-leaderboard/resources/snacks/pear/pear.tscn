@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://b5ugkv83uenux"]
+
+[ext_resource type="Script" uid="uid://ci761c1bkehxm" path="res://resources/snacks/pear/pear.gd" id="1_ym6y4"]
+[ext_resource type="Resource" uid="uid://cf3ja17ebbawn" path="res://resources/snacks/pear.tres" id="2_52isj"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nny7t"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_l7yjw"]
+
+[node name="StaticBody3D" type="StaticBody3D" unique_id=41098435]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
+script = ExtResource("1_ym6y4")
+snack_data = ExtResource("2_52isj")
+hover_text = "[E] Use Pear"
+disable_at = 6
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1096999644]
+shape = SubResource("BoxShape3D_nny7t")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=107033325]
+mesh = SubResource("BoxMesh_l7yjw")
+
+[node name="Label3D" type="Label3D" parent="." unique_id=1990627486]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0464772, 0.7067608)
+autowrap_mode = 3
+width = 400.0
