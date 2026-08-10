@@ -21,6 +21,7 @@ Signals="*uid://bpoi7q8kfp3p6"
 PlayerManager="*uid://teocpow8u311"
 DayManager="*uid://cvknwl3k3d4du"
 ConsumableManager="*uid://osky2nib04h5"
+ClickerManager="*uid://dw88ivhtwbu11"
 
 [display]
 

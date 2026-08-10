@@ -16,24 +16,6 @@ var click_count = 0
 
 var default_multipler: float = 1
 
-var autoclicker_decay: Dictionary = {
-	5: 1,
-	15: 0.5,
-	30: 0.2,
-	45: 0.1,
-}
-
-var seconds_away = 0
-var timer: Timer = Timer.new()
-
-func _ready() -> void:
-	add_child(timer)
-	timer.one_shot = false
-	timer.wait_time = 1.0
-	timer.timeout.connect(_on_timer_timeout)
-	
-	Signals.phase_changed.connect(_on_phase_changed)
-
 func _apply_upgrades(amount):
 	if runtime_stats["upgrades"].has("increment"):
 		amount += 0.5
@@ -56,29 +38,13 @@ func add_cookies():
 	Signals.stats_changed.emit(runtime_stats)
 
 func entered_desk():
-	timer.stop()
-	seconds_away = 0
-	Signals.autoclicker_decayed.emit("NONE")
+	ClickerManager.deactivate_decay()
 	runtime_stats["multiplier"] = default_multipler
 	
 func left_desk():
-	timer.start()
-	seconds_away = 0
 	runtime_stats["multiplier"] = 1.2
 	runtime_stats["left_desk"] += 1
-	Signals.autoclicker_decayed.emit(runtime_stats["multiplier"])
-	
-func _on_timer_timeout():
-	add_cookies()
-	seconds_away += 1
-		
-	if autoclicker_decay.has(seconds_away):
-		runtime_stats["multiplier"] = autoclicker_decay.get(seconds_away)
-
-		Signals.autoclicker_decayed.emit(runtime_stats["multiplier"])
-	
-	if seconds_away >= 45:
-		timer.stop()
+	ClickerManager.activate_decay()
 
 func edit_stat(effect: Dictionary, snack_id: String):
 	if not runtime_stats.has(effect.get("stat")):
@@ -90,13 +56,8 @@ func edit_stat(effect: Dictionary, snack_id: String):
 		"subtract": runtime_stats[effect.get("stat")] -= effect.get("value")
 		"multiply": runtime_stats[effect.get("stat")] *= effect.get("value")
 		"divide": runtime_stats[effect.get("stat")] /= effect.get("value")
-	
-# Custom Snack: Apple
-func edit_autoclick_decay(value: float):
-	for k in autoclicker_decay.keys():
-		var v = autoclicker_decay.get(k)
-		autoclicker_decay[k] = v + value
-
+		"set":runtime_stats[effect.get("stat")] = effect.get("value")
+		
 func parse_upgrade(upgrade_name: String, cost):
 	runtime_stats["cookies"] -= cost
 	runtime_stats["upgrades"].append(upgrade_name)
@@ -108,10 +69,6 @@ func can_buy_upgrade(cost: float):
 		return true
 		
 	return false
-
-func _on_phase_changed(new_phase: String):
-	if new_phase == "night":
-		timer.stop()
 
 func solved_distraction(details: Dictionary):
 	runtime_stats["distractions_solved"].append(details.get("name"))
