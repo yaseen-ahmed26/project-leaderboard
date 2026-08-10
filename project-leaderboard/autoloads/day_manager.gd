@@ -1,6 +1,6 @@
 extends Node
 
-const AFTERNOON_LENGTH: int = 10
+const AFTERNOON_LENGTH: int = 20
 var seconds_away = 0
 
 var current_phase: String = "morning"

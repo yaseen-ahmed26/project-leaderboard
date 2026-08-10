@@ -10,30 +10,24 @@
 [node name="room" unique_id=2007177851 instance=ExtResource("1_yaf3v")]
 script = ExtResource("2_luy83")
 
-[node name="StaticBody3D" parent="build/floor" parent_id_path=PackedInt32Array(1091123723) index="0" unique_id=1565105767]
+[node name="StaticBody3D" parent="build/floor" parent_id_path=PackedInt32Array(1950514935) index="0" unique_id=866431161]
 collision_layer = 2
 
-[node name="StaticBody3D" parent="build/left_right_walls" parent_id_path=PackedInt32Array(625522424) index="0" unique_id=216546940]
-collision_layer = 2
+[node name="main_monitor" parent="computer" parent_id_path=PackedInt32Array(1289303008) index="2" unique_id=433812210 instance=ExtResource("4_d1eyb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5902338, 1.0872164, -4.733616)
 
-[node name="main_monitor" parent="computer" parent_id_path=PackedInt32Array(1093560622) index="2" unique_id=433812210 instance=ExtResource("4_d1eyb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.007089287, 0.5623894, 0.14503264)
-
-[node name="door" parent="interactables" parent_id_path=PackedInt32Array(607855513) index="0" unique_id=527583500]
-transform = Transform3D(-0.80836064, 0, 0.01802746, 0, 1.7134999, 0, -0.7773446, 0, -0.018746754, 0, 0, 0)
-
-[node name="bed" parent="." index="4" unique_id=778414298 instance=ExtResource("5_luy83")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.2592854, 0.15485394, -3.9664288)
-
-[node name="markers" type="Node" parent="." index="5" unique_id=1855916130]
+[node name="markers" type="Node" parent="." index="3" unique_id=1855916130]
 
 [node name="delivery" type="Node" parent="markers" index="0" unique_id=1329826211]
 
 [node name="1" type="Marker3D" parent="markers/delivery" index="0" unique_id=1478784248]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.41383278, 0.5964645, 5.298623)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.783414, 0.878065, 4.7890625)
 
-[node name="upgrades_board" parent="." index="6" unique_id=1943268639 instance=ExtResource("6_7d62q")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -5.0526686, 1.6502237, -0.5402852)
+[node name="upgrades_board" parent="." index="4" unique_id=1943268639 instance=ExtResource("6_7d62q")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0.5742388, 1.9837956, 7.240623)
 
-[node name="fridge" parent="." index="7" unique_id=2078860456 instance=ExtResource("4_luy83")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.3074913, -1.2860595, 1.9189467)
+[node name="fridge" parent="." index="5" unique_id=2078860456 instance=ExtResource("4_luy83")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 4.7760105, -0.63666856, -4.269436)
+
+[node name="bed" parent="." index="7" unique_id=778414298 instance=ExtResource("5_luy83")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -4.8523245, 0, 6.465872)
