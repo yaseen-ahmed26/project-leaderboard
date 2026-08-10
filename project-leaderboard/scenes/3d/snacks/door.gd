@@ -9,10 +9,10 @@ func _ready() -> void:
 	
 func on_interaction():
 	if open:
-		animation_player.play("door_open")
+		animation_player.play_backwards("door_open")
 		hover_text = "[E] Close Fridge"
 	else:
-		animation_player.play_backwards("door_open")
+		animation_player.play("door_open")
 		hover_text = "[E] Open Fridge"
 	
 	open = not open

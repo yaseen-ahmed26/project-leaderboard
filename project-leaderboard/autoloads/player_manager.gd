@@ -81,7 +81,7 @@ func _on_timer_timeout():
 		timer.stop()
 
 func edit_stat(effect: Dictionary, snack_id: String):
-	if not runtime_stats.get(effect.get("stat")):
+	if not runtime_stats.has(effect.get("stat")):
 		print("No stat found '%s' requested by Snack %s" % [effect.get("stat"), snack_id]) 
 		return
 
