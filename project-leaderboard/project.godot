@@ -22,6 +22,7 @@ PlayerManager="*uid://teocpow8u311"
 DayManager="*uid://cvknwl3k3d4du"
 ConsumableManager="*uid://osky2nib04h5"
 ClickerManager="*uid://dw88ivhtwbu11"
+UpgradeManager="*uid://bhx144p2w62vm"
 
 [display]
 

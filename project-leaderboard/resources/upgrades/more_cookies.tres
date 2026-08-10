@@ -1,0 +1,31 @@
+[gd_resource type="Resource" script_class="UpgradeData" format=3 uid="uid://bcst2s0o8b3g2"]
+
+[ext_resource type="Script" uid="uid://y5n8plm1pdkx" path="res://resources/bases/upgrades/upgrade_effect.gd" id="1_2ragp"]
+[ext_resource type="Script" uid="uid://ckm28uqf7d7rm" path="res://resources/bases/upgrades/stat_effect.gd" id="2_d0mlu"]
+[ext_resource type="Script" uid="uid://dt614ilu0uim0" path="res://resources/bases/upgrade_data.gd" id="2_fw4aw"]
+
+[sub_resource type="Resource" id="Resource_d0mlu"]
+script = ExtResource("2_d0mlu")
+stat = "cookies_per_click"
+value = 0.5
+cost = 2.0
+description = "+0.5 Cookies per click"
+metadata/_custom_type_script = "uid://ckm28uqf7d7rm"
+
+[sub_resource type="Resource" id="Resource_fw4aw"]
+script = ExtResource("2_d0mlu")
+stat = "cookies_per_click"
+value = 1.0
+cost = 4.0
+description = "+1 Cookies per click"
+metadata/_custom_type_script = "uid://ckm28uqf7d7rm"
+
+[resource]
+script = ExtResource("2_fw4aw")
+id = "more_cookies"
+category = 1
+display_name = "More Cookies"
+description = "Who deson't like more cookies?"
+total_levels = 3
+level_effects = Array[ExtResource("1_2ragp")]([SubResource("Resource_d0mlu"), SubResource("Resource_fw4aw")])
+metadata/_custom_type_script = "uid://dt614ilu0uim0"

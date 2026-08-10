@@ -21,7 +21,6 @@ script = ExtResource("1_s8p0k")
 sub_viewport = NodePath("SubViewport")
 mesh = NodePath("MeshInstance3D")
 hover_text = "[E] View Upgrades"
-disable_at = 3
 
 [node name="SubViewport" type="SubViewport" parent="." unique_id=2017176015]
 size = Vector2i(1920, 1080)

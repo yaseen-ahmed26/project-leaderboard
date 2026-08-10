@@ -35,23 +35,10 @@ grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
-[node name="bonus" type="Button" parent="VBoxContainer" unique_id=428256846]
+[node name="template_btn" type="Button" parent="VBoxContainer" unique_id=428256846]
+visible = false
 custom_minimum_size = Vector2(0, 120)
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 42
-text = "5 Cookies - Bonus: +5 Cookies on day End"
-
-[node name="increment" type="Button" parent="VBoxContainer" unique_id=580502070]
-custom_minimum_size = Vector2(0, 120)
-layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 42
-text = "1.5 Cookies - Increment: +0.5 Cookies per Click"
-
-[node name="milestone" type="Button" parent="VBoxContainer" unique_id=509839027]
-custom_minimum_size = Vector2(0, 120)
-layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 42
-text = "3 Cookies - Milestone: Every 3rd Click, +1 Cookie"
+text = "Template"

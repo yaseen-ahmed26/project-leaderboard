@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://b5ugkv83uenux"]
 
-[ext_resource type="Script" uid="uid://ci761c1bkehxm" path="res://resources/snacks/pear/pear.gd" id="1_ym6y4"]
+[ext_resource type="Script" uid="uid://ci761c1bkehxm" path="res://scenes/3d/snacks/food/pear/pear.gd" id="1_ym6y4"]
 [ext_resource type="Resource" uid="uid://cf3ja17ebbawn" path="res://resources/snacks/pear.tres" id="2_52isj"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_nny7t"]

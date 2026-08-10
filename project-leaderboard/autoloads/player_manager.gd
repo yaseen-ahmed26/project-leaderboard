@@ -1,7 +1,7 @@
 extends Node
 
 var runtime_stats: Dictionary = {
-	"cookies": 0.0,
+	"cookies": 20.0,
 	"cookies_per_click": 1.0,
 	"click_multiplier": 1.0,
 	"multiplier": 1.0,
@@ -57,15 +57,10 @@ func edit_stat(effect: Dictionary, snack_id: String):
 		"multiply": runtime_stats[effect.get("stat")] *= effect.get("value")
 		"divide": runtime_stats[effect.get("stat")] /= effect.get("value")
 		"set":runtime_stats[effect.get("stat")] = effect.get("value")
-		
-func parse_upgrade(upgrade_name: String, cost):
-	runtime_stats["cookies"] -= cost
-	runtime_stats["upgrades"].append(upgrade_name)
-	
-	Signals.stats_changed.emit(runtime_stats)
 
-func can_buy_upgrade(cost: float):
+func purchase(cost: float):
 	if runtime_stats["cookies"] >= cost:
+		runtime_stats["cookies"] -= cost
 		return true
 		
 	return false

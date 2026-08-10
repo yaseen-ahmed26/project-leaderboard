@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://dln2yhc2pgtns" path="res://scenes/3d/snacks/food/apple/apple.tscn" id="2_4vd2c"]
 [ext_resource type="PackedScene" uid="uid://dj6ocw3ousgac" path="res://scenes/3d/snacks/food/orange/orange.tscn" id="3_jyvop"]
 [ext_resource type="Script" uid="uid://butjv7shtftvu" path="res://scenes/3d/snacks/door.gd" id="4_2pwq5"]
-[ext_resource type="PackedScene" uid="uid://b5ugkv83uenux" path="res://resources/snacks/pear/pear.tscn" id="4_55l1k"]
+[ext_resource type="PackedScene" uid="uid://b5ugkv83uenux" path="res://scenes/3d/snacks/food/pear/pear.tscn" id="4_55l1k"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e1bxi"]
 

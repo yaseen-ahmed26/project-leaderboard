@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://bhx144p2w62vm"]
+
+[ext_resource type="Script" uid="uid://dxagyi02mo1hh" path="res://autoloads/upgrade_manager/upgrade_manager.gd" id="1_atfi0"]
+[ext_resource type="Script" uid="uid://dt614ilu0uim0" path="res://resources/bases/upgrade_data.gd" id="2_elkpn"]
+[ext_resource type="Resource" uid="uid://bcst2s0o8b3g2" path="res://resources/upgrades/more_cookies.tres" id="3_nmq5w"]
+
+[node name="upgrade_manager" type="Node3D" unique_id=666100284]
+script = ExtResource("1_atfi0")
+base_available_upgrades = Array[ExtResource("2_elkpn")]([ExtResource("3_nmq5w")])

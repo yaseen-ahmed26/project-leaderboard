@@ -1,14 +1,43 @@
 extends Control
 
-const COSTS = {
-	"bonus": 5.0,
-	"milestone": 3.0,
-	"increment": 1.5,
-}
+@onready var btn_holder: VBoxContainer = $VBoxContainer
+@onready var template_btn: Button = $VBoxContainer/template_btn
 
 func _ready() -> void:
-	for btn in $VBoxContainer.get_children():
-		btn.pressed.connect(_on_upgrade_btn_pressed.bind(btn))
+	_setup_btns()
+	
+func _setup_btns():
+	var pool: Array[UpgradeData] = UpgradeManager.get_upgrade_pool()	
+	
+	for upgrade in pool:
+		var clone = template_btn.duplicate()
+		clone.show()
+		
+		var current_level: int = UpgradeManager.get_upgrade_level(upgrade.id)
+		
+		clone.text = "[%d] %s: %s" % [
+			current_level,
+			upgrade.display_name,
+			upgrade.level_effects.get(current_level).get("description")
+		]
+		
+		clone.name = upgrade.id
+		clone.pressed.connect(_on_upgrade_btn_pressed.bind(clone, upgrade))
+		
+		btn_holder.add_child(clone)
 
-func _on_upgrade_btn_pressed(btn: Button):
-	PlayerManager.parse_upgrade(btn.name, COSTS.get(btn.name))
+func _refresh_btn(btn, new_level: UpgradeEffect):
+	print("REFRESHING")
+	var current_level: int = UpgradeManager.get_upgrade_level(btn.name)
+		
+	btn.text = "[%d] %s: %s" % [
+		current_level,
+		btn.name.capitalize(),
+		new_level.get("description")
+	]
+
+func _on_upgrade_btn_pressed(btn: Button, upgrade: UpgradeData):
+	var details = UpgradeManager.buy_upgrade(upgrade)
+	
+	if details[0]:
+		_refresh_btn(btn, details[1])
