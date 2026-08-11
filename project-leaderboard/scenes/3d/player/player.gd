@@ -14,7 +14,7 @@ var speed : float
 @export var lock_movement: bool = false
 
 @onready var head = $head
-@onready var camera = $head/Camera3D
+@onready var camera = $head/camera
 @onready var hud: Control = $hud
 
 var original_camera_transform: Transform3D
@@ -23,8 +23,8 @@ var camera_source: String
 
 func _ready():	
 	Signals.change_camera.connect(_on_change_camera)
-	Signals.day_started.connect(_on_main_menu_exit)
-	Signals.day_ended.connect(_on_day_ended)
+	#Signals.day_started.connect(_on_main_menu_exit)
+	#Signals.day_ended.connect(_on_day_ended)
 	Signals.phase_changed.connect(_on_phase_changed)
 	
 func _unhandled_input(event):
@@ -115,8 +115,13 @@ func _on_day_ended(_details):
 	hud.visible = false
 	Input.set_mouse_mode.call_deferred(Input.MOUSE_MODE_VISIBLE)
 
-func _on_phase_changed(new_phase: String):
-	if new_phase == "night":
-		if on_terminal:
-			_restore_camera()
-			on_terminal = false
+func _on_phase_changed(new_phase: Globals.Phase):
+	match new_phase:
+		Globals.Phase.MORNING:
+			lock_movement = false
+			hud.visible = true
+			Input.set_mouse_mode.call_deferred(Input.MOUSE_MODE_CAPTURED)
+		Globals.Phase.NIGHT:
+			if on_terminal:
+				_restore_camera()
+				on_terminal = false

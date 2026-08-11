@@ -16,21 +16,24 @@ lock_movement = true
 [node name="hud" parent="." unique_id=922040254 instance=ExtResource("3_arw13")]
 visible = false
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=699587306]
+[node name="capsule" type="MeshInstance3D" parent="." unique_id=699587306]
 mesh = SubResource("CapsuleMesh_l7yjw")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1129238314]
+[node name="collision" type="CollisionShape3D" parent="." unique_id=1129238314]
 shape = SubResource("CapsuleShape3D_l7yjw")
 
 [node name="head" type="Node3D" parent="." unique_id=571936968]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.78712106, 0)
 script = ExtResource("2_bdlui")
 
-[node name="Camera3D" type="Camera3D" parent="head" unique_id=1026836517]
+[node name="camera" type="Camera3D" parent="head" unique_id=1026836517]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.12547386, -0.3000967)
 
-[node name="RayCast3D" type="RayCast3D" parent="head/Camera3D" unique_id=582776265]
+[node name="raycast" type="RayCast3D" parent="head/camera" unique_id=582776265]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.07042897, -0.1967754)
 target_position = Vector3(0, 0, -1.5)
 collision_mask = 5
 collide_with_areas = true
+
+[node name="hand_marker" type="Marker3D" parent="head/camera" unique_id=165678571]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.46643692, 0, -0.6212322)

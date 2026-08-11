@@ -13,7 +13,8 @@ const EVENTS: Array[Dictionary] = [
 const TIMINGS: Array[int] = [5]
 
 func _ready():
-	Signals.afternoon_timer.connect(_on_afternoon_timer)
+	pass
+	# Signals.afternoon_timer.connect(_on_afternoon_timer)
 
 func _on_afternoon_timer(seconds_elapsed: int):
 	if not TIMINGS.has(seconds_elapsed): return
@@ -32,4 +33,4 @@ func _on_afternoon_timer(seconds_elapsed: int):
 			
 	var v_clone = v.duplicate(true)		
 	v_clone.erase("scene")
-	Signals.event_added.emit(v_clone)
+	# Signals.event_added.emit(v_clone)

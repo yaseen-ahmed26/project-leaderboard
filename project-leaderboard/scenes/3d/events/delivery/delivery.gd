@@ -1,4 +1,4 @@
-extends Interactable
+extends Holdable
 
 var details = {
 	"name": "delivery",

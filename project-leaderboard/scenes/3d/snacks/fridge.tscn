@@ -2,9 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cvrwp1wpsvtm4" path="res://scenes/3d/snacks/fridge.gd" id="1_db6gx"]
 [ext_resource type="PackedScene" uid="uid://dln2yhc2pgtns" path="res://scenes/3d/snacks/food/apple/apple.tscn" id="2_4vd2c"]
-[ext_resource type="PackedScene" uid="uid://dj6ocw3ousgac" path="res://scenes/3d/snacks/food/orange/orange.tscn" id="3_jyvop"]
 [ext_resource type="Script" uid="uid://butjv7shtftvu" path="res://scenes/3d/snacks/door.gd" id="4_2pwq5"]
-[ext_resource type="PackedScene" uid="uid://b5ugkv83uenux" path="res://scenes/3d/snacks/food/pear/pear.tscn" id="4_55l1k"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e1bxi"]
 
@@ -116,7 +114,7 @@ _data = {
 [node name="fridge" type="StaticBody3D" unique_id=2078860456]
 collision_layer = 2
 script = ExtResource("1_db6gx")
-snack_pool = Array[PackedScene]([ExtResource("2_4vd2c"), ExtResource("3_jyvop"), ExtResource("4_55l1k")])
+snack_pool = Array[PackedScene]([ExtResource("2_4vd2c")])
 
 [node name="fridge_mesh" type="MeshInstance3D" parent="." unique_id=1598441893]
 transform = Transform3D(0.6526273, 0, 0, 0, 1.3476351, 0, 0, 0, 0.7640808, 0.05475694, 2.4907246, 0)
@@ -130,7 +128,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.99999976, 0.17574298, 0, 0.880
 sync_to_physics = false
 script = ExtResource("4_2pwq5")
 hover_text = "[E] Open Fridge"
-disable_at = 6
 
 [node name="door_mesh" type="MeshInstance3D" parent="fridge_mesh/pivot/door" unique_id=714767735]
 transform = Transform3D(0.104809105, 0, 0, 0, 0.8194855, 0, 0, 0, 0.8194853, -0.20749438, 0, -0.8622219)
@@ -150,6 +147,6 @@ libraries/ = SubResource("AnimationLibrary_4vd2c")
 [node name="snack_placements" type="Node3D" parent="." unique_id=1172719295]
 
 [node name="Marker3D" type="Marker3D" parent="snack_placements" unique_id=1280423644]
-transform = Transform3D(0.41414368, 0, 0, 0, 0.41414368, 0, 0, 0, 0.41414368, 0.017546311, 1.9389752, 0)
+transform = Transform3D(0.41414368, 0, 0, 0, 0.41414368, 0, 0, 0, 0.41414368, 0.36936843, 1.9389752, 0)
 
 [node name="added_snacks" type="Node3D" parent="." unique_id=283505730]

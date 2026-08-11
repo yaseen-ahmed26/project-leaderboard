@@ -7,13 +7,13 @@ extends Control
 @onready var template: RichTextLabel = $event_list/template
 
 func _ready() -> void:
-	Signals.stats_changed.connect(_on_stats_changed)
+	Signals.cookes_changed.connect(_on_stats_changed)
 	Signals.autoclicker_decayed.connect(_on_autoclicker_decayed)
-	Signals.day_started.connect(_on_day_started)
+	#Signals.day_started.connect(_on_day_started)
 	Signals.phase_changed.connect(_on_phase_changed)
 	Signals.afternoon_timer.connect(_on_afternoon_timer)
-	Signals.event_added.connect(_on_event_added)
-	Signals.event_removed.connect(_on_event_removed)
+	#Signals.event_added.connect(_on_event_added)
+	#Signals.event_removed.connect(_on_event_removed)
 
 func show_hover_prompt(new_text: String):
 	hover_prompt.text = new_text
@@ -31,20 +31,21 @@ func _on_autoclicker_decayed(new_rate):
 func _on_day_started():
 	$phase.text = "DAY 1: PHASE Morning"
 
-func _on_phase_changed(new_phase: String):
-	$phase.text = "DAY 1: PHASE %s" % new_phase.capitalize()
+func _on_phase_changed(new_phase: Globals.Phase):
+	# $phase.text = "DAY 1: PHASE %s" % new_phase.capitalize()
 	
-	if new_phase == "afternoon":
-		$afternoon_timer.visible = true
-		$afternoon_timer.text = "00:00"
-		event_list.visible = true
-		event_counter.visible = true
-		$ColorRect.visible = true
-	else:
-		$afternoon_timer.visible = false
-		event_list.visible = false
-		event_counter.visible = false
-		$ColorRect.visible = false
+	match new_phase:
+		Globals.Phase.MORNING, Globals.Phase.NIGHT:
+			$afternoon_timer.visible = false
+			event_list.visible = false
+			event_counter.visible = false
+			$ColorRect.visible = false
+		Globals.Phase.AFTERNOON:
+			$afternoon_timer.visible = true
+			$afternoon_timer.text = "00:00"
+			event_list.visible = true
+			event_counter.visible = true
+			$ColorRect.visible = true
 
 func _on_afternoon_timer(seconds_elapsed: int):
 	var total_secs: int = int(seconds_elapsed)

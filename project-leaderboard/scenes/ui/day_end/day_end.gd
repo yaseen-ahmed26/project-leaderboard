@@ -1,7 +1,8 @@
 extends Control
 
 func _ready() -> void:
-	Signals.day_ended.connect(setup)
+	pass
+	# Signals.day_ended.connect(setup)
 
 func setup(details: Dictionary):
 	$background/cookies_earnt.text = "Cookies Earnt: %.1f" % details.get("cookies")

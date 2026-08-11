@@ -1,54 +1,105 @@
 extends Node
 
-var autoclicker_decay: Dictionary = {
-	5: 1,
-	10: 0.5,
-	15: 0.2,
-	45: 0.1,
+"""
+ClickerManager
+Handles the main clicking calculations
+Handles autoclicker decay when leaving desk
+Handles passive generation during morning/night
+"""
+
+enum State {DISABLED, PASSIVE, DECAY}
+var state: State = State.DISABLED
+
+var rt_stats: Dictionary = {
+	"cookies_per_click": 1.0,
+	"click_multiplier": 1.0,
+	"passive_generation": 0.1,
+	"decay_multiplier": 1.2,
+	"auto_decay": {}
 }
 
-var seconds_away = 0
-var timer: Timer = Timer.new()
+var decay_seconds = 0
+var passive_timer: Timer = Timer.new()
 
+# Godot
 func _ready() -> void:
-	add_child(timer)
-	timer.one_shot = false
-	timer.wait_time = 1.0
-	timer.timeout.connect(_on_timer_timeout)
+	rt_stats["auto_decay"] = Constants.DEFAULT_AUTOCLICKER_DECAY.duplicate(true)
+
+	add_child(passive_timer)
+	passive_timer.one_shot = false
+	passive_timer.wait_time = 1.0
 	
+	passive_timer.timeout.connect(_on_timer_timeout)
 	Signals.phase_changed.connect(_on_phase_changed)
-	
+
+# Calculations
+func calculate_click() -> float:
+	return rt_stats["cookies_per_click"] * rt_stats["click_multiplier"]
+
+func _calculate_passive():
+	return rt_stats["passive_generation"]
+
+func _calculate_decay():
+	return calculate_click() * rt_stats["decay_multiplier"]
+
+# Logic
+func click_cookie():
+	var amount: float = calculate_click()
+	PlayerManager.add_cookies(amount)
+
+func enable_decay():
+	state = State.DECAY
+
+func disable_decay():
+	state = State.DISABLED
+	decay_seconds = 0
+
+# Connections
 func _on_timer_timeout():
-	PlayerManager.add_cookies()
-	seconds_away += 1
+	# State is disabled
+	if state == 0: return
+	
+	var amount: float
+	
+	if state == 1:
+		amount = _calculate_passive()
+	else:
+		amount = _calculate_decay()
+		decay_seconds += 1
 		
-	if autoclicker_decay.has(seconds_away):
-		PlayerManager.edit_stat({
-			"operation": "set",
-			"value": autoclicker_decay.get(seconds_away),
-			"stat": "multiplier"
-		}, "")
-
-		Signals.autoclicker_decayed.emit(autoclicker_decay.get(seconds_away))
+	PlayerManager.add_cookies(amount)
 	
-	if seconds_away >= 45:
-		timer.stop()
-		Signals.autoclicker_decayed.emit("NONE")
+	if rt_stats["auto_decay"].has(decay_seconds):
+		rt_stats["decay_multiplier"] = rt_stats["auto_decay"].get(decay_seconds)
+		Signals.autoclicker_decayed.emit(rt_stats["auto_decay"].get(decay_seconds))
+	
+func _on_phase_changed(new_phase: Globals.Phase):
+	match new_phase:
+		Globals.Phase.MORNING, Globals.Phase.NIGHT:
+			passive_timer.start()
+			state = State.PASSIVE
+		Globals.Phase.AFTERNOON:
+			state = State.DISABLED
+		Globals.Phase.MIDNIGHT:
+			passive_timer.stop()
+			
+	decay_seconds = 0
 
-# Custom Snack: Apple
+func edit_stat(effect: Dictionary):
+	if not rt_stats.has(effect.get("stat")):
+		print("No stat found '%s'" % effect.get("stat")) 
+		return
+
+	match effect.get("operation"):
+		"add": rt_stats[effect.get("stat")] += effect.get("value")
+		"subtract": rt_stats[effect.get("stat")] -= effect.get("value")
+		"multiply": rt_stats[effect.get("stat")] *= effect.get("value")
+		"divide": rt_stats[effect.get("stat")] /= effect.get("value")
+		"set":rt_stats[effect.get("stat")] = effect.get("value")
+
+# Snacks
+# Apple
 func edit_autoclick_decay(value: float):
-	for k in autoclicker_decay.keys():
-		var v = autoclicker_decay.get(k)
-		autoclicker_decay[k] = v + value
-
-func _on_phase_changed(new_phase: String):
-	if new_phase == "night":
-		timer.stop()
-
-func activate_decay():
-	timer.start()
-	Signals.autoclicker_decayed.emit(1.2)
-	
-func deactivate_decay():
-	timer.stop()
-	Signals.autoclicker_decayed.emit("NONE")
+	for k in rt_stats["auto_decay"].keys():
+		var v = rt_stats["auto_decay"].get(k)
+		rt_stats["auto_decay"][k] = v + value

@@ -1,14 +1,25 @@
 extends Node
 
-const AFTERNOON_LENGTH: int = 20
-var seconds_away = 0
+"""
+DayManager
+Handles the main day loop
+Handles day start and end
+Handles morning, afternoon, night phases
+Handles the afternoon timings
+Applies gameplay modifiers
 
-var current_phase: String = "morning"
-var day_started: bool = false
+The different phases are:
+	Morning, Afternoon, Night, Midnight
+	
+"""
 
+var current_phase: Globals.Phase = Globals.Phase.MIDNIGHT
+
+var seconds_elapsed = 0
 var afternoon_timer: Timer = Timer.new()
 
-func _ready() -> void:
+# Godot
+func _ready():
 	self.add_child(afternoon_timer)
 	afternoon_timer.one_shot = false
 	afternoon_timer.autostart = false
@@ -16,35 +27,38 @@ func _ready() -> void:
 	
 	afternoon_timer.timeout.connect(_on_timer_timeout)
 
+# Main
 func start_day():
-	day_started = true
-	current_phase = "morning"
-	Signals.day_started.emit()
-
-func change_phase(new_phase: String):
-	if new_phase == current_phase: return
-		
-	current_phase = new_phase
-
-	if current_phase == "afternoon":
-		seconds_away = 0
-		afternoon_timer.start()
+	change_phase(Globals.Phase.MORNING)
 	
-	Signals.phase_changed.emit(new_phase)
-
 func end_day():
-	day_started = false
-	var runtime_stats = PlayerManager.get_runtime_stats()
-	
-	Signals.day_ended.emit(runtime_stats)
+	Signals.day_end.emit()
 
+func change_phase(new_phase: Globals.Phase):
+	current_phase = new_phase
+	
+	match current_phase:
+		Globals.Phase.MORNING:
+			pass
+		Globals.Phase.AFTERNOON:
+			seconds_elapsed = 0
+			afternoon_timer.start()
+		Globals.Phase.NIGHT:
+			end_day()
+		Globals.Phase.MIDNIGHT:
+			start_day()
+
+	Signals.phase_changed.emit(current_phase)
+
+# Getters
 func get_current_phase():
 	return current_phase
 
+# Connections
 func _on_timer_timeout():
-	seconds_away += 1
-	Signals.afternoon_timer.emit(seconds_away)
+	seconds_elapsed += 1
+	Signals.afternoon_timer.emit(seconds_elapsed)
 	
-	if seconds_away >= AFTERNOON_LENGTH:
+	if seconds_elapsed >= Constants.AFTERNOON_LENGTH:
 		afternoon_timer.stop()
-		change_phase("night")
+		change_phase(Globals.Phase.NIGHT)

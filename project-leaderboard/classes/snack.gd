@@ -1,4 +1,4 @@
-extends Interactable
+extends Holdable
 class_name Snack
 
 ## The SnackData associated with this scene.
@@ -6,11 +6,12 @@ class_name Snack
 
 func _ready() -> void:
 	super()
-
-func on_interaction():
-	var success = ConsumableManager.use_snack(snack_data)
 	
-	if success:
-		hover_text = "Used"
-	else:
-		hover_text = "Cannot use snack"
+	Signals.snack_used.connect(_on_snack_used)
+
+func use_self():
+	var _success = ConsumableManager.use_snack(snack_data)
+	return delete_on_use
+	
+func _on_snack_used(_snack_data: SnackData):
+	can_interact = false

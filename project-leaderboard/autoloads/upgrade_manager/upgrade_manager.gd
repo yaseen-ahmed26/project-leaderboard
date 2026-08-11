@@ -20,15 +20,8 @@ func buy_upgrade(upgrade: UpgradeData):
 	if PlayerManager.purchase(level_data.cost):
 		upgrade_levels[upgrade.id] += 1
 		
-		if level_data is UnlockEffect:
-			# This will be given to the RoomManager
-			pass
-		elif level_data is StatEffect:
-			PlayerManager.edit_stat({
-				"operation": level_data.get_operation(),
-				"value": level_data.value,
-				"stat": level_data.stat
-			}, "")
+		if level_data is UpgradeStatBuff:
+			level_data.apply_effect()
 		
 		return [true, level_data]
 	

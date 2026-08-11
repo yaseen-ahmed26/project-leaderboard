@@ -1,6 +1,15 @@
 [gd_resource type="Resource" script_class="SnackData" format=3 uid="uid://bsgp454sf3pep"]
 
 [ext_resource type="Script" uid="uid://c78mvh07yxtri" path="res://resources/bases/snack_data.gd" id="1_3seq6"]
+[ext_resource type="Script" uid="uid://bvwl6ygc8ijo" path="res://resources/bases/snacks/snack_effect.gd" id="1_5n657"]
+[ext_resource type="Script" uid="uid://c8ms8hc3iu312" path="res://resources/bases/snacks/snack_call_method.gd" id="2_mu6t3"]
+
+[sub_resource type="Resource" id="Resource_s6smf"]
+script = ExtResource("2_mu6t3")
+autoload_name = "ClickerManager"
+method_name = "edit_autoclick_decay"
+arguments = [0.1]
+metadata/_custom_type_script = "uid://c8ms8hc3iu312"
 
 [resource]
 script = ExtResource("1_3seq6")
@@ -8,9 +17,5 @@ id = "snack_apple"
 display_name = "Apple"
 description = "Apple: Lose 10% less after 5s when leaving your desk"
 stat_change = "Lose 10% Less after 5s"
-effect = 3
-effect_info = {
-"operation": "add",
-"value": 0.1
-}
+effects = Array[ExtResource("1_5n657")]([SubResource("Resource_s6smf")])
 metadata/_custom_type_script = "uid://c78mvh07yxtri"

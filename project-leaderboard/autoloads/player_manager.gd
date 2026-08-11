@@ -1,6 +1,51 @@
 extends Node
 
-var runtime_stats: Dictionary = {
+"""
+PlayerManager
+Handles economy
+Handles win condition
+Handles leaderboard position
+Checks if the player has lost at the end of the day
+"""
+
+var rt_stats: Dictionary = {
+	"cookies": 20.0,
+	"left_desk": 0,
+}
+
+func add_cookies(amount: float):
+	rt_stats["cookies"] += amount
+	Signals.cookes_changed.emit(rt_stats)
+
+func entered_desk():
+	ClickerManager.disable_decay()
+	
+func left_desk():
+	ClickerManager.enable_decay()
+	rt_stats["left_desk"] += 1
+
+func edit_stat(effect: Dictionary):
+	if not rt_stats.has(effect.get("stat")):
+		print("No stat found '%s'" % effect.get("stat")) 
+		return
+
+	match effect.get("operation"):
+		"add": rt_stats[effect.get("stat")] += effect.get("value")
+		"subtract": rt_stats[effect.get("stat")] -= effect.get("value")
+		"multiply": rt_stats[effect.get("stat")] *= effect.get("value")
+		"divide": rt_stats[effect.get("stat")] /= effect.get("value")
+		"set":rt_stats[effect.get("stat")] = effect.get("value")
+
+func purchase(cost: float):
+	if rt_stats["cookies"] >= cost:
+		rt_stats["cookies"] -= cost
+		return true
+		
+	return false
+
+"""extends Node
+
+var rt_stats: Dictionary = {
 	"cookies": 20.0,
 	"cookies_per_click": 1.0,
 	"click_multiplier": 1.0,
@@ -17,7 +62,7 @@ var click_count = 0
 var default_multipler: float = 1
 
 func _apply_upgrades(amount):
-	if runtime_stats["upgrades"].has("increment"):
+	if rt_stats["upgrades"].has("increment"):
 		amount += 0.5
 		
 	if runtime_stats["upgrades"].has("milestone"):
@@ -74,3 +119,4 @@ func get_runtime_stats():
 		runtime_stats["cookies"] += 5
 		
 	return runtime_stats
+"""

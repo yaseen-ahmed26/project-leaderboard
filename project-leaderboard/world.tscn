@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://c357kmk2h4x2p" path="res://scenes/ui/main_menu/main_menu.tscn" id="1_tlwt5"]
 [ext_resource type="PackedScene" uid="uid://cnsk2cfmoiwhy" path="res://scenes/3d/player/player.tscn" id="2_tlwt5"]
 [ext_resource type="PackedScene" uid="uid://bctk608adfe52" path="res://scenes/ui/day_end/day_end.tscn" id="3_036b0"]
+[ext_resource type="PackedScene" uid="uid://ces14ots3nnkn" path="res://scenes/3d/events/bus/island_bus.tscn" id="6_dwbse"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ckv8d"]
 sky_curve = 0.00027857316
@@ -26,7 +27,6 @@ environment = SubResource("Environment_kq1an")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1848608566]
 transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
-shadow_enabled = true
 
 [node name="main_menu" parent="." unique_id=318754658 instance=ExtResource("1_tlwt5")]
 
@@ -38,4 +38,7 @@ mouse_filter = 2
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.013739228, 0.0001219511, -0.003205061)
 
 [node name="player" parent="." unique_id=634988134 instance=ExtResource("2_tlwt5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2057056, 1.4995685, 1.5440006)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.1669827, 1.4995682, -0.58704805)
+
+[node name="island_bus" parent="." unique_id=1258479785 instance=ExtResource("6_dwbse")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 38)
