@@ -1,5 +1,9 @@
 extends CharacterBody3D
 
+const TASK_SOURCES: Array = [
+	Globals.TaskSources.PLAYER_ACTION
+]
+
 var input_direction : Vector2
 var speed : float
 
@@ -26,7 +30,13 @@ func _ready():
 	#Signals.day_started.connect(_on_main_menu_exit)
 	#Signals.day_ended.connect(_on_day_ended)
 	Signals.phase_changed.connect(_on_phase_changed)
-	
+
+func update_task_manager(update: String):
+	var source: Globals.TaskSources = TaskManager.get_current_task_source()
+
+	if TASK_SOURCES.has(source):
+		TaskManager.report_task_update(update)
+
 func _unhandled_input(event):
 	if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
 		head.rotate_y(-event.relative.x * look_sensitivity)
@@ -59,6 +69,7 @@ func _physics_process(delta):
 	
 	if Input.is_action_just_pressed("move_jump") and is_on_floor():
 		velocity.y = jump_velocity
+		update_task_manager("player_jumped")
 
 	input_direction = Input.get_vector("move_left", "move_right", "move_forward", "move_backward")
 	

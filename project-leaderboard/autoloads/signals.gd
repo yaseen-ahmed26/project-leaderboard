@@ -18,6 +18,10 @@ signal snack_used(snack_data: SnackData)
 signal event_added(details)
 signal event_solved(details)
 
+# TaskManager
+signal task_progress(current_task: TaskData, progress: int)
+signal task_completed(current_task: TaskData)
+
 # Monitors
 signal change_camera(position)
 

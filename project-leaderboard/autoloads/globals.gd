@@ -16,6 +16,16 @@ enum EventIDs {
 	TEST_6
 }
 
+enum TaskSources {
+	NONE,
+	PLAYER_ACTION,
+	PLAYER_STAT,
+	CLICKER_STAT,
+	CLICKER_ACTION,
+	SNACK,
+	UPGRADE_PURCHASE
+}
+
 func get_lower_event_id(event_id: EventIDs):
 	return EventIDs.keys()[event_id].to_lower()
 

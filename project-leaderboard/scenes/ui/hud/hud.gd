@@ -14,6 +14,8 @@ func _ready() -> void:
 	Signals.afternoon_timer.connect(_on_afternoon_timer)
 	Signals.event_added.connect(_on_event_added)
 	Signals.event_solved.connect(_on_event_solved)
+	Signals.task_progress.connect(_on_task_progress)
+	Signals.task_completed.connect(_on_task_completed)
 
 func show_hover_prompt(new_text: String):
 	hover_prompt.text = new_text
@@ -73,3 +75,21 @@ func _on_event_solved(details: EventData):
 		label.queue_free()
 	
 	event_counter.text = "%d/4" % (event_list.get_child_count() - 2)
+
+func _on_task_progress(current_task: TaskData, progress: int):
+	$task.text = "
+	Task: %s
+	%s
+	Progress: %d/%d
+	" % [
+		current_task.display_name,
+		current_task.description,
+		progress,
+		current_task.target_amount
+	]
+
+func _on_task_completed(current_task: TaskData):
+	$task.text = "Task: %s\n%s\nCOMPLETE!" % [
+		current_task.display_name,
+		current_task.description,
+	]
