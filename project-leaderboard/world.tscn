@@ -3,9 +3,14 @@
 [ext_resource type="Script" uid="uid://dvfxxfrbjlb2t" path="res://world.gd" id="1_aqk2v"]
 [ext_resource type="PackedScene" uid="uid://b82klctai8qrl" path="res://scenes/3d/room/room.tscn" id="1_fj7yv"]
 [ext_resource type="PackedScene" uid="uid://c357kmk2h4x2p" path="res://scenes/ui/main_menu/main_menu.tscn" id="1_tlwt5"]
+[ext_resource type="PackedScene" uid="uid://dsehyum8gfutg" path="res://scenes/3d/events/test_1/test_1.tscn" id="2_ic0uy"]
 [ext_resource type="PackedScene" uid="uid://cnsk2cfmoiwhy" path="res://scenes/3d/player/player.tscn" id="2_tlwt5"]
 [ext_resource type="PackedScene" uid="uid://bctk608adfe52" path="res://scenes/ui/day_end/day_end.tscn" id="3_036b0"]
-[ext_resource type="PackedScene" uid="uid://ces14ots3nnkn" path="res://scenes/3d/events/bus/island_bus.tscn" id="6_dwbse"]
+[ext_resource type="PackedScene" uid="uid://m4cbu7140kr6" path="res://scenes/3d/events/test_2/test_2.tscn" id="3_k3n1d"]
+[ext_resource type="PackedScene" uid="uid://bdan1x1qc8ayy" path="res://scenes/3d/events/test_3/test_3.tscn" id="4_2o6r5"]
+[ext_resource type="PackedScene" uid="uid://d3u1g18joniv7" path="res://scenes/3d/events/test_4/test_4.tscn" id="5_70uel"]
+[ext_resource type="PackedScene" uid="uid://lgte3dtlda8a" path="res://scenes/3d/events/test_5/test_5.tscn" id="6_hiqwa"]
+[ext_resource type="PackedScene" uid="uid://dxpi0j0i58o4d" path="res://scenes/3d/events/test_6/test_6.tscn" id="7_2u3nc"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ckv8d"]
 sky_curve = 0.00027857316
@@ -21,6 +26,14 @@ glow_enabled = true
 
 [node name="world" type="Node3D" unique_id=1878423917]
 script = ExtResource("1_aqk2v")
+event_scenes = Dictionary[int, PackedScene]({
+0: ExtResource("2_ic0uy"),
+1: ExtResource("3_k3n1d"),
+2: ExtResource("4_2o6r5"),
+3: ExtResource("5_70uel"),
+4: ExtResource("6_hiqwa"),
+5: ExtResource("7_2u3nc")
+})
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=581328462]
 environment = SubResource("Environment_kq1an")
@@ -35,10 +48,18 @@ visible = false
 mouse_filter = 2
 
 [node name="room" parent="." unique_id=2007177851 instance=ExtResource("1_fj7yv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.013739228, 0.0001219511, -0.003205061)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.035478234, -0.02932465, -0.026339293)
 
 [node name="player" parent="." unique_id=634988134 instance=ExtResource("2_tlwt5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.1669827, 1.4995682, -0.58704805)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.39077663, 3.56445, 0.8915739)
 
-[node name="island_bus" parent="." unique_id=1258479785 instance=ExtResource("6_dwbse")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 38)
+[node name="event_placements" type="Node" parent="." unique_id=122581998]
+
+[node name="1" type="Marker3D" parent="event_placements" unique_id=938251810]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.732714, -0.09770346, 1.2403202)
+
+[node name="2" type="Marker3D" parent="event_placements" unique_id=1192875457]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.793478, -0.09770346, 21.711645)
+
+[node name="3" type="Marker3D" parent="event_placements" unique_id=2082139631]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.955635, -0.09770346, -0.5556803)

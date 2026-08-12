@@ -65,7 +65,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/normal_font_size = 32
 bbcode_enabled = true
-text = "AUTOCLICKER DECAY: NONE"
+text = "AUTOCLICKER DECAY: None"
 vertical_alignment = 1
 
 [node name="phase" type="RichTextLabel" parent="." unique_id=1817006118]

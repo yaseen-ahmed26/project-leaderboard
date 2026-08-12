@@ -12,8 +12,8 @@ func _ready() -> void:
 	#Signals.day_started.connect(_on_day_started)
 	Signals.phase_changed.connect(_on_phase_changed)
 	Signals.afternoon_timer.connect(_on_afternoon_timer)
-	#Signals.event_added.connect(_on_event_added)
-	#Signals.event_removed.connect(_on_event_removed)
+	Signals.event_added.connect(_on_event_added)
+	Signals.event_solved.connect(_on_event_solved)
 
 func show_hover_prompt(new_text: String):
 	hover_prompt.text = new_text
@@ -32,7 +32,7 @@ func _on_day_started():
 	$phase.text = "DAY 1: PHASE Morning"
 
 func _on_phase_changed(new_phase: Globals.Phase):
-	# $phase.text = "DAY 1: PHASE %s" % new_phase.capitalize()
+	$phase.text = "DAY 1: PHASE %s" % Globals.get_lower_phase(new_phase).capitalize()
 	
 	match new_phase:
 		Globals.Phase.MORNING, Globals.Phase.NIGHT:
@@ -46,6 +46,7 @@ func _on_phase_changed(new_phase: Globals.Phase):
 			event_list.visible = true
 			event_counter.visible = true
 			$ColorRect.visible = true
+		
 
 func _on_afternoon_timer(seconds_elapsed: int):
 	var total_secs: int = int(seconds_elapsed)
@@ -54,18 +55,19 @@ func _on_afternoon_timer(seconds_elapsed: int):
 	
 	$afternoon_timer.text = "%02d:%02d" % [minutes, seconds]
 
-func _on_event_added(details: Dictionary):
+func _on_event_added(details: EventData):
 	var clone: RichTextLabel = template.duplicate()
 	
-	clone.name = details.get("name")
-	clone.text = details.get("hud_description")
+	clone.name = Globals.get_lower_event_id(details.id)
+	clone.text = "%s: %s" % [details.display_name, details.task]
 	clone.visible = true
 	
 	event_list.add_child(clone)
 	event_counter.text = "%d/4" % (event_list.get_child_count() - 1)
 
-func _on_event_removed(details: Dictionary):
-	var label = event_list.get_node_or_null(details.get("name"))
+func _on_event_solved(details: EventData):
+	var lower_id = Globals.get_lower_event_id(details.id)
+	var label = event_list.get_node_or_null(lower_id)
 	
 	if label:
 		label.queue_free()

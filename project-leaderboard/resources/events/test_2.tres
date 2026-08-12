@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="EventData" format=3 uid="uid://cqdqxc8fo3k42"]
+
+[ext_resource type="Script" uid="uid://yhbo18n3g6js" path="res://resources/bases/event_data.gd" id="1_oq87s"]
+
+[resource]
+script = ExtResource("1_oq87s")
+id = 1
+display_name = "Test 2"
+task = "Remove the purple cube"
+metadata/_custom_type_script = "uid://yhbo18n3g6js"

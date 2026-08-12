@@ -10,24 +10,14 @@
 [node name="room" unique_id=2007177851 instance=ExtResource("1_yaf3v")]
 script = ExtResource("2_luy83")
 
-[node name="StaticBody3D" parent="build/floor" parent_id_path=PackedInt32Array(1950514935) index="0" unique_id=866431161]
-collision_layer = 2
+[node name="main_monitor" parent="computer" parent_id_path=PackedInt32Array(2105738429) index="2" unique_id=433812210 instance=ExtResource("4_d1eyb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.49615493, 3.1882894, -1.9306483)
 
-[node name="main_monitor" parent="computer" parent_id_path=PackedInt32Array(1289303008) index="2" unique_id=433812210 instance=ExtResource("4_d1eyb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5902338, 1.0872164, -4.733616)
+[node name="upgrades_board" parent="." index="3" unique_id=1943268639 instance=ExtResource("6_7d62q")]
+transform = Transform3D(-4.3711385e-08, 0, 0.99999994, 0, 1, 0, -0.99999994, 0, -4.3711385e-08, -5.746395, 4.062247, 3.3978505)
 
-[node name="markers" type="Node" parent="." index="3" unique_id=1855916130]
+[node name="fridge" parent="." index="4" unique_id=2078860456 instance=ExtResource("4_luy83")]
+transform = Transform3D(-0.64087033, 0, -0.7676492, 0, 1, 0, 0.7676492, 0, -0.64087033, 3.5414844, 1.5264318, -4.269436)
 
-[node name="delivery" type="Node" parent="markers" index="0" unique_id=1329826211]
-
-[node name="1" type="Marker3D" parent="markers/delivery" index="0" unique_id=1478784248]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.783414, 0.878065, 4.7890625)
-
-[node name="upgrades_board" parent="." index="4" unique_id=1943268639 instance=ExtResource("6_7d62q")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0.5742388, 1.9837956, 7.240623)
-
-[node name="fridge" parent="." index="5" unique_id=2078860456 instance=ExtResource("4_luy83")]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 4.7760105, -0.63666856, -4.269436)
-
-[node name="bed" parent="." index="7" unique_id=778414298 instance=ExtResource("5_luy83")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -4.8523245, 0, 6.465872)
+[node name="bed" parent="." index="5" unique_id=778414298 instance=ExtResource("5_luy83")]
+transform = Transform3D(0.040511087, 0, 0.99917907, 0, 1, 0, -0.99917907, 0, 0.040511087, -7.762086, 2.7287662, 1.1279867)

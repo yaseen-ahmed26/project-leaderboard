@@ -9,6 +9,8 @@ class_name Interactable
 @export var hover_text: String = "None Set"
 ## If 'True', allows the item to be interacted with.
 @export var can_interact: bool = true
+## Calls the method of the Interactable's parent when interacted with.
+@export var call_method: String
 ## The item needed for the interaction of this item.
 @export var item_needed: String = "ID here"
 ## Disable the Interactable at specific phases of the day. Bitmasks correspond to the flag, i.e. 'Morning' is 1, 'Afternoon' is 2 and 'Night' is 4.
@@ -33,10 +35,22 @@ func get_interact_status():
 func get_item_needed():
 	return item_needed
 
+# Helpers
+func call_owner_method():
+	if not call_method.is_empty() or not owner.has_method(call_method):
+		owner.call(call_method)
+	else:
+		push_warning("'%s' Interactable parent '%s' does not have the specified 'call_method' %s" % [
+			id, 
+			owner.name,
+			call_method
+		])
+
 # Defaults
 func on_interaction():
 	print(self.name)
 
+# Connections
 func _on_phase_changed(new_phase: Globals.Phase):
 	var current_flag = 0
 	

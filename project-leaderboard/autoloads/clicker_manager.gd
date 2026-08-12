@@ -53,6 +53,7 @@ func enable_decay():
 func disable_decay():
 	state = State.DISABLED
 	decay_seconds = 0
+	Signals.autoclicker_decayed.emit("None")
 
 # Connections
 func _on_timer_timeout():

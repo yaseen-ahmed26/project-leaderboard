@@ -1,5 +1,5 @@
 extends Node3D
-
+"""
 @onready var markers: Node = $markers
 
 const EVENTS: Array[Dictionary] = [
@@ -34,3 +34,4 @@ func _on_afternoon_timer(seconds_elapsed: int):
 	var v_clone = v.duplicate(true)		
 	v_clone.erase("scene")
 	# Signals.event_added.emit(v_clone)
+"""

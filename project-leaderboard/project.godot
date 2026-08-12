@@ -19,15 +19,15 @@ config/icon="res://icon.svg"
 
 Signals="*uid://bpoi7q8kfp3p6"
 Constants="*uid://bnv4lyffn1idb"
+Globals="*uid://ba2eljplumfkc"
 PlayerManager="*uid://teocpow8u311"
 DayManager="*uid://cvknwl3k3d4du"
 ConsumableManager="*uid://osky2nib04h5"
 ClickerManager="*uid://dw88ivhtwbu11"
 UpgradeManager="*uid://bhx144p2w62vm"
-EventManager="*uid://byo84rpwxlu0q"
 SaveManager="*uid://daqhkkgrsolmj"
 TaskManager="*uid://c0ps2g8p0p86j"
-Globals="*uid://ba2eljplumfkc"
+EventManager="*uid://dfqf0vkpoji8y"
 
 [debug]
 

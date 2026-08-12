@@ -14,6 +14,10 @@ signal cookes_changed(amount: float)
 # ConsumableManager
 signal snack_used(snack_data: SnackData)
 
+# EventManager
+signal event_added(details)
+signal event_solved(details)
+
 # Monitors
 signal change_camera(position)
 

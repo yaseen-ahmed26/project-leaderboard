@@ -27,7 +27,6 @@ func _setup_btns():
 		btn_holder.add_child(clone)
 
 func _refresh_btn(btn, upgrade: UpgradeData):
-	print("REFRESHING")
 	var current_level: int = UpgradeManager.get_upgrade_level(btn.name)
 	
 	if current_level >= upgrade.total_levels:
