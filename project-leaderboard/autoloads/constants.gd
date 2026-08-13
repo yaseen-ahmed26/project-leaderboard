@@ -14,5 +14,5 @@ const DEFAULT_AUTOCLICKER_DECAY: Dictionary = {
 
 # EventManager
 const MAX_ACTIVE_EVENTS: int = 3 
-const INITAL_EVENT_SPAWN: int = 1
-const INITAL_EVENT_SPAWN_TIME: int = 3
+const INITAL_EVENT_SPAWN: int = 2
+const INITAL_EVENT_SPAWN_TIME: int = 1

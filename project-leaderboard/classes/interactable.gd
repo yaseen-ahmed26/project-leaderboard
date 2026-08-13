@@ -37,7 +37,7 @@ func get_item_needed():
 
 # Helpers
 func call_owner_method():
-	if not call_method.is_empty() or not owner.has_method(call_method):
+	if not call_method.is_empty() and owner.has_method(call_method):
 		owner.call(call_method)
 	else:
 		push_warning("'%s' Interactable parent '%s' does not have the specified 'call_method' %s" % [

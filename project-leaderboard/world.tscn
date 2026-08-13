@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://bdan1x1qc8ayy" path="res://scenes/3d/events/test_3/test_3.tscn" id="4_2o6r5"]
 [ext_resource type="PackedScene" uid="uid://d3u1g18joniv7" path="res://scenes/3d/events/test_4/test_4.tscn" id="5_70uel"]
 [ext_resource type="PackedScene" uid="uid://lgte3dtlda8a" path="res://scenes/3d/events/test_5/test_5.tscn" id="6_hiqwa"]
-[ext_resource type="PackedScene" uid="uid://dxpi0j0i58o4d" path="res://scenes/3d/events/test_6/test_6.tscn" id="7_2u3nc"]
+[ext_resource type="PackedScene" uid="uid://b7ngk1ywbs1xj" path="res://scenes/3d/events/cabin_island/cabin_island.tscn" id="7_ic0uy"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ckv8d"]
 sky_curve = 0.00027857316
@@ -32,7 +32,7 @@ event_scenes = Dictionary[int, PackedScene]({
 2: ExtResource("4_2o6r5"),
 3: ExtResource("5_70uel"),
 4: ExtResource("6_hiqwa"),
-5: ExtResource("7_2u3nc")
+5: ExtResource("7_ic0uy")
 })
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=581328462]

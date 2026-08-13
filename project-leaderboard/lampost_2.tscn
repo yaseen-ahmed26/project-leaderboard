@@ -1,5 +1,0 @@
-[gd_scene format=3 uid="uid://blep5hr3hcw06"]
-
-[ext_resource type="PackedScene" uid="uid://bx3bj6ffel6g7" path="res://assets/glb/lampost.glb" id="1_0e18n"]
-
-[node name="lampost2" unique_id=1905543018 instance=ExtResource("1_0e18n")]

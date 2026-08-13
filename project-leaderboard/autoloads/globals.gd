@@ -13,7 +13,7 @@ enum EventIDs {
 	TEST_3,
 	TEST_4,
 	TEST_5,
-	TEST_6
+	CABIN_ISLAND
 }
 
 enum TaskSources {

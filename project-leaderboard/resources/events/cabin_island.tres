@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="EventData" format=3 uid="uid://bk2bt55ladj8p"]
+
+[ext_resource type="Script" uid="uid://yhbo18n3g6js" path="res://resources/bases/event_data.gd" id="1_tngn1"]
+
+[resource]
+script = ExtResource("1_tngn1")
+id = 5
+display_name = "Cabin"
+task = "Just for fun, doesn't do anything"
+metadata/_custom_type_script = "uid://yhbo18n3g6js"
