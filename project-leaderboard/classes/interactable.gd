@@ -1,3 +1,4 @@
+@tool
 extends CollisionObject3D
 class_name Interactable
 
@@ -16,6 +17,10 @@ class_name Interactable
 ## Disable the Interactable at specific phases of the day. Bitmasks correspond to the flag, i.e. 'Morning' is 1, 'Afternoon' is 2 and 'Night' is 4.
 @export_flags("Morning", "Afternoon", "Night") var disable_at: int
 
+@export_category("Additional")
+## Hold length
+@export var hold_time: int = 0
+
 const MORNING_FLAG: int = 1
 const AFTERNOON_FLAG: int = 2
 const NIGHT_FLAG: int = 4
@@ -23,6 +28,7 @@ const NIGHT_FLAG: int = 4
 func _ready() -> void:
 	self.add_to_group("Interactables")
 	
+	hover_text = "[E] Use %s" % display_name
 	Signals.phase_changed.connect(_on_phase_changed)
 
 # Getters

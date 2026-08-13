@@ -41,5 +41,6 @@ shape = SubResource("BoxShape3D_nny7t")
 
 [node name="Label3D" type="Label3D" parent="." index="2" unique_id=790680896]
 transform = Transform3D(0.75552833, 0, 0.655116, 0, 1, 0, -0.655116, 0, 0.75552833, 0, 5.6975117, 0)
+billboard = 1
 text = "TEST ISLAND 2"
 font_size = 120
