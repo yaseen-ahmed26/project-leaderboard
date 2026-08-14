@@ -57,12 +57,11 @@ func disable_decay():
 
 # Connections
 func _on_timer_timeout():
-	# State is disabled
-	if state == 0: return
+	if state == State.DISABLED: return
 	
 	var amount: float
 	
-	if state == 1:
+	if state == State.PASSIVE:
 		amount = _calculate_passive()
 	else:
 		amount = _calculate_decay()

@@ -28,10 +28,23 @@ func generate_task():
 		
 	Signals.task_progress.emit(current_task, 0)
 
-func report_task_update(stat_name: String):
+func report_task_update(stat_name):
 	if task_completed: return
 	
-	if stat_name == current_task.target_stat:
+	var add_progress: bool = false
+	
+	if current_task.mode == TaskData.Mode.STAT:
+		var stat_enum: Globals.Stats = current_task.target as Globals.Stats
+		
+		if stat_enum == stat_name:
+			add_progress = true
+	elif current_task.mode == TaskData.Mode.ACTION:
+		var stat_enum: Globals.Actions = current_task.target as Globals.Actions
+		
+		if stat_enum == stat_name:
+			add_progress = true
+	
+	if add_progress:
 		progress += 1
 		Signals.task_progress.emit(current_task, progress)
 	

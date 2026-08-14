@@ -18,7 +18,7 @@ var rt_stats: Dictionary = {
 	"left_desk": 0,
 }
 
-func update_task_manager(update: String):
+func update_task_manager(update):
 	var source: Globals.TaskSources = TaskManager.get_current_task_source()
 
 	if TASK_SOURCES.has(source):
@@ -26,7 +26,7 @@ func update_task_manager(update: String):
 
 func add_cookies(amount: float):
 	rt_stats["cookies"] += amount
-	update_task_manager("cookies")
+	update_task_manager(Globals.Stats.COOKIES)
 	Signals.cookes_changed.emit(rt_stats)
 
 func entered_desk():
@@ -35,7 +35,7 @@ func entered_desk():
 func left_desk():
 	ClickerManager.enable_decay()
 	rt_stats["left_desk"] += 1
-	update_task_manager("left_desk")
+	update_task_manager(Globals.Stats.LEFT_DESK)
 
 func edit_stat(effect: Dictionary):
 	if not rt_stats.has(effect.get("stat")):
@@ -49,14 +49,14 @@ func edit_stat(effect: Dictionary):
 		"divide": rt_stats[effect.get("stat")] /= effect.get("value")
 		"set": rt_stats[effect.get("stat")] = effect.get("value")
 		
-	update_task_manager(effect.get("stat"))
+	update_task_manager(Globals.Stats[effect.get("stat")])
 
 func purchase(cost: float):
 	if rt_stats["cookies"] >= cost:
 		rt_stats["cookies"] -= cost
 		
 		# hardcoded to assume purchase is an upgrade
-		update_task_manager("upgrade_bought")
+		update_task_manager(Globals.Actions.UPGRADE_BOUGHT)
 		
 		return true
 		

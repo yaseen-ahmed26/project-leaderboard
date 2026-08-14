@@ -26,8 +26,28 @@ enum TaskSources {
 	UPGRADE_PURCHASE
 }
 
+enum Stats {
+	COOKIES_PER_CLICK,
+	CLICK_MULTIPLIER,
+	PASSIVE_GENERATION,
+	DECAY_MULTIPLIER,
+	AUTO_DECAY,
+	COOKIES,
+	CRUMBS,
+	LEFT_DESK
+}
+
+enum Actions {
+	PLAYER_JUMP,
+	PLAYER_MOVE,
+	UPGRADE_BOUGHT
+}
+
 func get_lower_event_id(event_id: EventIDs):
 	return EventIDs.keys()[event_id].to_lower()
 
 func get_lower_phase(phase: Phase):
 	return Phase.keys()[phase].to_lower()
+
+func get_lower_stat(stat: Stats):
+	return Stats.keys()[stat].to_lower()

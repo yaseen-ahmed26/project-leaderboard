@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://c4iew6umqecxi"]
 
-[ext_resource type="Script" uid="uid://ckl3yd0fonq5j" path="res://scenes/3d/upgrades_board/camera_switcher.gd" id="1_s8p0k"]
+[ext_resource type="Script" uid="uid://ckl3yd0fonq5j" path="res://scenes/3d/upgrades_board/upgrades_board.gd" id="1_s8p0k"]
 [ext_resource type="PackedScene" uid="uid://cme1a03y8yacj" path="res://scenes/ui/upgrades/upgrades.tscn" id="2_3uh6k"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_nny7t"]
@@ -20,6 +20,8 @@ albedo_texture = SubResource("ViewportTexture_84oj4")
 script = ExtResource("1_s8p0k")
 sub_viewport = NodePath("SubViewport")
 mesh = NodePath("MeshInstance3D")
+id = "upgrades_board"
+display_name = "Upgrades Board"
 hover_text = "[E] View Upgrades"
 
 [node name="SubViewport" type="SubViewport" parent="." unique_id=2017176015]

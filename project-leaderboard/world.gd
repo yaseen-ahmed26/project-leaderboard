@@ -18,6 +18,10 @@ func _on_day_ended(_day_stats: Dictionary):
 	day_end.visible = true
 
 func _on_event_added(event_data: EventData):
+	if markers.is_empty():
+		push_warning("No event markers")
+		return
+	
 	var scene = event_scenes.get(event_data.id)
 	var clone: Node3D = scene.instantiate()
 	clone.name = Globals.get_lower_event_id(event_data.id)
@@ -30,7 +34,7 @@ func _on_event_added(event_data: EventData):
 	clone.global_position = random_marker.global_position
 
 func _on_event_solved(event_data: EventData):
-	var scene = get_node_or_null(Globals.get_lower_event_id(event_data.id))
+	var scene = added_events.get_node_or_null(Globals.get_lower_event_id(event_data.id))
 
 	if scene:
 		var recovered_marker = scene.get_meta("marker_node") 

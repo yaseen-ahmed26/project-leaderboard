@@ -8,6 +8,6 @@ id = "leave_desk"
 display_name = "Can't stay still!"
 description = "Leave your desk 3 times."
 target_source = 2
-target_stat = "left_desk"
 target_amount = 3
+target = 7
 metadata/_custom_type_script = "uid://dxvfesw1jf6ii"

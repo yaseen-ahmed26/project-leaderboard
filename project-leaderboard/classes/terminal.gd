@@ -1,4 +1,5 @@
 extends Interactable
+class_name Terminal
 
 @export var sub_viewport: SubViewport
 @export var mesh: MeshInstance3D
@@ -30,10 +31,3 @@ func _input_event(_camera: Camera3D, event: InputEvent, event_position: Vector3,
 		local_event.global_position = viewport_pos
 		
 	sub_viewport.push_input(local_event)
-
-func on_interaction():
-	Signals.change_camera.emit(camera_marker.global_transform, self.name)
-	
-	if DayManager.get_current_phase() != Globals.Phase.AFTERNOON:
-		DayManager.change_phase(Globals.Phase.AFTERNOON)
-		self.hover_text = "[E] Cookie Clicker"

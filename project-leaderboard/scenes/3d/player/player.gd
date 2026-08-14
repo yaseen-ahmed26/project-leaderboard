@@ -31,7 +31,7 @@ func _ready():
 	#Signals.day_ended.connect(_on_day_ended)
 	Signals.phase_changed.connect(_on_phase_changed)
 
-func update_task_manager(update: String):
+func update_task_manager(update: Globals.Actions):
 	var source: Globals.TaskSources = TaskManager.get_current_task_source()
 
 	if TASK_SOURCES.has(source):
@@ -69,7 +69,7 @@ func _physics_process(delta):
 	
 	if Input.is_action_just_pressed("move_jump") and is_on_floor():
 		velocity.y = jump_velocity
-		update_task_manager("player_jumped")
+		update_task_manager(Globals.Actions.PLAYER_JUMP)
 
 	input_direction = Input.get_vector("move_left", "move_right", "move_forward", "move_backward")
 	

@@ -1,4 +1,3 @@
-@tool
 extends CollisionObject3D
 class_name Interactable
 
@@ -16,10 +15,6 @@ class_name Interactable
 @export var item_needed: String = "ID here"
 ## Disable the Interactable at specific phases of the day. Bitmasks correspond to the flag, i.e. 'Morning' is 1, 'Afternoon' is 2 and 'Night' is 4.
 @export_flags("Morning", "Afternoon", "Night") var disable_at: int
-
-@export_category("Additional")
-## Hold length
-@export var hold_time: int = 0
 
 const MORNING_FLAG: int = 1
 const AFTERNOON_FLAG: int = 2

@@ -7,7 +7,6 @@
 [sub_resource type="Resource" id="Resource_3uh6k"]
 script = ExtResource("2_d0mlu")
 target = 1
-stat_name = "cookies_per_click"
 value = 0.5
 cost = 2.0
 description = "0.5+ Cookies per click"
@@ -16,7 +15,6 @@ metadata/_custom_type_script = "uid://ckm28uqf7d7rm"
 [sub_resource type="Resource" id="Resource_wgdr4"]
 script = ExtResource("2_d0mlu")
 target = 1
-stat_name = "cookies_per_click"
 value = 1.0
 cost = 4.0
 description = "+1 Cookies per click"
