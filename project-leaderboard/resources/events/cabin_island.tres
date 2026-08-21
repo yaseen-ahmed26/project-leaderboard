@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_tngn1")
-id = 5
+id = 1
 display_name = "Cabin"
-task = "Just for fun, doesn't do anything"
+task = "Place all the boxes inside the cabin"
 metadata/_custom_type_script = "uid://yhbo18n3g6js"

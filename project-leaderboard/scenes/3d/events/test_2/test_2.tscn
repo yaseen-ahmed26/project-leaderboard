@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://m4cbu7140kr6"]
 
 [ext_resource type="PackedScene" uid="uid://csv8f8pjea8bd" path="res://assets/glb/island_base.glb" id="1_5qvbm"]
-[ext_resource type="Script" uid="uid://hqp0cahekq2s" path="res://scenes/3d/events/test_1/test_1.gd" id="2_q85tj"]
-[ext_resource type="Script" uid="uid://clqbumy08knv" path="res://scenes/3d/events/test_1/box.gd" id="3_70tuu"]
+[ext_resource type="Script" uid="uid://hqp0cahekq2s" path="res://scenes/3d/events/test_1.gd" id="2_q85tj"]
+[ext_resource type="Script" uid="uid://clqbumy08knv" path="res://scenes/3d/events/box.gd" id="3_70tuu"]
 [ext_resource type="Resource" uid="uid://cqdqxc8fo3k42" path="res://resources/events/test_2.tres" id="3_hlu70"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_7p3bu"]

@@ -4,7 +4,6 @@
 
 [resource]
 script = ExtResource("1_oq87s")
-id = 1
 display_name = "Test 2"
-task = "Remove the purple cube"
+task = "Rid the island of the purple cube"
 metadata/_custom_type_script = "uid://yhbo18n3g6js"
