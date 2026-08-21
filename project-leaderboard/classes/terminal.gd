@@ -1,8 +1,10 @@
 extends Interactable
 class_name Terminal
 
-@export var sub_viewport: SubViewport
-@export var mesh: MeshInstance3D
+@export var camera_source: Globals.CameraSources
+
+@onready var sub_viewport: SubViewport = $SubViewport
+@onready var mesh: MeshInstance3D = $MeshInstance3D
 @onready var camera_marker: Marker3D = $Marker3D
 
 func _ready() -> void:

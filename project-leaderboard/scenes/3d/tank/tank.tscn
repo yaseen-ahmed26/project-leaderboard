@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://clujfgiuk5xyr"]
+
+[ext_resource type="Script" uid="uid://b3dnn8pyo42s2" path="res://scenes/3d/tank/tank.gd" id="1_rfsxe"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_l7yjw"]
+size = Vector3(6.847412, 3.189209, 3.9248047)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rqdxm"]
+size = Vector3(6.847412, 3.189209, 3.9248047)
+
+[node name="tank" type="StaticBody3D" unique_id=1544669537 groups=["Interactables"]]
+script = ExtResource("1_rfsxe")
+camera_source = 1
+id = "tank"
+display_name = "Tank"
+disable_at = 5
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1153616500]
+mesh = SubResource("BoxMesh_l7yjw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=252339467]
+shape = SubResource("BoxShape3D_rqdxm")
+
+[node name="Marker3D" type="Marker3D" parent="." unique_id=2011798369]
+transform = Transform3D(-4.3711392e-08, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, -4.3711392e-08, -3.3894775, 3.311201, 0)

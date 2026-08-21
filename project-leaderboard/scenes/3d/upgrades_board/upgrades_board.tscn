@@ -16,10 +16,9 @@ resource_local_to_scene = true
 albedo_color = Color(1, 1, 1, 0)
 albedo_texture = SubResource("ViewportTexture_84oj4")
 
-[node name="upgrades_board" type="Area3D" unique_id=1943268639 node_paths=PackedStringArray("sub_viewport", "mesh") groups=["Interactables"]]
+[node name="upgrades_board" type="Area3D" unique_id=1943268639 groups=["Interactables"]]
 script = ExtResource("1_s8p0k")
-sub_viewport = NodePath("SubViewport")
-mesh = NodePath("MeshInstance3D")
+camera_source = 3
 id = "upgrades_board"
 display_name = "Upgrades Board"
 hover_text = "[E] View Upgrades"

@@ -16,3 +16,9 @@ const DEFAULT_AUTOCLICKER_DECAY: Dictionary = {
 const MAX_ACTIVE_EVENTS: int = 3 
 const INITAL_EVENT_SPAWN: int = 2
 const INITAL_EVENT_SPAWN_TIME: int = 1
+
+# tank.gd
+const TURRET_DELAY_SPEED: float = 4.0
+
+# player.gd
+const CAMERA_TWEEN_TIME: float = 0.5

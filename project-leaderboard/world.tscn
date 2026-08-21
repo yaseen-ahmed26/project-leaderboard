@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bctk608adfe52" path="res://scenes/ui/day_end/day_end.tscn" id="3_036b0"]
 [ext_resource type="PackedScene" uid="uid://di35js64sgow1" path="res://scenes/3d/events/duck_island/duck_island.tscn" id="3_ioo17"]
 [ext_resource type="PackedScene" uid="uid://b7ngk1ywbs1xj" path="res://scenes/3d/events/cabin_island/cabin_island.tscn" id="4_wse8f"]
+[ext_resource type="PackedScene" uid="uid://clujfgiuk5xyr" path="res://scenes/3d/tank/tank.tscn" id="9_ioo17"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ckv8d"]
 sky_top_color = Color(0.12970969, 0.5418918, 0.999994, 1)
@@ -66,3 +67,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.793478, -0.09770346, 19.694
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.855042, -0.09770346, -0.5534353)
 
 [node name="added_events" type="Node" parent="." unique_id=1475327499]
+
+[node name="tank" parent="." unique_id=1544669537 instance=ExtResource("9_ioo17")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 2.30899, 5)

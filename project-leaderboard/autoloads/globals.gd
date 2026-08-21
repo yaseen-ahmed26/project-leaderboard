@@ -40,6 +40,13 @@ enum Actions {
 	UPGRADE_BOUGHT
 }
 
+enum CameraSources {
+	PLAYER,
+	TANK,
+	CLICKER_MONITOR,
+	UPGRADE_MONITOR
+}
+
 func get_lower_event_id(event_id: EventIDs):
 	return EventIDs.keys()[event_id].to_lower()
 

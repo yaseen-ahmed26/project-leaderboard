@@ -16,10 +16,9 @@ resource_local_to_scene = true
 albedo_color = Color(1, 1, 1, 0)
 albedo_texture = SubResource("ViewportTexture_84oj4")
 
-[node name="main_monitor" type="Area3D" unique_id=1943268639 node_paths=PackedStringArray("sub_viewport", "mesh") groups=["Interactables"]]
+[node name="main_monitor" type="Area3D" unique_id=1943268639 groups=["Interactables"]]
 script = ExtResource("2_w1s8o")
-sub_viewport = NodePath("SubViewport")
-mesh = NodePath("MeshInstance3D")
+camera_source = 2
 hover_text = "[E] Start Afternoon"
 disable_at = 4
 
