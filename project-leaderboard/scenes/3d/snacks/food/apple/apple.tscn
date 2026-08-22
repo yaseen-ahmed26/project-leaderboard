@@ -9,6 +9,8 @@
 
 [node name="apple" type="RigidBody3D" unique_id=2127553170 groups=["Interactables"]]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
+collision_layer = 3
+collision_mask = 3
 script = ExtResource("1_fgkix")
 snack_data = ExtResource("2_rmavt")
 id = "apple"

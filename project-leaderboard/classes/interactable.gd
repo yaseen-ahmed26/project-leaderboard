@@ -23,7 +23,7 @@ const NIGHT_FLAG: int = 4
 func _ready() -> void:
 	self.add_to_group("Interactables")
 	
-	hover_text = "[E] Use %s" % display_name
+	hover_text = "Use %s" % display_name
 	Signals.phase_changed.connect(_on_phase_changed)
 
 # Getters
@@ -50,6 +50,8 @@ func call_owner_method():
 # Defaults
 func on_interaction():
 	print(self.name)
+	
+	call_owner_method()
 
 # Connections
 func _on_phase_changed(new_phase: Globals.Phase):

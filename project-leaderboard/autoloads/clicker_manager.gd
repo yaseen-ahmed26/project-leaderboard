@@ -15,7 +15,7 @@ var rt_stats: Dictionary = {
 	"click_multiplier": 1.0,
 	"passive_generation": 0.1,
 	"decay_multiplier": 1.5,
-	"decay_rate": 0.1
+	"decay_rate": 0.01
 }
 
 var passive_timer: Timer = Timer.new()

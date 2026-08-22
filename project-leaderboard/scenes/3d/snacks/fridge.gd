@@ -22,3 +22,6 @@ func _add_snacks():
 		added_snacks.add_child(clone)
 		
 		clone.global_position = marker.global_position
+		
+		if clone is RigidBody3D:
+			clone.freeze = true

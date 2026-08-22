@@ -59,9 +59,10 @@ func _unhandled_input(event: InputEvent) -> void:
 	
 	# If the player left clicks
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-		# Use the item we're holding
-		if current_held_item:
-			use_held_item()
+		if not current_held_item: return
+		if not current_held_item.get_use_status(): return
+		
+		use_held_item()
 			
 	# Drop item
 	if event.is_action_pressed("action_drop") and current_held_item:

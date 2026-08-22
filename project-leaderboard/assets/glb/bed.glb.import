@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://dmn2eew366ali"
-path="res://.godot/imported/cabin_island.glb-1e3944f8a6bc228bdb3d239962603b31.scn"
+uid="uid://bsuhgmc6qka52"
+path="res://.godot/imported/bed.glb-3643d2c82b369c52994f0a35e262bdb0.scn"
 
 [deps]
 
-source_file="res://assets/glb/cabin_island.glb"
-dest_files=["res://.godot/imported/cabin_island.glb-1e3944f8a6bc228bdb3d239962603b31.scn"]
+source_file="res://assets/glb/bed.glb"
+dest_files=["res://.godot/imported/bed.glb-3643d2c82b369c52994f0a35e262bdb0.scn"]
 
 [params]
 

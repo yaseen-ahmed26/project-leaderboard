@@ -1,11 +1,8 @@
 extends Interactable
 
-@onready var animation_player: AnimationPlayer = $"../../../AnimationPlayer"
+@onready var animation_player: AnimationPlayer = $"../../../../AnimationPlayer"
 
 var open: bool = false
-
-func _ready() -> void:
-	super()
 	
 func on_interaction():
 	if open:

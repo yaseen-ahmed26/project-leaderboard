@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://gq8pjikacaul"]
 
 [ext_resource type="Script" uid="uid://c5ge463tqon1w" path="res://scenes/ui/hud/hud.gd" id="1_bngdn"]
+[ext_resource type="Theme" uid="uid://d03lvrtjdihvb" path="res://resources/ui/standard.tres" id="1_qao66"]
+[ext_resource type="StyleBox" uid="uid://2b22ksofsd7r" path="res://resources/ui/panels/standard.tres" id="3_as3gr"]
 
 [node name="hud" type="Control" unique_id=922040254]
 layout_mode = 3
@@ -10,188 +12,221 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+theme = ExtResource("1_qao66")
 script = ExtResource("1_bngdn")
 
 [node name="hover_prompt" type="RichTextLabel" parent="." unique_id=1317357804]
 visible = false
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -560.0
-offset_top = 247.0
-offset_right = 560.0
-offset_bottom = 369.0
+anchors_preset = -1
+anchor_left = 0.20833333
+anchor_top = 0.7351852
+anchor_right = 0.7916667
+anchor_bottom = 0.83518517
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/outline_size = 10
 theme_override_font_sizes/normal_font_size = 48
 bbcode_enabled = true
-text = "HOVER TEXT HERE"
+text = "[color=green][E] [color=white]Use Apple"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="decay" type="RichTextLabel" parent="." unique_id=1748681242]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -251.0
+offset_top = 133.0
+offset_right = 251.0
+offset_bottom = 225.0
+grow_horizontal = 2
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/normal_font_size = 36
+bbcode_enabled = true
+text = "Decay Rate: [color=gold]NONE!"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="cookie_counter" type="RichTextLabel" parent="." unique_id=1513429200]
+[node name="controls" type="RichTextLabel" parent="." unique_id=1714406488]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
+anchors_preset = 4
 anchor_top = 0.5
-anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -924.0
-offset_top = -494.0
-offset_right = -551.0
-offset_bottom = -372.0
-grow_horizontal = 2
+offset_left = 30.0
+offset_top = -127.0
+offset_right = 454.0
+offset_bottom = 128.0
 grow_vertical = 2
-theme_override_font_sizes/normal_font_size = 48
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/normal_font_size = 42
 bbcode_enabled = true
-text = "COOKIES: 0"
 vertical_alignment = 1
 
-[node name="task" type="RichTextLabel" parent="." unique_id=1249063966]
+[node name="afternoon_timer" type="RichTextLabel" parent="." unique_id=1093091240]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -343.0
+offset_top = 45.0
+offset_right = 343.0
+offset_bottom = 167.0
+grow_horizontal = 2
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/normal_font_size = 50
+bbcode_enabled = true
+text = "TIME LEFT: [color=green]00:00"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="event_list" type="Panel" parent="." unique_id=1424865540]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.740625
+anchor_top = 0.46666667
+anchor_right = 0.9796875
+anchor_bottom = 0.9546296
+theme = ExtResource("1_qao66")
+theme_override_styles/panel = ExtResource("3_as3gr")
+metadata/_edit_use_anchors_ = true
+
+[node name="holder" type="VBoxContainer" parent="event_list" unique_id=1666306913]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 33.0
+offset_top = 36.0
+offset_right = -33.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 12
+
+[node name="template" type="RichTextLabel" parent="event_list/holder" unique_id=43777353]
+custom_minimum_size = Vector2(80, 150)
+layout_mode = 2
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/normal_font_size = 28
+bbcode_enabled = true
+text = "[color=green]Cabin Island"
+horizontal_alignment = 1
+
+[node name="desc" type="RichTextLabel" parent="event_list/holder/template" unique_id=866200786]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -916.0
-offset_top = 201.0
-offset_right = -253.0
-offset_bottom = 486.0
+offset_left = -196.5
+offset_top = -39.0
+offset_right = 196.5
+offset_bottom = 39.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/normal_font_size = 32
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+text = "Place all the boxes in the cabin"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="total_cookies" type="Panel" parent="." unique_id=2034833197]
+layout_mode = 0
+anchor_left = 0.009895833
+anchor_top = 0.018518519
+anchor_right = 0.23489584
+anchor_bottom = 0.12592593
+theme_override_styles/panel = ExtResource("3_as3gr")
+metadata/_edit_use_anchors_ = true
+
+[node name="label" type="RichTextLabel" parent="total_cookies" unique_id=463376807]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/normal_font_size = 40
+bbcode_enabled = true
+text = "COOKIES: [color=green]0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="task" type="Panel" parent="." unique_id=193558457]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.009895833
+anchor_top = 0.8064815
+anchor_right = 0.23645833
+anchor_bottom = 0.97962964
+theme_override_styles/panel = ExtResource("3_as3gr")
+metadata/_edit_use_anchors_ = true
+
+[node name="label" type="RichTextLabel" parent="task" unique_id=135120711]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/normal_font_size = 28
 bbcode_enabled = true
 text = "Task: Can't stay still!
 Desc
 Progress: 1/1"
+horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="decay" type="RichTextLabel" parent="." unique_id=1748681242]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -924.0
-offset_top = -398.0
-offset_right = -422.0
-offset_bottom = -276.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/normal_font_size = 32
-bbcode_enabled = true
-text = "AUTOCLICKER DECAY: None"
-vertical_alignment = 1
-
-[node name="phase" type="RichTextLabel" parent="." unique_id=1817006118]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -922.0
-offset_top = -222.0
-offset_right = -420.0
-offset_bottom = -142.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/normal_font_size = 32
-bbcode_enabled = true
-text = "DAY 1: PHASE Morning"
-vertical_alignment = 1
-
-[node name="controls" type="RichTextLabel" parent="." unique_id=1714406488]
-visible = false
-layout_mode = 1
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -463.0
-offset_top = -342.0
-offset_right = -39.0
-offset_bottom = -87.0
-grow_horizontal = 0
-grow_vertical = 2
-theme_override_font_sizes/normal_font_size = 32
-bbcode_enabled = true
-horizontal_alignment = 2
-vertical_alignment = 1
-
-[node name="afternoon_timer" type="RichTextLabel" parent="." unique_id=1093091240]
-visible = false
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -924.0
-offset_top = -287.0
-offset_right = -422.0
-offset_bottom = -207.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/normal_font_size = 32
-bbcode_enabled = true
-text = "00:00"
-vertical_alignment = 1
-
-[node name="ColorRect" type="ColorRect" parent="." unique_id=1232304731]
+[node name="day_counter" type="Panel" parent="." unique_id=858690297]
 layout_mode = 1
 anchors_preset = -1
-anchor_right = 0.045
-anchor_bottom = 0.037
-offset_left = 1422.0
-offset_top = 504.0
-offset_right = 1794.6
-offset_bottom = 991.04
-color = Color(0, 0, 0, 0.32941177)
+anchor_left = 0.009895833
+anchor_top = 0.14166667
+anchor_right = 0.09739583
+anchor_bottom = 0.21018519
+theme_override_styles/panel = ExtResource("3_as3gr")
+metadata/_edit_use_anchors_ = true
 
-[node name="event_counter" type="RichTextLabel" parent="." unique_id=130172783]
-visible = false
+[node name="label" type="RichTextLabel" parent="day_counter" unique_id=1992667557]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 458.0
-offset_top = -130.0
-offset_right = 903.0
-offset_bottom = -50.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/normal_font_size = 32
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/normal_font_size = 30
 bbcode_enabled = true
-text = "0/4"
+text = "DAY: [color=green]1"
+horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="event_list" type="VBoxContainer" parent="." unique_id=1666306913]
-visible = false
+[node name="phase" type="Panel" parent="." unique_id=1900937235]
 layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 1422.0
-offset_top = -579.0
-offset_right = 1880.0
-offset_bottom = -49.0
-grow_vertical = 0
-alignment = 1
+anchors_preset = -1
+anchor_left = 0.10520833
+anchor_top = 0.14166667
+anchor_right = 0.23489584
+anchor_bottom = 0.21018519
+theme_override_styles/panel = ExtResource("3_as3gr")
+metadata/_edit_use_anchors_ = true
 
-[node name="template" type="RichTextLabel" parent="event_list" unique_id=43777353]
-visible = false
-custom_minimum_size = Vector2(100, 100)
-layout_mode = 2
-theme_override_font_sizes/normal_font_size = 32
-text = "ANSWER THE DOOR"
+[node name="label" type="RichTextLabel" parent="phase" unique_id=517487974]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/normal_font_size = 30
+bbcode_enabled = true
+text = "[color=green]MORNING"
 horizontal_alignment = 1
 vertical_alignment = 1

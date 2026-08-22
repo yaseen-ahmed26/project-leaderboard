@@ -1,28 +1,60 @@
 extends Control
 
 @onready var hover_prompt: RichTextLabel = $hover_prompt
-@onready var cookie_counter: RichTextLabel = $cookie_counter
-@onready var event_list: VBoxContainer = $event_list
-@onready var event_counter: RichTextLabel = $event_counter
-@onready var template: RichTextLabel = $event_list/template
+@onready var total_cookies: Panel = $total_cookies
+@onready var task: Panel = $task
 
-func _ready() -> void:
+# Godot
+func _ready():
 	Signals.cookes_changed.connect(_on_stats_changed)
 	Signals.autoclicker_decayed.connect(_on_autoclicker_decayed)
-	#Signals.day_started.connect(_on_day_started)
-	Signals.phase_changed.connect(_on_phase_changed)
-	Signals.afternoon_timer.connect(_on_afternoon_timer)
-	Signals.event_added.connect(_on_event_added)
-	Signals.event_solved.connect(_on_event_solved)
+	#Signals.phase_changed.connect(_on_phase_changed)
+	#Signals.afternoon_timer.connect(_on_afternoon_timer)
+	#Signals.event_added.connect(_on_event_added)
+	#Signals.event_solved.connect(_on_event_solved)
 	Signals.task_progress.connect(_on_task_progress)
 	Signals.task_completed.connect(_on_task_completed)
 
+# Interaction
 func show_hover_prompt(new_text: String):
-	hover_prompt.text = new_text
+	hover_prompt.text = Constants.HOVER_TEXT_FORMAT % new_text
 	hover_prompt.visible = true
 
 func hide_hover_prompt():
 	hover_prompt.visible = false
+	
+func show_controls(display_name: String):
+	$controls.visible = true
+	$controls.text = Constants.CONTROLS_FORMAT % display_name
+
+func hide_controls():
+	$controls.visible = false
+	
+# Signals
+func _on_stats_changed(new_stats: Dictionary):
+	var label = total_cookies.get_node_or_null("label")
+	label.text = Constants.COOKIE_COUNTER_FORMAT % new_stats.get("cookies")
+
+func _on_autoclicker_decayed(new_rate):
+	$decay.text = "AUTOCLICKER DECAY: %s" % new_rate
+
+func _on_task_progress(current_task: TaskData, progress: int):
+	var label = task.get_node("label")
+	label.text = Constants.TASK_FORMAT % [
+		current_task.display_name,
+		current_task.description,
+		progress,
+		current_task.target_amount
+	]
+
+func _on_task_completed(current_task: TaskData):
+	var label = task.get_node("label")
+	label.text = Constants.TASK_COMPLETE_FORMAT % [
+		current_task.display_name,
+		current_task.description,
+	]
+
+"""
 
 func _on_stats_changed(new_stats: Dictionary):
 	cookie_counter.text = "COOKIES: %.1f" % new_stats.get("cookies")
@@ -100,3 +132,4 @@ func show_controls(display_name: String):
 
 func hide_controls():
 	$controls.visible = false
+"""
