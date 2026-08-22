@@ -1,7 +1,7 @@
 extends Node
 
 # DayManager
-const AFTERNOON_LENGTH: float = 30.0
+const AFTERNOON_LENGTH: float = 50.0
 
 # EventManager
 const MAX_ACTIVE_EVENTS: int = 3 
