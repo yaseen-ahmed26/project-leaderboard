@@ -31,9 +31,9 @@ glow_enabled = true
 [node name="world" type="Node3D" unique_id=1878423917]
 script = ExtResource("1_aqk2v")
 event_scenes = Dictionary[int, PackedScene]({
-0: ExtResource("2_gbfbk"),
-1: ExtResource("4_wse8f"),
-2: ExtResource("3_ioo17")
+0: ExtResource("4_wse8f"),
+1: ExtResource("3_ioo17"),
+2: ExtResource("2_gbfbk")
 })
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=581328462]
@@ -50,23 +50,23 @@ visible = false
 mouse_filter = 2
 
 [node name="room" parent="." unique_id=2007177851 instance=ExtResource("1_fj7yv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.035478234, -0.02932465, -0.026339293)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.05016768, -0.053027272, -0.032576323)
 
 [node name="player" parent="." unique_id=634988134 instance=ExtResource("2_tlwt5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.39077663, 3.56445, 0.8915739)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.39077663, 1.3579212, -2.1898167)
 
 [node name="event_placements" type="Node" parent="." unique_id=122581998]
 
-[node name="1" type="Marker3D" parent="event_placements" unique_id=938251810]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.359684, -0.09770346, -1.3258057)
+[node name="1" type="Marker3D" parent="event_placements" unique_id=1973096243]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 0, 0)
 
-[node name="2" type="Marker3D" parent="event_placements" unique_id=1192875457]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.793478, -0.09770346, 19.69402)
+[node name="2" type="Marker3D" parent="event_placements" unique_id=883336468]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0, 0)
 
-[node name="3" type="Marker3D" parent="event_placements" unique_id=2082139631]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.855042, -0.09770346, -0.5534353)
+[node name="3" type="Marker3D" parent="event_placements" unique_id=1749985690]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 18)
 
 [node name="added_events" type="Node" parent="." unique_id=1475327499]
 
 [node name="tank" parent="." unique_id=1544669537 instance=ExtResource("9_ioo17")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 2.30899, 5)
+transform = Transform3D(0.8019049, 0, 0.5974517, 0, 1, 0, -0.5974517, 0, 0.8019049, 2.7438202, 2.30899, 3.9300814)

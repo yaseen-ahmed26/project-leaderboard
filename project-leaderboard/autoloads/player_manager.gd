@@ -61,3 +61,6 @@ func purchase(cost: float):
 		return true
 		
 	return false
+
+func get_rt_stats():
+	return rt_stats

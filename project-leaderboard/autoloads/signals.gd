@@ -3,7 +3,7 @@ extends Node
 # DayManager
 signal phase_changed(new_phase: Globals.Phase)
 signal afternoon_timer(seconds_elapsed)
-signal day_end()
+signal day_ended()
 
 # ClickManager
 signal autoclicker_decayed(new_rate)

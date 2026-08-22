@@ -2,10 +2,10 @@
 
 [ext_resource type="Script" uid="uid://byo84rpwxlu0q" path="res://autoloads/event_manager/event_manager.gd" id="1_yjvxp"]
 [ext_resource type="Script" uid="uid://yhbo18n3g6js" path="res://resources/bases/event_data.gd" id="2_14627"]
-[ext_resource type="Resource" uid="uid://cqdqxc8fo3k42" path="res://resources/events/test_2.tres" id="7_xjlyx"]
+[ext_resource type="Resource" uid="uid://cqdqxc8fo3k42" path="res://resources/events/ufo_island.tres" id="7_xjlyx"]
 [ext_resource type="Resource" uid="uid://6jg47138qkms" path="res://resources/events/duck_island.tres" id="8_etsn4"]
 [ext_resource type="Resource" uid="uid://bk2bt55ladj8p" path="res://resources/events/cabin_island.tres" id="9_w6kh2"]
 
 [node name="event_manager" type="Node3D" unique_id=199760139]
 script = ExtResource("1_yjvxp")
-base_event_pool = Array[ExtResource("2_14627")]([ExtResource("9_w6kh2"), ExtResource("8_etsn4"), ExtResource("7_xjlyx")])
+base_event_pool = Array[ExtResource("2_14627")]([ExtResource("7_xjlyx"), ExtResource("8_etsn4"), ExtResource("9_w6kh2")])

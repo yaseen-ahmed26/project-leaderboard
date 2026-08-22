@@ -13,6 +13,7 @@ func _ready() -> void:
 	Signals.event_added.connect(_on_event_added)
 	Signals.event_solved.connect(_on_event_solved)
 	Signals.phase_changed.connect(_on_phase_changed)
+	Signals.day_ended.connect(_on_day_ended)
 	
 func _on_day_ended(_day_stats: Dictionary):
 	day_end.visible = true

@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://dqaqtk7xjt0d4" path="res://assets/blend/room.blend" id="1_yaf3v"]
 [ext_resource type="Script" uid="uid://dailly3kh30hc" path="res://scenes/3d/room/room.gd" id="2_luy83"]
+[ext_resource type="Script" uid="uid://ds5xobfcfhxfo" path="res://scenes/3d/room/shelf.gd" id="3_8rb6k"]
 [ext_resource type="PackedScene" uid="uid://dr53k1y5sgl71" path="res://scenes/3d/main_monitor/main_monitor.tscn" id="4_d1eyb"]
 [ext_resource type="PackedScene" uid="uid://duotesb10xk14" path="res://scenes/3d/snacks/fridge.tscn" id="4_luy83"]
 [ext_resource type="PackedScene" uid="uid://i7fmebb1c3vu" path="res://scenes/3d/bed/bed.tscn" id="5_luy83"]
@@ -13,19 +14,37 @@ points = PackedVector3Array(7.0611105, 0.30713916, 0.11168623, 6.793579, 0.37635
 [node name="room" unique_id=2007177851 instance=ExtResource("1_yaf3v")]
 script = ExtResource("2_luy83")
 
-[node name="main_monitor" parent="computer" parent_id_path=PackedInt32Array(119888961) index="2" unique_id=433812210 instance=ExtResource("4_d1eyb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.49615493, 3.1882894, -1.9306483)
+[node name="shelf" parent="." index="1" unique_id=750121742]
+script = ExtResource("3_8rb6k")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="grass" parent_id_path=PackedInt32Array(722960873) index="1" unique_id=1818831019]
+[node name="info" type="Label3D" parent="shelf/cabin_island" parent_id_path=PackedInt32Array(1133413578) index="0" unique_id=2008427717]
+transform = Transform3D(4.2490765e-08, -1.0000014, -8.741435e-08, -0.9999032, -4.3707203e-08, 0.013962179, -0.013962179, 8.681258e-08, -0.99990356, -0.06300974, -0.020204067, -1.149723)
+text = "Cabin
+Completed: 0 times"
+
+[node name="info" type="Label3D" parent="shelf/duck_island" parent_id_path=PackedInt32Array(2143109180) index="0" unique_id=1280468031]
+transform = Transform3D(4.2490623e-08, -1.0000024, -8.7414456e-08, -0.9999032, -4.3707303e-08, 0.013962269, -0.013962179, 8.681264e-08, -0.9999041, -0.063007355, -0.01155138, -1.0564137)
+text = "Duck
+Completed: 0 times"
+
+[node name="info" type="Label3D" parent="shelf/ufo_island" parent_id_path=PackedInt32Array(1151979903) index="0" unique_id=1460881574]
+transform = Transform3D(4.249048e-08, -1.0000033, -8.7414456e-08, -0.9999032, -4.3707395e-08, 0.013962269, -0.013962179, 8.681268e-08, -0.9999041, -0.06300688, -0.029547215, -1.0533562)
+text = "UFO
+Completed: 0 times"
+
+[node name="StaticBody3D" type="StaticBody3D" parent="grass" parent_id_path=PackedInt32Array(718214532) index="1" unique_id=1818831019]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="grass/StaticBody3D" index="0" unique_id=1631268103]
 shape = SubResource("ConvexPolygonShape3D_7d62q")
 
 [node name="upgrades_board" parent="." index="3" unique_id=1943268639 instance=ExtResource("6_7d62q")]
-transform = Transform3D(-4.3711385e-08, 0, 0.99999994, 0, 1, 0, -0.99999994, 0, -4.3711385e-08, -5.746395, 2.2936814, 4.667908)
+transform = Transform3D(-0.19730464, 0, 0.98034203, 0, 1, 0, -0.98034203, 0, -0.19730464, -6.160793, 2.0268543, 2.0795197)
 
 [node name="fridge" parent="." index="4" unique_id=2078860456 instance=ExtResource("4_luy83")]
-transform = Transform3D(-0.64087033, 0, -0.7676492, 0, 1, 0, 0.7676492, 0, -0.64087033, 5.9755063, -0.7330365, -2.6954703)
+transform = Transform3D(-0.64087033, 0, -0.7676492, 0, 1, 0, 0.7676492, 0, -0.64087033, 4.090465, -0.8588892, -5.679413)
 
 [node name="bed" parent="." index="5" unique_id=778414298 instance=ExtResource("5_luy83")]
-transform = Transform3D(0.040511087, 0, 0.99917907, 0, 1, 0, -0.99917907, 0, 0.040511087, -7.762086, 0.6276455, 2.4906)
+transform = Transform3D(0.999997, 0, -0.0024277829, 0, 1, 0, 0.0024277829, 0, 0.999997, -6.7970104, 0.6276455, -3.5377507)
+
+[node name="main_monitor" parent="." index="6" unique_id=1580451243 instance=ExtResource("4_d1eyb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3375125, 2.6801524, -6.33005)

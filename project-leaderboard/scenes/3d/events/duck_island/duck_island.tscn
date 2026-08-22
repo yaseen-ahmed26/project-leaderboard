@@ -15,3 +15,9 @@ event_data = ExtResource("3_dosub")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="grass/StaticBody3D" index="0" unique_id=1132701001]
 shape = SubResource("ConvexPolygonShape3D_dosub")
+
+[node name="tree_2" parent="trees" parent_id_path=PackedInt32Array(1939117843) index="1" unique_id=401671706]
+transform = Transform3D(-0.14590839, 0, -0.59734213, 0, 0.614904, 0, 0.59734213, 0, -0.14590839, 4.675097, 3.0058234, -3.7842789)
+
+[node name="tree_3" parent="trees" parent_id_path=PackedInt32Array(1939117843) index="2" unique_id=618110787]
+transform = Transform3D(0.5080065, 0, 0, 0, 0.5080065, 0, 0, 0, 0.5080065, -1.7704338, -0.22951193, 6.4716244)

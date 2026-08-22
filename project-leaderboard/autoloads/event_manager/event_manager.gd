@@ -16,8 +16,15 @@ var total_seconds: int
 var active_events: int = 0
 var has_done_initial_spawn: bool = false
 
+var rt_stats: Dictionary = {
+	"events": {}
+}
+
 func _ready():
 	event_pool = base_event_pool.duplicate_deep()
+	
+	for k in Globals.EventIDs:
+		rt_stats["events"][k.to_lower()] = 0
 	
 	Signals.phase_changed.connect(_on_phase_changed)
 	Signals.afternoon_timer.connect(_on_afternoon_timer)
@@ -35,11 +42,14 @@ func spawn_event(amount_to_spawn: int):
 		Signals.event_added.emit(random_event)
 
 func clear_events():
-	
 	pass
 
 func event_solved(event_data: EventData):
 	active_events -= 1
+	
+	var lower_id: String = Globals.get_lower_event_id(event_data.id)
+	rt_stats["events"][lower_id] += 1
+	
 	Signals.event_solved.emit(event_data)
 
 # Connections
@@ -65,3 +75,6 @@ func _on_afternoon_timer(seconds_elapsed: int):
 			spawn_event(1)
 			
 		spawn_next_event_at = total_seconds + randi_range(5, 14)
+
+func get_event_stats():
+	return rt_stats.get("events")

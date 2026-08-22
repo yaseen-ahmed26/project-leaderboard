@@ -29,26 +29,28 @@ func _ready():
 
 # Main
 func start_day():
-	change_phase(Globals.Phase.MORNING)
+	current_phase = Globals.Phase.MORNING
+	Signals.phase_changed.emit(current_phase)
+		
+func start_afternoon():
+	current_phase = Globals.Phase.AFTERNOON
+	seconds_elapsed = 0
+	afternoon_timer.start()
+	Signals.phase_changed.emit(current_phase)
+	
+func end_afternoon():
+	current_phase = Globals.Phase.NIGHT
+	afternoon_timer.stop()
+	Signals.phase_changed.emit(current_phase)
 	
 func end_day():
-	Signals.day_end.emit()
-
-func change_phase(new_phase: Globals.Phase):
-	current_phase = new_phase
+	print("END DAY DayManager")
+	current_phase = Globals.Phase.MIDNIGHT
 	
-	match current_phase:
-		Globals.Phase.MORNING:
-			pass
-		Globals.Phase.AFTERNOON:
-			seconds_elapsed = 0
-			afternoon_timer.start()
-		Globals.Phase.NIGHT:
-			end_day()
-		Globals.Phase.MIDNIGHT:
-			start_day()
-
-	Signals.phase_changed.emit(current_phase)
+	var player_stats: Dictionary = PlayerManager.get_rt_stats()
+	var clicker_stats: Dictionary = ClickerManager.get_rt_stats()
+	
+	Signals.day_ended.emit({})
 
 # Getters
 func get_current_phase():
@@ -60,5 +62,4 @@ func _on_timer_timeout():
 	Signals.afternoon_timer.emit(seconds_elapsed)
 	
 	if seconds_elapsed >= Constants.AFTERNOON_LENGTH:
-		afternoon_timer.stop()
-		change_phase(Globals.Phase.NIGHT)
+		end_afternoon()

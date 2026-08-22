@@ -4,6 +4,7 @@ extends Node3D
 @onready var raycast: RayCast3D = $camera/raycast
 @onready var hud: Control = $"../hud"
 @onready var hand_marker: Marker3D = $camera/hand_marker
+@onready var camera: Camera3D = $camera
 
 # The current object being looked at
 var current_interactable_object: Interactable 
@@ -18,6 +19,7 @@ func _physics_process(_delta: float) -> void:
 		
 		# If there is none, do nothing
 		if not interactable_object or interactable_object == null: return
+		if not interactable_object.get_interact_status(): return
 		
 		# If the item we're looking at is an Interactable
 		if interactable_object.is_in_group("Interactables"):
@@ -60,6 +62,14 @@ func _unhandled_input(event: InputEvent) -> void:
 		# Use the item we're holding
 		if current_held_item:
 			use_held_item()
+			
+	# Drop item
+	if event.is_action_pressed("action_drop") and current_held_item:
+		drop_held_item()
+		
+	# Throw item
+	if event.is_action_pressed("action_throw") and current_held_item:
+		throw_held_item()
 
 func pick_up_item(item: Holdable) -> void:
 	# Set the item we're picking up as the current
@@ -68,10 +78,15 @@ func pick_up_item(item: Holdable) -> void:
 	# Disable collisions if the item has one
 	if item is CollisionObject3D:
 		item.process_mode = PROCESS_MODE_DISABLED
+		
+		if (item as Node) is RigidBody3D:
+			item.freeze = true
 	
 	item.get_parent().remove_child(item)
 	hand_marker.add_child(item)
 	item.transform = Transform3D.IDENTITY
+	
+	hud.call("show_controls", item.display_name)
 
 func use_held_item() -> void:
 	var item_consumed: bool = false
@@ -90,3 +105,54 @@ func consume_held_item() -> void:
 	if current_held_item:
 		current_held_item.queue_free()
 		current_held_item = null
+		hud.call("hide_controls")
+
+func drop_held_item() -> void:
+	var item = current_held_item
+	current_held_item = null
+	hud.call("hide_controls")
+	
+	hand_marker.remove_child(item)
+	get_tree().current_scene.add_child(item)
+	
+	item.global_position = hand_marker.global_position
+	
+	_enable_item_physics(item)
+	
+	var forward: Vector3 = -camera.global_transform.basis.z
+	forward.y = 0.0
+	forward = forward.normalized()
+	
+	var rb: RigidBody3D = (item as Node) as RigidBody3D
+	if rb:
+		rb.linear_velocity = owner.velocity + (forward * Constants.DROP_SPEED)
+
+func throw_held_item() -> void:
+	var item = current_held_item
+	current_held_item = null
+	hud.call("hide_controls")
+	
+	hand_marker.remove_child(item)
+	get_tree().current_scene.add_child(item)
+	
+	item.global_position = hand_marker.global_position
+	_enable_item_physics(item)
+	
+	var rb: RigidBody3D = (item as Node) as RigidBody3D
+	
+	if rb:
+		var throw_direction = -camera.global_transform.basis.z.normalized()
+		
+		rb.linear_velocity = owner.velocity
+		rb.apply_central_impulse(throw_direction * Constants.THROW_FORCE)
+		
+		var spin: Vector3 = camera.global_transform.basis.x * randf_range(Constants.THROW_SPIN_MIN, Constants.THROW_SPIN_MAX)
+		rb.apply_torque_impulse(spin)
+
+func _enable_item_physics(item: Holdable) -> void:
+	item.process_mode = PROCESS_MODE_INHERIT
+	
+	if (item as Node) is RigidBody3D:
+		item.freeze = false
+		item.linear_velocity = Vector3.ZERO
+		item.angular_velocity = Vector3.ZERO

@@ -30,6 +30,7 @@ func _ready():
 	
 	Signals.change_camera.connect(_on_change_camera)
 	Signals.phase_changed.connect(_on_phase_changed)
+	Signals.day_ended.connect(_on_day_ended)
 
 func update_task_manager(update: Globals.Actions):
 	var source: Globals.TaskSources = TaskManager.get_current_task_source()

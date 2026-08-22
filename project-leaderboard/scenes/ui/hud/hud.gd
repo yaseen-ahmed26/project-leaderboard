@@ -28,7 +28,7 @@ func _on_stats_changed(new_stats: Dictionary):
 	cookie_counter.text = "COOKIES: %.1f" % new_stats.get("cookies")
 
 func _on_autoclicker_decayed(new_rate):
-	$decay.text = "AUTOCLICKER DECAY: %s" % str(new_rate)
+	$decay.text = "AUTOCLICKER DECAY: %s" % new_rate
 
 func _on_day_started():
 	$phase.text = "DAY 1: PHASE Morning"
@@ -93,3 +93,10 @@ func _on_task_completed(current_task: TaskData):
 		current_task.display_name,
 		current_task.description,
 	]
+
+func show_controls(display_name: String):
+	$controls.visible = true
+	$controls.text = "%s\n\nUse [LMB]\nDrop [R]\nThrow [T]" % display_name
+
+func hide_controls():
+	$controls.visible = false

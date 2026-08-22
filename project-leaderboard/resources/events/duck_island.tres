@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_m2ha3")
-id = 2
+id = 1
 display_name = "Duck"
 task = "Help the Blue Ducks win!"
 metadata/_custom_type_script = "uid://yhbo18n3g6js"

@@ -8,9 +8,9 @@ enum Phase {
 }
 
 enum EventIDs {
-	TEST_2,
 	CABIN_ISLAND,
-	DUCK_ISLAND
+	DUCK_ISLAND,
+	UFO_ISLAND
 }
 
 enum TaskSources {

@@ -53,3 +53,10 @@ func _on_corruption_timeout():
 	if seconds_elapsed >= time_to_corrupt:
 		state = State.CORRUPTED
 		
+func solve_event():
+	EventManager.event_solved(event_data)
+
+func on_tank_hit():
+	if state != State.CORRUPTED: return
+	
+	solve_event()

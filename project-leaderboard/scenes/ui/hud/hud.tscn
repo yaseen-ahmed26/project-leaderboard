@@ -106,6 +106,25 @@ bbcode_enabled = true
 text = "DAY 1: PHASE Morning"
 vertical_alignment = 1
 
+[node name="controls" type="RichTextLabel" parent="." unique_id=1714406488]
+visible = false
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -463.0
+offset_top = -342.0
+offset_right = -39.0
+offset_bottom = -87.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+horizontal_alignment = 2
+vertical_alignment = 1
+
 [node name="afternoon_timer" type="RichTextLabel" parent="." unique_id=1093091240]
 visible = false
 layout_mode = 1
@@ -126,7 +145,6 @@ text = "00:00"
 vertical_alignment = 1
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1232304731]
-visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.045

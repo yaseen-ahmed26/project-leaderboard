@@ -7,11 +7,13 @@
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_l7yjw"]
 
-[node name="apple" type="StaticBody3D" unique_id=1557339447 groups=["Interactables"]]
+[node name="apple" type="RigidBody3D" unique_id=2127553170 groups=["Interactables"]]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
 script = ExtResource("1_fgkix")
 snack_data = ExtResource("2_rmavt")
-hover_text = "[E] Use Apple"
+id = "apple"
+display_name = "Apple"
+can_interact = false
 disable_at = 6
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1090331479]
