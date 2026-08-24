@@ -1,8 +1,9 @@
 extends Node3D
 
-@onready var day_end: Control = $day_end
+@onready var day_end: Control = $CanvasLayer/day_end
 @onready var added_events: Node = $added_events
 @onready var player: CharacterBody3D = $player
+@onready var void_zone: Area3D = $void_zone
 
 @export var event_scenes: Dictionary[Globals.EventIDs, PackedScene]
 
@@ -10,6 +11,8 @@ var markers: Array[Node] = []
 
 func _ready() -> void:
 	markers = $event_placements.get_children()
+	
+	void_zone.body_entered.connect(_on_body_entered)
 	
 	Signals.event_added.connect(_on_event_added)
 	# Signals.event_solved.connect(_on_event_solved)
@@ -72,4 +75,25 @@ func _on_phase_changed(new_phase: Globals.Phase):
 			player.visible = true
 			player.get_node("head/camera").current = true
 		Globals.Phase.NIGHT:
+			void_zone.set_collision_mask_value(1, false)
+			void_zone.set_collision_mask_value(2, false)
 			_clear_all_events()
+
+func _on_body_entered(body: Node3D):
+	print("Body Entered: " + body.name)
+	Signals.item_entered_void.emit(body)
+	
+	if body.is_in_group("player"):
+		body.global_position = $player_respawn.global_position
+		return
+		
+	if body is CharacterBody3D:
+		return	
+		
+	if body is not Holdable:
+		return
+		
+	if body.respawn_marker and body.respawn_marker != null:
+		body.global_position = body.respawn_marker.global_position
+	else:
+		body.global_position = $player_respawn.global_position

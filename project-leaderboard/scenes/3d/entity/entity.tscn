@@ -1,23 +1,39 @@
 [gd_scene format=3 uid="uid://w6xb6m1fbg6s"]
 
 [ext_resource type="Script" uid="uid://bsybe1ghopkel" path="res://scenes/3d/entity/entity.gd" id="1_iu3vl"]
+[ext_resource type="PackedScene" uid="uid://dn03kf7gbhi0x" path="res://assets/glb/duck.glb" id="2_egdto"]
+[ext_resource type="Script" uid="uid://qstg7swpluj7" path="res://scenes/3d/entity/area_3d.gd" id="2_i5r5h"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_l7yjw"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_l7yjw"]
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_pbqgr"]
+points = PackedVector3Array(-0.028067742, -0.17904574, -0.8217629, 0.026306998, 0.17612554, 0.8168773, -0.02795991, 0.17609529, 0.8166958, 0.026324881, 0.9127233, -0.5190016, 0.8208703, -0.17929272, -0.05560384, -0.70910406, -0.4774693, 0.10806206, 0.19032796, -0.8069054, 0.21760872, -0.76085776, 0.3382835, -0.10930929, 0.2965208, 0.6616682, 0.43166703, -0.5394583, 0.5243836, 0.4030498, 0.108171105, -0.7237086, -0.46445957, -0.59832203, -0.17727245, -0.59816086, 0.67580587, 0.17519397, -0.48793235, 0.59331256, -0.20319292, 0.59332204, -0.29916003, -0.44796985, 0.67681235, 0.70540035, 0.4473612, 0.1349012, -0.67835486, 0.039849997, 0.51402795, 0.5661912, -0.50025547, -0.43285507, -0.16460548, 0.64029694, -0.71052504, -0.35472968, -0.77670765, -0.10962483, 0.32652265, 0.23080793, -0.76475704, 0.5981101, -0.61378145, 0.16240792, 0.18903843, -0.50271624, 0.6773038, -0.13650566, 0.6908008, 0.4602216, -0.40565977, -0.55366087, -0.54052174, 0.5926163, 0.17475322, 0.5926258, 0.29736125, 0.74479073, -0.57021785, -0.2992677, -0.69231385, 0.43301654, -0.32472265, 0.76835775, -0.45960262, -0.48715398, 0.30984652, -0.64918125, -0.82328016, -0.04223735, -0.16512157, 0.43206814, -0.31208912, -0.67764467)
 
 [node name="entity" type="CharacterBody3D" unique_id=437314716]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+transform = Transform3D(-0.5, 0, -4.371139e-08, 0, 0.5, 0, 4.371139e-08, 0, -0.5, 0, 0, 0)
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("1_iu3vl")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1372572172]
-mesh = SubResource("BoxMesh_l7yjw")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=47786887]
+transform = Transform3D(1, 0, 0, 0, 0.754586, 0, 0, 0, 1.425326, 0, 0.012121938, 0)
+shape = SubResource("ConvexPolygonShape3D_pbqgr")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=547371632]
-shape = SubResource("BoxShape3D_l7yjw")
+[node name="mesh" parent="." unique_id=1662635619 instance=ExtResource("2_egdto")]
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=1786589388]
 avoidance_enabled = true
 radius = 0.8
+
+[node name="Area3D" type="Area3D" parent="." unique_id=203653324 node_paths=PackedStringArray("carry_root") groups=["Interactables"]]
+script = ExtResource("2_i5r5h")
+can_use = false
+can_throw = false
+carry_root = NodePath("..")
+respawnable = false
+display_name = "Duck"
+hover_text = "Pick up Duck"
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Area3D" unique_id=536115075]
+transform = Transform3D(1, 0, 0, 0, 0.754586, 0, 0, 0, 1.425326, 0, 0.012121938, 0)
+shape = SubResource("ConvexPolygonShape3D_pbqgr")
+
+[editable path="mesh"]

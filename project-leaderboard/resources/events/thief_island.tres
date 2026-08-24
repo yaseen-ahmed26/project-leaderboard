@@ -5,6 +5,6 @@
 [resource]
 script = ExtResource("1_3k6f0")
 id = 2
-display_name = "Thief Island"
-task = "Kill the Evil Duck."
+display_name = "Duck Island"
+task = "Drop the Ducks of the edge. Yes, both of them."
 metadata/_custom_type_script = "uid://yhbo18n3g6js"

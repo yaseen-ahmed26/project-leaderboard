@@ -24,7 +24,10 @@ const HOVER_TEXT_FORMAT: String = "[color=green][E] [color=white]%s"
 const COOKIE_COUNTER_FORMAT: String = "COOKIES: [color=green]%.1f"
 const TASK_FORMAT: String = "Task: [color=green]%s\n[color=white]%s\nProgress: [color=green]%d/%d"
 const TASK_COMPLETE_FORMAT: String = "Task: [color=green]%s\n[color=white]%s\n[color=gold]COMPLETE!"
+const CONTROLS_FORMAT_NO_THROW: String = "[color=gold]%s\n[color=green][LMB] [color=white]Use\n[color=green][R] [color=white]Drop"
 const CONTROLS_FORMAT: String = "[color=gold]%s\n[color=green][LMB] [color=white]Use\n[color=green][R] [color=white]Drop\n[color=green][T] [color=white]Throw"
+const FELL_VOID_FORMAT: String = "[color=white]Fell into the Void [color=green]%d [color=white]%s"
+const ITEM_VOID_FOMRAT: String = "[color=green]%d [color=white]%s thrown into the Void"
 
 # Global
 const GAME_TITLE: String = "Yes, I'm on Vacation"

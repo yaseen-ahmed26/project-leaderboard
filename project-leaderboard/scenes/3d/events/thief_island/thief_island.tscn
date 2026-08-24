@@ -33,28 +33,28 @@ event_data = ExtResource("2_or66f")
 
 [node name="thief_island" parent="." unique_id=319592265 instance=ExtResource("2_8g3es")]
 
-[node name="StaticBody3D" type="StaticBody3D" parent="thief_island/grass" parent_id_path=PackedInt32Array(319592265, 560364630) index="1" unique_id=1549071082]
+[node name="StaticBody3D" type="StaticBody3D" parent="thief_island/grass" parent_id_path=PackedInt32Array(319592265, 1867205697) index="1" unique_id=1549071082]
 collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="thief_island/grass/StaticBody3D" unique_id=60382156]
 shape = SubResource("ConcavePolygonShape3D_or66f")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="thief_island/bus_stop/bench" parent_id_path=PackedInt32Array(319592265, 849497388) index="0" unique_id=684234165]
+[node name="StaticBody3D" type="StaticBody3D" parent="thief_island/bus_stop/bench" parent_id_path=PackedInt32Array(319592265, 2013898084) index="0" unique_id=684234165]
 collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="thief_island/bus_stop/bench/StaticBody3D" unique_id=3639144]
 shape = SubResource("ConvexPolygonShape3D_8g3es")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="thief_island/bus_stop" parent_id_path=PackedInt32Array(319592265, 40441) index="3" unique_id=2002615680]
+[node name="StaticBody3D" type="StaticBody3D" parent="thief_island/bus_stop" parent_id_path=PackedInt32Array(319592265, 870835611) index="3" unique_id=2002615680]
 collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="thief_island/bus_stop/StaticBody3D" unique_id=623511256]
 shape = SubResource("ConcavePolygonShape3D_2haam")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="thief_island/building_frame" parent_id_path=PackedInt32Array(319592265, 2070802814) index="4" unique_id=566086780]
+[node name="StaticBody3D" type="StaticBody3D" parent="thief_island/building_frame" parent_id_path=PackedInt32Array(319592265, 422141016) index="4" unique_id=566086780]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.024744034, -0.25996143, -0.22081375)
 collision_layer = 2
 collision_mask = 2
@@ -62,7 +62,9 @@ collision_mask = 2
 [node name="CollisionShape3D" type="CollisionShape3D" parent="thief_island/building_frame/StaticBody3D" unique_id=1271250273]
 shape = SubResource("BoxShape3D_a1p3i")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="thief_island/tree" parent_id_path=PackedInt32Array(319592265, 1123928629) index="1" unique_id=2144299355]
+[node name="StaticBody3D" type="StaticBody3D" parent="thief_island/tree" parent_id_path=PackedInt32Array(319592265, 852264223) index="1" unique_id=2144299355]
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="thief_island/tree/StaticBody3D" unique_id=383089322]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.05818224, -0.960997, -0.10743332)
@@ -73,5 +75,11 @@ transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -4.1880627, 0.5290959, 
 
 [node name="entity2" parent="." unique_id=673808149 instance=ExtResource("3_8g3es")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 3.0248113, 0.5290959, -2.2250857)
+
+[node name="Label3D" type="Label3D" parent="." unique_id=1084590098]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.8289013, 0)
+billboard = 1
+text = "DUCK ISLAND"
+font_size = 200
 
 [editable path="thief_island"]

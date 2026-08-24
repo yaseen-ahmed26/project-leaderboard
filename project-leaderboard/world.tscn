@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://bt7xykuclie22"]
 
 [ext_resource type="Script" uid="uid://dvfxxfrbjlb2t" path="res://world.gd" id="1_aqk2v"]
-[ext_resource type="PackedScene" uid="uid://b82klctai8qrl" path="res://scenes/3d/room/room.tscn" id="1_fj7yv"]
 [ext_resource type="PackedScene" uid="uid://c357kmk2h4x2p" path="res://scenes/ui/main_menu/main_menu.tscn" id="1_tlwt5"]
 [ext_resource type="PackedScene" uid="uid://cnsk2cfmoiwhy" path="res://scenes/3d/player/player.tscn" id="2_tlwt5"]
 [ext_resource type="PackedScene" uid="uid://bctk608adfe52" path="res://scenes/ui/day_end/day_end.tscn" id="3_036b0"]
@@ -9,13 +8,14 @@
 [ext_resource type="PackedScene" uid="uid://b5bveqxhb0prd" path="res://scenes/3d/events/thief_island/thief_island.tscn" id="4_ioo17"]
 [ext_resource type="PackedScene" uid="uid://b7ngk1ywbs1xj" path="res://scenes/3d/events/cabin_island/cabin_island.tscn" id="4_wse8f"]
 [ext_resource type="PackedScene" uid="uid://clujfgiuk5xyr" path="res://scenes/3d/tank/tank.tscn" id="9_ioo17"]
+[ext_resource type="PackedScene" uid="uid://da55xl05fj5xm" path="res://scenes/3d/room/room.tscn" id="9_wse8f"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ckv8d"]
-sky_top_color = Color(0.12970969, 0.5418918, 0.999994, 1)
-sky_horizon_color = Color(0.6765647, 0.817222, 0.999999, 1)
+sky_top_color = Color(0, 0.30262747, 0.6063739, 1)
+sky_horizon_color = Color(0, 0.43241468, 0.86262137, 1)
 sky_curve = 0.12416777
-ground_bottom_color = Color(0.000106657746, 0.48946685, 0.9508262, 1)
-ground_horizon_color = Color(0.6784314, 0.8156863, 1, 1)
+ground_bottom_color = Color(0, 0.31772444, 0.6314101, 1)
+ground_horizon_color = Color(0.23461106, 0.5742364, 0.999991, 1)
 ground_curve = 0.010717625
 
 [sub_resource type="Sky" id="Sky_y372y"]
@@ -27,6 +27,8 @@ sky = SubResource("Sky_y372y")
 tonemap_mode = 2
 ssao_enabled = true
 glow_enabled = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_l7yjw"]
 
 [node name="world" type="Node3D" unique_id=1878423917]
 script = ExtResource("1_aqk2v")
@@ -40,17 +42,16 @@ event_scenes = Dictionary[int, PackedScene]({
 environment = SubResource("Environment_kq1an")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1848608566]
-transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 11.402941, 8.93091)
 shadow_enabled = true
 
-[node name="main_menu" parent="." unique_id=318754658 instance=ExtResource("1_tlwt5")]
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1832944474]
 
-[node name="day_end" parent="." unique_id=1918697368 instance=ExtResource("3_036b0")]
+[node name="main_menu" parent="CanvasLayer" unique_id=318754658 instance=ExtResource("1_tlwt5")]
+
+[node name="day_end" parent="CanvasLayer" unique_id=1918697368 instance=ExtResource("3_036b0")]
 visible = false
 mouse_filter = 2
-
-[node name="room" parent="." unique_id=2007177851 instance=ExtResource("1_fj7yv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.05016768, -0.053027272, -0.032576323)
 
 [node name="player" parent="." unique_id=634988134 instance=ExtResource("2_tlwt5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.39077663, 1.3579214, -2.1898167)
@@ -72,6 +73,21 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 18)
 [node name="tank" parent="." unique_id=1544669537 instance=ExtResource("9_ioo17")]
 transform = Transform3D(0.8019049, 0, 0.5974517, 0, 1, 0, -0.5974517, 0, 0.8019049, 2.7438202, 1.972916, 3.9300814)
 
-[node name="Camera3D" type="Camera3D" parent="." unique_id=879546015]
+[node name="main_menu_camera" type="Camera3D" parent="." unique_id=879546015]
 transform = Transform3D(0.9675476, 0, 0.252689, 0, 1, 0, -0.252689, 0, 0.9675476, -0.8481469, 2.4607413, 1.419868)
 current = true
+
+[node name="room" parent="." unique_id=1277174790 instance=ExtResource("9_wse8f")]
+
+[node name="void_zone" type="Area3D" parent="." unique_id=2076760401]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -11.518744, 0)
+collision_layer = 2
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="void_zone" unique_id=353878439]
+transform = Transform3D(100, 0, 0, 0, 10, 0, 0, 0, 100, 0, 0, 0)
+shape = SubResource("BoxShape3D_l7yjw")
+debug_color = Color(0.9637361, 1.6364455e-06, 0.50210035, 1)
+
+[node name="player_respawn" type="Marker3D" parent="." unique_id=687192990]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.161414, 0)

@@ -16,7 +16,12 @@ const TASK_SOURCES: Array = [
 var rt_stats: Dictionary = {
 	"cookies": 20.0,
 	"left_desk": 0,
+	"times_player_fell_void": 0,
+	"times_item_fell_void": 0
 }
+
+func _ready() -> void:
+	Signals.item_entered_void.connect(_on_item_entered_void)
 
 func update_task_manager(update):
 	var source: Globals.TaskSources = TaskManager.get_current_task_source()
@@ -64,3 +69,9 @@ func purchase(cost: float):
 
 func get_rt_stats():
 	return rt_stats
+
+func _on_item_entered_void(body: Node3D):
+	if body.is_in_group("player"):
+		rt_stats["times_player_fell_void"] += 1
+	elif body.is_in_group("Interactables"):
+		rt_stats["times_item_fell_void"] += 1

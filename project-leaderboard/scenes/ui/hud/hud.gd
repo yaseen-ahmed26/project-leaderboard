@@ -29,9 +29,11 @@ func show_hover_prompt(new_text: String):
 func hide_hover_prompt():
 	hover_prompt.visible = false
 	
-func show_controls(display_name: String):
+func show_controls(item: Holdable):
+	var format: String = Constants.CONTROLS_FORMAT if item.get_throw_status() else Constants.CONTROLS_FORMAT_NO_THROW
+	
 	$controls.visible = true
-	$controls.text = Constants.CONTROLS_FORMAT % display_name
+	$controls.text = format % item.display_name
 
 func hide_controls():
 	$controls.visible = false

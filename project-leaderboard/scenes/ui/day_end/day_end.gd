@@ -14,6 +14,14 @@ func setup(details: Dictionary):
 		"Completed" if details.get("task_completed") else "Failed"
 	]
 	$background/islands_solved.text = "Islands Solved\n[color=green]%s" % ", ".join(details.get("events_solved"))
+	$background/items_in_void.text = Constants.ITEM_VOID_FOMRAT % [
+		details.get("times_item_fell_void"),
+		"item" if details.get("times_item_fell_void") == 1 else "items"
+	]
+	$background/fell_in_void.text = Constants.FELL_VOID_FORMAT % [
+		details.get("times_player_fell_void"),
+		"time" if details.get("times_player_fell_void") == 1 else "times"
+	]
 	
 	var tween: Tween = create_tween()
 	tween.tween_property(
