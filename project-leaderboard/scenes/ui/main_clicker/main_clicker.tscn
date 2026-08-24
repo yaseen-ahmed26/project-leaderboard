@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://dfqr223tctvtt"]
 
+[ext_resource type="Theme" uid="uid://d03lvrtjdihvb" path="res://resources/ui/standard.tres" id="1_otel5"]
 [ext_resource type="Script" uid="uid://nth5bxr5ti0n" path="res://scenes/ui/main_clicker/main_clicker.gd" id="1_spcf1"]
+[ext_resource type="StyleBox" uid="uid://2b22ksofsd7r" path="res://resources/ui/panels/standard.tres" id="3_wjn8v"]
 
 [node name="main_clicker" type="Control" unique_id=64477514]
 layout_mode = 3
@@ -9,6 +11,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_otel5")
 script = ExtResource("1_spcf1")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=658938313]
@@ -35,5 +38,57 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 54
 text = "CLICK ME"
+
+[node name="total_cookies" type="Panel" parent="." unique_id=2096335236]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.009895833
+anchor_top = 0.018518519
+anchor_right = 0.23489584
+anchor_bottom = 0.12592593
+theme_override_styles/panel = ExtResource("3_wjn8v")
+metadata/_edit_use_anchors_ = true
+
+[node name="label" type="RichTextLabel" parent="total_cookies" unique_id=408592371]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/normal_font_size = 40
+bbcode_enabled = true
+text = "COOKIES: [color=green]0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="task" type="Panel" parent="." unique_id=349962811]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.009895833
+anchor_top = 0.8064815
+anchor_right = 0.23645833
+anchor_bottom = 0.97962964
+theme_override_styles/panel = ExtResource("3_wjn8v")
+metadata/_edit_use_anchors_ = true
+
+[node name="label" type="RichTextLabel" parent="task" unique_id=2013437416]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 9.0
+offset_right = 9.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/normal_font_size = 28
+bbcode_enabled = true
+text = "Task: Can't stay still!
+Desc
+Progress: 1/1"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

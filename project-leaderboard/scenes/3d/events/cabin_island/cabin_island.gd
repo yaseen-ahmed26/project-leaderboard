@@ -30,7 +30,12 @@ func _on_body_entered(body):
 			state = State.GENERATING
 			
 func clean_up():
-	print("called: cabin_island.tscn")
-	for box in $boxes.get_children():
-		print(box.name)
-		box.queue_free()
+	for item in contained_items:
+		if is_instance_valid(item):
+			item.queue_free()
+			
+	contained_items.clear()
+	
+	if has_node("boxes"):
+		for box in $boxes.get_children():
+			box.queue_free()

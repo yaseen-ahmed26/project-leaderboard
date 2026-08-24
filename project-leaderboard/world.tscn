@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cnsk2cfmoiwhy" path="res://scenes/3d/player/player.tscn" id="2_tlwt5"]
 [ext_resource type="PackedScene" uid="uid://bctk608adfe52" path="res://scenes/ui/day_end/day_end.tscn" id="3_036b0"]
 [ext_resource type="PackedScene" uid="uid://di35js64sgow1" path="res://scenes/3d/events/duck_island/duck_island.tscn" id="3_ioo17"]
-[ext_resource type="PackedScene" uid="uid://dpj2anxk3maoi" path="res://scenes/3d/events/thief_island/thief_island.tscn" id="4_ioo17"]
+[ext_resource type="PackedScene" uid="uid://b5bveqxhb0prd" path="res://scenes/3d/events/thief_island/thief_island.tscn" id="4_ioo17"]
 [ext_resource type="PackedScene" uid="uid://b7ngk1ywbs1xj" path="res://scenes/3d/events/cabin_island/cabin_island.tscn" id="4_wse8f"]
 [ext_resource type="PackedScene" uid="uid://clujfgiuk5xyr" path="res://scenes/3d/tank/tank.tscn" id="9_ioo17"]
 

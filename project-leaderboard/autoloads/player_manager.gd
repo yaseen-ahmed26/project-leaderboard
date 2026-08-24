@@ -27,7 +27,7 @@ func update_task_manager(update):
 func add_cookies(amount: float):
 	rt_stats["cookies"] += amount
 	update_task_manager(Globals.Stats.COOKIES)
-	Signals.cookes_changed.emit(rt_stats)
+	Signals.stats_changed.emit(rt_stats)
 
 func entered_desk():
 	ClickerManager.disable_decay()

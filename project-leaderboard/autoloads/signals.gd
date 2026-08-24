@@ -9,7 +9,7 @@ signal day_ended()
 signal autoclicker_decayed(new_rate)
 
 # PlayerManager
-signal cookes_changed(amount: float)
+signal stats_changed(amount: float)
 
 # ConsumableManager
 signal snack_used(snack_data: SnackData)

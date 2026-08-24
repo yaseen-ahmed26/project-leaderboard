@@ -1,9 +1,11 @@
-extends Control
+extends SharedUI
 
 @onready var btn_holder: VBoxContainer = $VBoxContainer
 @onready var template_btn: Button = $VBoxContainer/template_btn
 
 func _ready() -> void:
+	super()
+	
 	_setup_btns()
 	
 func _setup_btns():

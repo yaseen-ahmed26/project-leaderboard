@@ -1,22 +1,19 @@
-extends Control
+extends SharedUI
 
 @onready var hover_prompt: RichTextLabel = $hover_prompt
-@onready var total_cookies: Panel = $total_cookies
-@onready var task: Panel = $task
 @onready var template: RichTextLabel = $event_list/holder/template
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var phase: Panel = $phase
 
 # Godot
 func _ready():
-	Signals.cookes_changed.connect(_on_stats_changed)
+	super()
+	
 	Signals.autoclicker_decayed.connect(_on_autoclicker_decayed)
 	Signals.phase_changed.connect(_on_phase_changed)
 	Signals.afternoon_timer.connect(_on_afternoon_timer)
 	Signals.event_added.connect(_on_event_added)
 	Signals.event_solved.connect(_on_event_solved)
-	Signals.task_progress.connect(_on_task_progress)
-	Signals.task_completed.connect(_on_task_completed)
 	Signals.change_camera.connect(_on_camera_change)
 	Signals.camera_restored.connect(_on_camera_restored)
 
@@ -40,28 +37,8 @@ func hide_controls():
 	$controls.visible = false
 	
 # Signals
-func _on_stats_changed(new_stats: Dictionary):
-	var label = total_cookies.get_node_or_null("label")
-	label.text = Constants.COOKIE_COUNTER_FORMAT % new_stats.get("cookies")
-
 func _on_autoclicker_decayed(new_rate):
 	$decay.text = "Decay Rate: %s" % new_rate
-
-func _on_task_progress(current_task: TaskData, progress: int):
-	var label = task.get_node("label")
-	label.text = Constants.TASK_FORMAT % [
-		current_task.display_name,
-		current_task.description,
-		progress,
-		current_task.target_amount
-	]
-
-func _on_task_completed(current_task: TaskData):
-	var label = task.get_node("label")
-	label.text = Constants.TASK_COMPLETE_FORMAT % [
-		current_task.display_name,
-		current_task.description,
-	]
 
 func _on_afternoon_timer(seconds_elapsed: int):
 	var total_secs: int = int(seconds_elapsed)

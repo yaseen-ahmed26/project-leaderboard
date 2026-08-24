@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://cme1a03y8yacj"]
 
 [ext_resource type="Script" uid="uid://xai4qw5ijfpp" path="res://scenes/ui/upgrades/upgrades.gd" id="1_cs8ac"]
+[ext_resource type="Theme" uid="uid://d03lvrtjdihvb" path="res://resources/ui/standard.tres" id="1_eipso"]
+[ext_resource type="StyleBox" uid="uid://2b22ksofsd7r" path="res://resources/ui/panels/standard.tres" id="3_xi0p4"]
 
 [node name="upgrades" type="Control" unique_id=1845973147]
 layout_mode = 3
@@ -9,6 +11,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_eipso")
 script = ExtResource("1_cs8ac")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1713529620]
@@ -42,3 +45,55 @@ layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 42
 text = "Template"
+
+[node name="total_cookies" type="Panel" parent="." unique_id=1630194230]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.009895833
+anchor_top = 0.018518519
+anchor_right = 0.23489584
+anchor_bottom = 0.12592593
+theme_override_styles/panel = ExtResource("3_xi0p4")
+metadata/_edit_use_anchors_ = true
+
+[node name="label" type="RichTextLabel" parent="total_cookies" unique_id=603250439]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/normal_font_size = 40
+bbcode_enabled = true
+text = "COOKIES: [color=green]0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="task" type="Panel" parent="." unique_id=1577304049]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.009895833
+anchor_top = 0.8064815
+anchor_right = 0.23645833
+anchor_bottom = 0.97962964
+theme_override_styles/panel = ExtResource("3_xi0p4")
+metadata/_edit_use_anchors_ = true
+
+[node name="label" type="RichTextLabel" parent="task" unique_id=102955298]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 9.0
+offset_right = 9.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/normal_font_size = 28
+bbcode_enabled = true
+text = "Task: Can't stay still!
+Desc
+Progress: 1/1"
+horizontal_alignment = 1
+vertical_alignment = 1
