@@ -28,3 +28,9 @@ func _on_body_entered(body):
 
 		if contained_items.size() == 5:
 			state = State.GENERATING
+			
+func clean_up():
+	print("called: cabin_island.tscn")
+	for box in $boxes.get_children():
+		print(box.name)
+		box.queue_free()

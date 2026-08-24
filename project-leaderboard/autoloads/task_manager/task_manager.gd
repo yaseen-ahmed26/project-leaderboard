@@ -10,9 +10,12 @@ Tracks weekly task
 
 var current_source: Globals.TaskSources = Globals.TaskSources.NONE
 var current_task: TaskData
-var task_completed: bool = false
 var progress: int = 0
 var target: int
+
+var rt_stats = {
+	"task_completed": false
+}
 
 func _ready() -> void:
 	Signals.phase_changed.connect(_on_phase_changed)
@@ -29,7 +32,7 @@ func generate_task():
 	Signals.task_progress.emit(current_task, 0)
 
 func report_task_update(stat_name):
-	if task_completed: return
+	if rt_stats["task_completed"]: return
 	
 	var add_progress: bool = false
 	
@@ -49,7 +52,7 @@ func report_task_update(stat_name):
 		Signals.task_progress.emit(current_task, progress)
 	
 	if progress == target:
-		task_completed = true
+		rt_stats["task_completed"] = true
 		current_source = Globals.TaskSources.NONE
 		PlayerManager.add_cookies(current_task.cookie_reward)
 		Signals.task_completed.emit(current_task)
@@ -57,6 +60,9 @@ func report_task_update(stat_name):
 # Getters
 func get_current_task_source():
 	return current_source
+	
+func get_rt_stats():
+	return rt_stats
 
 # Connections
 func _on_phase_changed(new_phase: Globals.Phase):

@@ -23,7 +23,10 @@ signal task_progress(current_task: TaskData, progress: int)
 signal task_completed(current_task: TaskData)
 
 # Monitors
-signal change_camera(position)
+signal change_camera(position, source)
+
+# player.gd
+signal camera_restored()
 
 """signal change_camera(position: Vector3)
 signal stats_changed(new_stats: Dictionary)

@@ -39,12 +39,12 @@ gdscript/warnings/integer_division=0
 window/size/viewport_width=1920
 window/size/viewport_height=1080
 window/size/mode=2
-window/stretch/mode="canvas_items"
-window/stretch/aspect="expand"
+window/stretch/mode="viewport"
 
 [global_group]
 
 Interactables="Group for anything that can be interacted with and caught by the RayCast."
+player=""
 
 [input]
 
@@ -108,6 +108,10 @@ action_drop={
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":82,"key_label":0,"unicode":114,"location":0,"echo":false,"script":null)
 ]
 }
+
+[navigation]
+
+3d/default_cell_height=0.05
 
 [physics]
 

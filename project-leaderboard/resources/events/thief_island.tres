@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="EventData" format=3 uid="uid://cqdqxc8fo3k42"]
+
+[ext_resource type="Script" uid="uid://yhbo18n3g6js" path="res://resources/bases/event_data.gd" id="1_3k6f0"]
+
+[resource]
+script = ExtResource("1_3k6f0")
+id = 2
+display_name = "Thief Island"
+task = "Kill the Evil Duck."
+metadata/_custom_type_script = "uid://yhbo18n3g6js"

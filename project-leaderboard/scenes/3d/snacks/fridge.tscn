@@ -344,6 +344,9 @@ mesh = SubResource("ArrayMesh_gu24x")
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("4_2pwq5")
+id = "fridge_door"
+display_name = "Fridge Door"
+hover_text = "Open Fridge"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="fridge_mesh/hinge/door/StaticBody3D" unique_id=1678334964]
 shape = SubResource("ConvexPolygonShape3D_jyvop")

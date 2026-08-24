@@ -18,6 +18,10 @@ var current_phase: Globals.Phase = Globals.Phase.MIDNIGHT
 var seconds_elapsed = 0
 var afternoon_timer: Timer = Timer.new()
 
+var rt_stats = {
+	"events_solved": []
+}
+
 # Godot
 func _ready():
 	self.add_child(afternoon_timer)
@@ -26,6 +30,8 @@ func _ready():
 	afternoon_timer.wait_time = 1
 	
 	afternoon_timer.timeout.connect(_on_timer_timeout)
+
+	Signals.event_solved.connect(_on_event_solved)
 
 # Main
 func start_day():
@@ -47,10 +53,18 @@ func end_day():
 	print("END DAY DayManager")
 	current_phase = Globals.Phase.MIDNIGHT
 	
-	var player_stats: Dictionary = PlayerManager.get_rt_stats()
-	var clicker_stats: Dictionary = ClickerManager.get_rt_stats()
+	var stats = [
+		PlayerManager.get_rt_stats(),
+		ClickerManager.get_rt_stats(),
+		TaskManager.get_rt_stats(),
+		rt_stats
+	]
+	var combined = {}
 	
-	Signals.day_ended.emit({})
+	for dict in stats:
+		combined.merge(dict, true)
+	
+	Signals.day_ended.emit(combined)
 
 # Getters
 func get_current_phase():
@@ -63,3 +77,6 @@ func _on_timer_timeout():
 	
 	if seconds_elapsed >= Constants.AFTERNOON_LENGTH:
 		end_afternoon()
+
+func _on_event_solved(event_data: EventData):
+	rt_stats["events_solved"].append(event_data.display_name)

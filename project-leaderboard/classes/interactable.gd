@@ -23,7 +23,6 @@ const NIGHT_FLAG: int = 4
 func _ready() -> void:
 	self.add_to_group("Interactables")
 	
-	hover_text = "Use %s" % display_name
 	Signals.phase_changed.connect(_on_phase_changed)
 
 # Getters
@@ -38,7 +37,10 @@ func get_item_needed():
 
 # Helpers
 func call_owner_method():
-	if not call_method.is_empty() and owner.has_method(call_method):
+	if call_method.is_empty(): return
+	if call_method == null: return
+	
+	if owner.has_method(call_method):
 		owner.call(call_method)
 	else:
 		push_warning("'%s' Interactable parent '%s' does not have the specified 'call_method' %s" % [

@@ -21,7 +21,7 @@ script = ExtResource("1_s8p0k")
 camera_source = 3
 id = "upgrades_board"
 display_name = "Upgrades Board"
-hover_text = "[E] View Upgrades"
+hover_text = "View Upgrades"
 
 [node name="SubViewport" type="SubViewport" parent="." unique_id=2017176015]
 size = Vector2i(1920, 1080)

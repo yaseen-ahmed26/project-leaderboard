@@ -19,7 +19,7 @@ var speed : float
 
 @onready var head = $head
 @onready var camera = $head/camera
-@onready var hud: Control = $hud
+@onready var hud: Control = $CanvasLayer/hud
 
 var original_camera_transform: Transform3D
 var on_terminal: bool = false
@@ -128,6 +128,8 @@ func _restore_camera():
 	lock_movement = false
 	
 	camera_source = Globals.CameraSources.PLAYER
+	
+	Signals.camera_restored.emit()
 
 func _on_main_menu_exit():
 	lock_movement = false

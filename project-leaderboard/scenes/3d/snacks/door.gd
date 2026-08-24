@@ -7,9 +7,9 @@ var open: bool = false
 func on_interaction():
 	if open:
 		animation_player.play_backwards("door_open")
-		hover_text = "[E] Close Fridge"
+		hover_text = "Open Fridge"
 	else:
 		animation_player.play("door_open")
-		hover_text = "[E] Open Fridge"
+		hover_text = "Close Fridge"
 	
 	open = not open

@@ -1,6 +1,9 @@
 [gd_scene format=3 uid="uid://c357kmk2h4x2p"]
 
 [ext_resource type="Script" uid="uid://n8sgpsa86v4j" path="res://scenes/ui/main_menu/main_menu.gd" id="1_1ch07"]
+[ext_resource type="Theme" uid="uid://d03lvrtjdihvb" path="res://resources/ui/standard.tres" id="1_e8t4i"]
+[ext_resource type="StyleBox" uid="uid://b8f2vevh6extd" path="res://resources/ui/buttons/standard.tres" id="3_cmwxi"]
+[ext_resource type="StyleBox" uid="uid://bfasd3pwnoifv" path="res://resources/ui/buttons/hover.tres" id="4_r70wa"]
 
 [node name="main_menu" type="Control" unique_id=318754658]
 layout_mode = 3
@@ -9,6 +12,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_e8t4i")
 script = ExtResource("1_1ch07")
 
 [node name="background" type="ColorRect" parent="." unique_id=1441299005]
@@ -28,13 +32,17 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -256.0
-offset_top = -58.0
+offset_top = -44.0
 offset_right = 256.0
-offset_bottom = 58.0
+offset_bottom = 44.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/font_size = 54
-text = "Start Day"
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 60
+theme_override_styles/normal = ExtResource("3_cmwxi")
+theme_override_styles/pressed = ExtResource("4_r70wa")
+theme_override_styles/hover = ExtResource("4_r70wa")
+text = "Play"
 
 [node name="title" type="RichTextLabel" parent="background" unique_id=994185327]
 layout_mode = 1
@@ -49,9 +57,21 @@ offset_right = 564.0
 offset_bottom = -279.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/normal_font_size = 54
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/normal_font_size = 70
 text = "Yes, I'm on Vacation"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="fade" type="ColorRect" parent="." unique_id=294784934]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
 
 [connection signal="pressed" from="background/play_btn" to="." method="_on_play_btn_pressed"]

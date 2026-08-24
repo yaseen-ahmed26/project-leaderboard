@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://w6xb6m1fbg6s"]
+
+[ext_resource type="Script" uid="uid://bsybe1ghopkel" path="res://scenes/3d/entity/entity.gd" id="1_iu3vl"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_l7yjw"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_l7yjw"]
+
+[node name="entity" type="CharacterBody3D" unique_id=437314716]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+script = ExtResource("1_iu3vl")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1372572172]
+mesh = SubResource("BoxMesh_l7yjw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=547371632]
+shape = SubResource("BoxShape3D_l7yjw")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=1786589388]
+avoidance_enabled = true
+radius = 0.8

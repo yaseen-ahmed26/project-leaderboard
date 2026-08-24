@@ -16,7 +16,6 @@ snack_data = ExtResource("2_rmavt")
 id = "apple"
 display_name = "Apple"
 can_interact = false
-disable_at = 6
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1090331479]
 transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)

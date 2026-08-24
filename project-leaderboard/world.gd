@@ -2,6 +2,7 @@ extends Node3D
 
 @onready var day_end: Control = $day_end
 @onready var added_events: Node = $added_events
+@onready var player: CharacterBody3D = $player
 
 @export var event_scenes: Dictionary[Globals.EventIDs, PackedScene]
 
@@ -11,7 +12,7 @@ func _ready() -> void:
 	markers = $event_placements.get_children()
 	
 	Signals.event_added.connect(_on_event_added)
-	Signals.event_solved.connect(_on_event_solved)
+	# Signals.event_solved.connect(_on_event_solved)
 	Signals.phase_changed.connect(_on_phase_changed)
 	Signals.day_ended.connect(_on_day_ended)
 	
@@ -41,10 +42,15 @@ func _on_event_solved(event_data: EventData):
 		var recovered_marker = scene.get_meta("marker_node") 
 		markers.append(recovered_marker)
 		
+		scene.clean_up()
 		scene.queue_free()
 
 func _clear_all_events():
 	for event in added_events.get_children():
+		# print(event.get_current_state())
+		
+		event.clean_up()
+		
 		if event.has_meta("marker_node"):
 			var recovered_marker = event.get_meta("marker_node")
 			if not markers.has(recovered_marker):
@@ -62,5 +68,8 @@ func _clear_all_events():
 
 func _on_phase_changed(new_phase: Globals.Phase):
 	match new_phase:
+		Globals.Phase.MORNING:
+			player.visible = true
+			player.get_node("head/camera").current = true
 		Globals.Phase.NIGHT:
 			_clear_all_events()

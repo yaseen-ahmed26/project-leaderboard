@@ -17,11 +17,17 @@ func _ready():
 	Signals.event_solved.connect(_on_event_solved)
 	Signals.task_progress.connect(_on_task_progress)
 	Signals.task_completed.connect(_on_task_completed)
+	Signals.change_camera.connect(_on_camera_change)
+	Signals.camera_restored.connect(_on_camera_restored)
 
 # Interaction
 func show_hover_prompt(new_text: String):
 	hover_prompt.text = Constants.HOVER_TEXT_FORMAT % new_text
-	hover_prompt.visible = true
+	
+	if owner.on_terminal:
+		hover_prompt.visible = false
+	else:
+		hover_prompt.visible = true
 
 func hide_hover_prompt():
 	hover_prompt.visible = false
@@ -93,3 +99,9 @@ func _on_phase_changed(new_phase: Globals.Phase):
 			animation_player.play("afternoon_start")
 		Globals.Phase.NIGHT:
 			animation_player.play_backwards("afternoon_start")
+
+func _on_camera_change(_position, _source):
+	animation_player.play("hide_hud")
+	
+func _on_camera_restored():
+	animation_player.play_backwards("hide_hud")

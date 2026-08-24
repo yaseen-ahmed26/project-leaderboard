@@ -18,6 +18,7 @@ var state: State = State.UNSOLVED:
 
 var lifecycle_timer: Timer
 var time_to_corrupt: float
+var is_destroyed: bool = false
 
 func _ready() -> void:
 	lifecycle_timer = Timer.new()
@@ -28,18 +29,23 @@ func _ready() -> void:
 	
 	lifecycle_timer.timeout.connect(_on_corruption_timeout)
 
+func get_current_state():
+	return State.keys()[state]
+
 func _on_state_changed(new_state: State):
 	match new_state:
 		State.UNSOLVED:
 			pass
 		State.GENERATING:
+			EventManager.event_solved(event_data)
+			
 			seconds_elapsed = 0
-			time_to_corrupt = randi_range(3, 7)
+			time_to_corrupt = randi_range(5, 12)
 			lifecycle_timer.start()
 			
 			var label = get_node_or_null("Label3D")
 			if label:
-				label.text = "GENERATING: 1/s"
+				label.text = "GENERATING: 1 Cookie/s"
 		State.CORRUPTED:
 			lifecycle_timer.stop()
 			var label = get_node_or_null("Label3D")
@@ -56,7 +62,14 @@ func _on_corruption_timeout():
 func solve_event():
 	EventManager.event_solved(event_data)
 
+func clean_up():
+	pass
+
 func on_tank_hit():
 	if state != State.CORRUPTED: return
+	if is_destroyed: return
 	
+	is_destroyed = true
 	solve_event()
+	
+	queue_free()

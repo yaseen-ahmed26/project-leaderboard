@@ -3,10 +3,10 @@
 [ext_resource type="Script" uid="uid://dvfxxfrbjlb2t" path="res://world.gd" id="1_aqk2v"]
 [ext_resource type="PackedScene" uid="uid://b82klctai8qrl" path="res://scenes/3d/room/room.tscn" id="1_fj7yv"]
 [ext_resource type="PackedScene" uid="uid://c357kmk2h4x2p" path="res://scenes/ui/main_menu/main_menu.tscn" id="1_tlwt5"]
-[ext_resource type="PackedScene" uid="uid://m4cbu7140kr6" path="res://scenes/3d/events/test_2/test_2.tscn" id="2_gbfbk"]
 [ext_resource type="PackedScene" uid="uid://cnsk2cfmoiwhy" path="res://scenes/3d/player/player.tscn" id="2_tlwt5"]
 [ext_resource type="PackedScene" uid="uid://bctk608adfe52" path="res://scenes/ui/day_end/day_end.tscn" id="3_036b0"]
 [ext_resource type="PackedScene" uid="uid://di35js64sgow1" path="res://scenes/3d/events/duck_island/duck_island.tscn" id="3_ioo17"]
+[ext_resource type="PackedScene" uid="uid://dpj2anxk3maoi" path="res://scenes/3d/events/thief_island/thief_island.tscn" id="4_ioo17"]
 [ext_resource type="PackedScene" uid="uid://b7ngk1ywbs1xj" path="res://scenes/3d/events/cabin_island/cabin_island.tscn" id="4_wse8f"]
 [ext_resource type="PackedScene" uid="uid://clujfgiuk5xyr" path="res://scenes/3d/tank/tank.tscn" id="9_ioo17"]
 
@@ -33,7 +33,7 @@ script = ExtResource("1_aqk2v")
 event_scenes = Dictionary[int, PackedScene]({
 0: ExtResource("4_wse8f"),
 1: ExtResource("3_ioo17"),
-2: ExtResource("2_gbfbk")
+2: ExtResource("4_ioo17")
 })
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=581328462]
@@ -53,7 +53,8 @@ mouse_filter = 2
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.05016768, -0.053027272, -0.032576323)
 
 [node name="player" parent="." unique_id=634988134 instance=ExtResource("2_tlwt5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.39077663, 1.3579212, -2.1898167)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.39077663, 1.3579214, -2.1898167)
+visible = false
 
 [node name="event_placements" type="Node" parent="." unique_id=122581998]
 
@@ -69,4 +70,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 18)
 [node name="added_events" type="Node" parent="." unique_id=1475327499]
 
 [node name="tank" parent="." unique_id=1544669537 instance=ExtResource("9_ioo17")]
-transform = Transform3D(0.8019049, 0, 0.5974517, 0, 1, 0, -0.5974517, 0, 0.8019049, 2.7438202, 2.30899, 3.9300814)
+transform = Transform3D(0.8019049, 0, 0.5974517, 0, 1, 0, -0.5974517, 0, 0.8019049, 2.7438202, 1.972916, 3.9300814)
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=879546015]
+transform = Transform3D(0.9675476, 0, 0.252689, 0, 1, 0, -0.252689, 0, 0.9675476, -0.8481469, 2.4607413, 1.419868)
+current = true

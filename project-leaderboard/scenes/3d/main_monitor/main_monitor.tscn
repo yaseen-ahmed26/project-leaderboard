@@ -19,7 +19,9 @@ albedo_texture = SubResource("ViewportTexture_84oj4")
 [node name="main_monitor" type="Area3D" unique_id=1943268639 groups=["Interactables"]]
 script = ExtResource("2_w1s8o")
 camera_source = 2
-hover_text = "[E] Start Afternoon"
+id = "clicker_board"
+display_name = "Clicker"
+hover_text = "Start Afternoon"
 disable_at = 4
 
 [node name="SubViewport" type="SubViewport" parent="." unique_id=2017176015]

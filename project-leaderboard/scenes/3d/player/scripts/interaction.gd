@@ -2,7 +2,7 @@ extends Node3D
 
 # Onready
 @onready var raycast: RayCast3D = $camera/raycast
-@onready var hud: Control = $"../hud"
+@onready var hud: Control = $"../CanvasLayer/hud"
 @onready var hand_marker: Marker3D = $camera/hand_marker
 @onready var camera: Camera3D = $camera
 
@@ -82,6 +82,9 @@ func pick_up_item(item: Holdable) -> void:
 		
 		if (item as Node) is RigidBody3D:
 			item.freeze = true
+			
+	if item.has_method("on_interaction"):
+		item.on_interaction()
 	
 	item.get_parent().remove_child(item)
 	hand_marker.add_child(item)

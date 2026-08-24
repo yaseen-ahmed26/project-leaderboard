@@ -5,4 +5,4 @@ func on_interaction():
 	
 	if DayManager.get_current_phase() != Globals.Phase.AFTERNOON:
 		DayManager.start_afternoon()
-		self.hover_text = "[E] Cookie Clicker"
+		self.hover_text = "Start Clicking"
