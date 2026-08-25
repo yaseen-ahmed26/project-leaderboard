@@ -20,7 +20,7 @@ albedo_texture = SubResource("ViewportTexture_84oj4")
 script = ExtResource("1_s8p0k")
 camera_source = 3
 id = "upgrades_board"
-display_name = "Upgrades Board"
+display_name = "Upgrades"
 hover_text = "View Upgrades"
 
 [node name="SubViewport" type="SubViewport" parent="." unique_id=2017176015]
@@ -29,7 +29,7 @@ size = Vector2i(1920, 1080)
 [node name="upgrades" parent="SubViewport" unique_id=1845973147 instance=ExtResource("2_3uh6k")]
 
 [node name="Marker3D" type="Marker3D" parent="." unique_id=188186575]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.84398985)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.73248506)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=793806003]
 shape = SubResource("BoxShape3D_nny7t")

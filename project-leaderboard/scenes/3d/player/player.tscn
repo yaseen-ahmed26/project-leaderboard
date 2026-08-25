@@ -31,6 +31,15 @@ script = ExtResource("2_bdlui")
 [node name="camera" type="Camera3D" parent="head" unique_id=1026836517]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.12547386, -0.3000967)
 
+[node name="flashlight" type="SpotLight3D" parent="head/camera" unique_id=1002213097]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0011321306, 0.3000967)
+light_energy = 0.0
+light_indirect_energy = 2.0
+light_volumetric_fog_energy = 2.0
+light_size = 0.3
+spot_range = 4.668
+spot_angle = 65.88402
+
 [node name="raycast" type="RayCast3D" parent="head/camera" unique_id=582776265]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.07042897, -0.1967754)
 target_position = Vector3(0, 0, -1.5)

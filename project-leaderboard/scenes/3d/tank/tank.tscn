@@ -13,6 +13,7 @@ script = ExtResource("1_rfsxe")
 camera_source = 1
 id = "tank"
 display_name = "Tank"
+hover_text = "Use Tank"
 disable_at = 5
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1153616500]

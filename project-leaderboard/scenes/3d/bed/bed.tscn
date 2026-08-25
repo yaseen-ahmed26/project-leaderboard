@@ -160,8 +160,8 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_b2dkw")
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_rqmxk"]
-points = PackedVector3Array(-0.19453478, 3.7020998, -0.11738491, 3.4585676, 2.7603, 7.18882, 3.513665, -0.0061, 7.2990146, 3.513665, -0.0061, -0.15151513, -0.21119994, -0.0057000555, 7.298215, -0.21119994, -0.0057000555, -0.15071523, 3.57375, 3.77925, 0.32982278, -0.15650249, 2.7603, 7.18882, -0.27168489, 3.77925, 0.32982278, 3.4966, 3.7020998, -0.11738491)
+[sub_resource type="BoxShape3D" id="BoxShape3D_rqmxk"]
+size = Vector3(3.7769578, 3.7081704, 7.570736)
 
 [node name="bed" type="StaticBody3D" unique_id=778414298]
 transform = Transform3D(0.55, 0, 0, 0, 0.55, 0, 0, 0, 0.55, 0, 0, 0)
@@ -183,5 +183,6 @@ mesh = SubResource("ArrayMesh_idcoo")
 [node name="pillow" type="MeshInstance3D" parent="bed_frame" unique_id=118264903]
 mesh = SubResource("ArrayMesh_rlla8")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1966128628]
-shape = SubResource("ConvexPolygonShape3D_rqmxk")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=214152940]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6768876, 1.8480002, 3.5737767)
+shape = SubResource("BoxShape3D_rqmxk")

@@ -20,6 +20,7 @@ var speed : float
 @onready var head = $head
 @onready var camera = $head/camera
 @onready var hud: Control = $CanvasLayer/hud
+@onready var flashlight: SpotLight3D = $head/camera/flashlight
 
 var original_camera_transform: Transform3D
 var on_terminal: bool = false
@@ -111,11 +112,21 @@ func _on_change_camera(new_position: Transform3D, source: Globals.CameraSources)
 	on_terminal = true
 	lock_movement = true
 	
+	head.drop_held_item()
+	
 	if source == Globals.CameraSources.TANK:
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	else:
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-
+		
+		var flashlight_tween: Tween = create_tween()
+		flashlight_tween.tween_property(
+			flashlight,
+			"light_energy",
+			Constants.TERMINAL_FLASHLIGHT_BRIGHTNESS,
+			0.2
+		)
+		
 	if source == Globals.CameraSources.CLICKER_MONITOR:
 		PlayerManager.entered_desk()
 
@@ -126,6 +137,14 @@ func _restore_camera():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	on_terminal = false
 	lock_movement = false
+	
+	var flashlight_tween: Tween = create_tween()
+	flashlight_tween.tween_property(
+		flashlight,
+		"light_energy",
+		0.0,
+		0.2
+	)
 	
 	camera_source = Globals.CameraSources.PLAYER
 	

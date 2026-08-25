@@ -2,7 +2,9 @@
 
 [ext_resource type="Theme" uid="uid://d03lvrtjdihvb" path="res://resources/ui/standard.tres" id="1_otel5"]
 [ext_resource type="Script" uid="uid://nth5bxr5ti0n" path="res://scenes/ui/main_clicker/main_clicker.gd" id="1_spcf1"]
+[ext_resource type="StyleBox" uid="uid://b8f2vevh6extd" path="res://resources/ui/buttons/standard.tres" id="3_0je1f"]
 [ext_resource type="StyleBox" uid="uid://2b22ksofsd7r" path="res://resources/ui/panels/standard.tres" id="3_wjn8v"]
+[ext_resource type="StyleBox" uid="uid://bfasd3pwnoifv" path="res://resources/ui/buttons/hover.tres" id="4_oebhx"]
 
 [node name="main_clicker" type="Control" unique_id=64477514]
 layout_mode = 3
@@ -23,7 +25,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.049030848, 0.55873525, 1, 1)
 
-[node name="Button" type="Button" parent="." unique_id=601818736]
+[node name="clicker_btn" type="Button" parent="." unique_id=601818736]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -36,44 +38,67 @@ offset_right = 308.0
 offset_bottom = 94.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/font_size = 54
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 70
+theme_override_styles/normal = ExtResource("3_0je1f")
+theme_override_styles/pressed = ExtResource("4_oebhx")
+theme_override_styles/hover = ExtResource("4_oebhx")
 text = "CLICK ME"
 
-[node name="total_cookies" type="Panel" parent="." unique_id=2096335236]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.009895833
-anchor_top = 0.018518519
-anchor_right = 0.23489584
-anchor_bottom = 0.12592593
-theme_override_styles/panel = ExtResource("3_wjn8v")
-metadata/_edit_use_anchors_ = true
-
-[node name="label" type="RichTextLabel" parent="total_cookies" unique_id=408592371]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/outline_size = 10
-theme_override_font_sizes/normal_font_size = 40
-bbcode_enabled = true
-text = "COOKIES: [color=green]0"
+[node name="click_effect" type="RichTextLabel" parent="." unique_id=1126762164]
+layout_mode = 0
+offset_left = -231.0
+offset_top = 85.0
+offset_right = -31.0
+offset_bottom = 285.0
+mouse_filter = 2
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/normal_font_size = 80
+text = "+%d"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="task" type="Panel" parent="." unique_id=349962811]
+[node name="stats" type="RichTextLabel" parent="." unique_id=107247102]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 28.0
+offset_top = -176.0
+offset_right = 507.0
+offset_bottom = 176.0
+grow_vertical = 2
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/normal_font_size = 42
+bbcode_enabled = true
+text = "[color=green]1[color=white] Cookie per Click"
+vertical_alignment = 1
+
+[node name="left_hud" type="Control" parent="." unique_id=102168204]
+layout_mode = 1
+anchor_left = -0.26875
+anchor_right = -0.018229166
+anchor_bottom = 1.0
+offset_left = 516.0
+offset_right = 516.0
+grow_vertical = 2
+mouse_filter = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="task" type="Panel" parent="left_hud" unique_id=1585159469]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.009895833
+anchor_left = -0.27239582
 anchor_top = 0.8064815
-anchor_right = 0.23645833
+anchor_right = -0.045833334
 anchor_bottom = 0.97962964
+offset_left = 150.02238
+offset_right = 476.04584
 theme_override_styles/panel = ExtResource("3_wjn8v")
 metadata/_edit_use_anchors_ = true
 
-[node name="label" type="RichTextLabel" parent="task" unique_id=2013437416]
+[node name="label" type="RichTextLabel" parent="left_hud/task" unique_id=749158539]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -91,4 +116,28 @@ Progress: 1/1"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[node name="total_cookies" type="Panel" parent="left_hud" unique_id=800831179]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.03950104
+anchor_top = 0.018518519
+anchor_right = 0.93762994
+anchor_bottom = 0.12592593
+theme_override_styles/panel = ExtResource("3_wjn8v")
+metadata/_edit_use_anchors_ = true
+
+[node name="label" type="RichTextLabel" parent="left_hud/total_cookies" unique_id=1799595154]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/normal_font_size = 40
+bbcode_enabled = true
+text = "COOKIES: [color=green]0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="clicker_btn" to="." method="_on_clicker_btn_pressed"]

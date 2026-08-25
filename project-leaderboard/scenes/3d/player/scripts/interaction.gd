@@ -72,7 +72,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	# Throw item
 	if event.is_action_pressed("action_throw") and current_held_item:
 		if not current_held_item.get_throw_status(): return
-		
+
 		throw_held_item()
 
 func use_held_item() -> void:
@@ -98,7 +98,6 @@ func pick_up_item(item: Holdable) -> void:
 	current_held_item = item
 	var body: Node3D = item.carry_root if item.carry_root else item
 	
-	# 1. Save original scale before reparenting
 	var original_scale: Vector3 = body.scale
 	
 	body.process_mode = PROCESS_MODE_DISABLED
@@ -110,7 +109,6 @@ func pick_up_item(item: Holdable) -> void:
 	body.get_parent().remove_child(body)
 	hand_marker.add_child(body)
 	
-	# 2. Reset position/rotation but keep original scale
 	body.position = Vector3.ZERO
 	body.rotation = Vector3.ZERO
 	body.scale = original_scale
@@ -118,6 +116,8 @@ func pick_up_item(item: Holdable) -> void:
 	hud.call("show_controls", item)
 
 func drop_held_item() -> void:
+	if not current_held_item or current_held_item == null: return
+	
 	var item = current_held_item
 	current_held_item = null
 	hud.call("hide_controls")

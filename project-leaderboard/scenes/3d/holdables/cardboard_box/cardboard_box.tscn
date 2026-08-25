@@ -72,16 +72,18 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_v71hw")
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_geu3o"]
-points = PackedVector3Array(-1, -1, -1, 1, 1, 1, 1, -1, 1, 1, 1, -1, -1, 1, 1, 1, -1, -1, -1, -1, 1, -1, 1, -1)
+[sub_resource type="BoxShape3D" id="BoxShape3D_ipg5f"]
+size = Vector3(2, 2, 2)
 
 [node name="cardboard_box" type="RigidBody3D" unique_id=756115464]
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("1_ipg5f")
 delete_on_use = false
+can_use = false
 id = "cardboard_box"
 display_name = "Cardboard box"
+hover_text = "Pick up Box"
 
 [node name="box" type="MeshInstance3D" parent="." unique_id=499389802]
 transform = Transform3D(0.30940938, 0, 0, 0, 0.2771289, 0, 0, 0, 0.47728124, 0, 0, 0)
@@ -91,6 +93,6 @@ mesh = SubResource("ArrayMesh_422sj")
 transform = Transform3D(-2.233198e-09, 1.0000799, 0, 0.012488948, 1.7882823e-07, 0, 0, 0, 0.0398919, 2.6291174e-05, 0.33749378, 0)
 mesh = SubResource("ArrayMesh_xh2vx")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2102843716]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=755020703]
 transform = Transform3D(0.30940938, 0, 0, 0, 0.2771289, 0, 0, 0, 0.47728124, 0, 0, 0)
-shape = SubResource("ConvexPolygonShape3D_geu3o")
+shape = SubResource("BoxShape3D_ipg5f")

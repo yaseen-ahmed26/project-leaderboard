@@ -286,11 +286,11 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_xtvgp")
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_jyvop"]
-points = PackedVector3Array(0.9883164, 2.2585518, 0.948782, -0.9838804, -2.249327, -0.9529793, 0.9896045, -2.261496, -0.95811313, -0.9922728, -2.2685094, 0.95298284, -0.9840017, 2.249604, -0.9530962, -0.9922728, 2.2685094, 0.95298284, 0.9896045, 2.261496, -0.95811313, 0.98817486, -2.2582283, 0.9486455)
+[sub_resource type="BoxShape3D" id="BoxShape3D_jyvop"]
+size = Vector3(2, 4.6675315, 1.9344864)
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_2pwq5"]
-points = PackedVector3Array(-0.98588777, -0.98590606, -0.98590606, 0.9858869, 0.9858866, 0.9858866, 0.98590016, 0.98589987, -0.98589987, 0.9866912, -0.98669094, 0.98669094, -0.9856502, 0.9856685, 0.9856685, -0.9866944, -0.9867127, 0.9867127, -0.98588777, 0.98590606, -0.98590606, 0.98590016, -0.98589987, -0.98589987)
+[sub_resource type="BoxShape3D" id="BoxShape3D_2pwq5"]
+size = Vector3(2, 2, 2)
 
 [node name="fridge" type="StaticBody3D" unique_id=2078860456]
 transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
@@ -340,17 +340,15 @@ mesh = SubResource("ArrayMesh_4kpgc")
 transform = Transform3D(0.059267852, 0, 0, 0, 1.0041275, 0, 0, 0, -0.5617084, -0.829703, 0, -2.8054428)
 mesh = SubResource("ArrayMesh_gu24x")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="fridge_mesh/hinge/door" unique_id=1997500660]
-collision_layer = 3
-collision_mask = 3
+[node name="StaticBody3D" type="StaticBody3D" parent="fridge_mesh/hinge/door" unique_id=1016464244]
 script = ExtResource("4_2pwq5")
 id = "fridge_door"
 display_name = "Fridge Door"
 hover_text = "Open Fridge"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="fridge_mesh/hinge/door/StaticBody3D" unique_id=1678334964]
-shape = SubResource("ConvexPolygonShape3D_jyvop")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="fridge_mesh/hinge/door/StaticBody3D" unique_id=883976664]
+shape = SubResource("BoxShape3D_jyvop")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=886050424]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1663278512]
 transform = Transform3D(1.7376677, 0, 0, 0, 3.4336405, 0, 0, 0, 1.7376677, 0, 3.4047592, 0)
-shape = SubResource("ConvexPolygonShape3D_2pwq5")
+shape = SubResource("BoxShape3D_2pwq5")

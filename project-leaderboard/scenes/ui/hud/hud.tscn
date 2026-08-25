@@ -45,7 +45,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("total_cookies:position")
+tracks/3/path = NodePath("left_hud/total_cookies:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -57,7 +57,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("task:position")
+tracks/4/path = NodePath("left_hud/task:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -69,7 +69,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("day_counter:position")
+tracks/5/path = NodePath("left_hud/day_counter:position")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -81,7 +81,7 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("phase:position")
+tracks/6/path = NodePath("left_hud/phase:position")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -136,7 +136,7 @@ length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("total_cookies:position")
+tracks/0/path = NodePath("left_hud/total_cookies:position")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -148,7 +148,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("task:position")
+tracks/1/path = NodePath("left_hud/task:position")
 tracks/1/interp = 2
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -160,7 +160,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("day_counter:position")
+tracks/2/path = NodePath("left_hud/day_counter:position")
 tracks/2/interp = 2
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -172,7 +172,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("phase:position")
+tracks/3/path = NodePath("left_hud/phase:position")
 tracks/3/interp = 2
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -336,19 +336,33 @@ text = "ISLANDS"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="total_cookies" type="Panel" parent="." unique_id=2034833197]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1396346614]
+libraries/ = SubResource("AnimationLibrary_2wu1p")
+
+[node name="left_hud" type="Control" parent="." unique_id=1777059781]
+layout_mode = 1
+anchor_left = -0.26875
+anchor_right = -0.018229166
+anchor_bottom = 1.0
+offset_left = 516.0
+offset_right = 516.0
+grow_vertical = 2
+mouse_filter = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="day_counter" type="Panel" parent="left_hud" unique_id=858690297]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = -0.27239582
-anchor_top = 0.018518519
-anchor_right = -0.047395833
-anchor_bottom = 0.12592593
-offset_left = 542.0
-offset_right = 542.0
+anchor_top = 0.14166667
+anchor_right = -0.18489583
+anchor_bottom = 0.21018519
+offset_left = 150.02238
+offset_right = 275.93475
 theme_override_styles/panel = ExtResource("3_as3gr")
 metadata/_edit_use_anchors_ = true
 
-[node name="label" type="RichTextLabel" parent="total_cookies" unique_id=463376807]
+[node name="label" type="RichTextLabel" parent="left_hud/day_counter" unique_id=1992667557]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -356,25 +370,25 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/outline_size = 10
-theme_override_font_sizes/normal_font_size = 40
+theme_override_font_sizes/normal_font_size = 30
 bbcode_enabled = true
-text = "COOKIES: [color=green]0"
+text = "DAY: [color=green]1"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="task" type="Panel" parent="." unique_id=193558457]
+[node name="task" type="Panel" parent="left_hud" unique_id=193558457]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = -0.27239582
 anchor_top = 0.8064815
 anchor_right = -0.045833334
 anchor_bottom = 0.97962964
-offset_left = 542.0
-offset_right = 542.0
+offset_left = 150.02238
+offset_right = 476.04584
 theme_override_styles/panel = ExtResource("3_as3gr")
 metadata/_edit_use_anchors_ = true
 
-[node name="label" type="RichTextLabel" parent="task" unique_id=135120711]
+[node name="label" type="RichTextLabel" parent="left_hud/task" unique_id=135120711]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -392,19 +406,17 @@ Progress: 1/1"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="day_counter" type="Panel" parent="." unique_id=858690297]
+[node name="total_cookies" type="Panel" parent="left_hud" unique_id=2034833197]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = -0.27239582
-anchor_top = 0.14166667
-anchor_right = -0.18489583
-anchor_bottom = 0.21018519
-offset_left = 542.0
-offset_right = 541.9999
+anchor_left = 0.03950104
+anchor_top = 0.018518519
+anchor_right = 0.93762994
+anchor_bottom = 0.12592593
 theme_override_styles/panel = ExtResource("3_as3gr")
 metadata/_edit_use_anchors_ = true
 
-[node name="label" type="RichTextLabel" parent="day_counter" unique_id=1992667557]
+[node name="label" type="RichTextLabel" parent="left_hud/total_cookies" unique_id=463376807]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -412,25 +424,25 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/outline_size = 10
-theme_override_font_sizes/normal_font_size = 30
+theme_override_font_sizes/normal_font_size = 40
 bbcode_enabled = true
-text = "DAY: [color=green]1"
+text = "COOKIES: [color=green]0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="phase" type="Panel" parent="." unique_id=1900937235]
+[node name="phase" type="Panel" parent="left_hud" unique_id=1900937235]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = -0.17708333
+anchor_left = 0.10520833
 anchor_top = 0.14166667
-anchor_right = -0.047395833
+anchor_right = 0.23489584
 anchor_bottom = 0.21018519
-offset_left = 542.0
-offset_right = 542.0
+offset_left = 151.39479
+offset_right = 338.0151
 theme_override_styles/panel = ExtResource("3_as3gr")
 metadata/_edit_use_anchors_ = true
 
-[node name="label" type="RichTextLabel" parent="phase" unique_id=517487974]
+[node name="label" type="RichTextLabel" parent="left_hud/phase" unique_id=517487974]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -443,6 +455,3 @@ bbcode_enabled = true
 text = "[color=green]MORNING"
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1396346614]
-libraries/ = SubResource("AnimationLibrary_2wu1p")

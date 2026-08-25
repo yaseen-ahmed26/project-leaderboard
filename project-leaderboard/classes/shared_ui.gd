@@ -5,8 +5,8 @@ var total_cookies: Panel
 var task: Panel
 
 func _ready() -> void:
-	total_cookies = $total_cookies
-	task = $task
+	total_cookies = $left_hud/total_cookies
+	task = $left_hud/task
 
 	Signals.stats_changed.connect(_on_stats_changed)
 	Signals.task_progress.connect(_on_task_progress)

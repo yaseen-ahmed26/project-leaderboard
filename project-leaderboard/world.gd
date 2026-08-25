@@ -75,8 +75,8 @@ func _on_phase_changed(new_phase: Globals.Phase):
 			player.visible = true
 			player.get_node("head/camera").current = true
 		Globals.Phase.NIGHT:
-			void_zone.set_collision_mask_value(1, false)
-			void_zone.set_collision_mask_value(2, false)
+			# void_zone.set_collision_mask_value(1, false)
+			# void_zone.set_collision_mask_value(2, false)
 			_clear_all_events()
 
 func _on_body_entered(body: Node3D):
@@ -88,8 +88,11 @@ func _on_body_entered(body: Node3D):
 		return
 		
 	if body is CharacterBody3D:
-		return	
+		return
 		
+	if body is Node3D:
+		return
+	
 	if body is not Holdable:
 		return
 		

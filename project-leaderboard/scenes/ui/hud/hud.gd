@@ -3,7 +3,11 @@ extends SharedUI
 @onready var hover_prompt: RichTextLabel = $hover_prompt
 @onready var template: RichTextLabel = $event_list/holder/template
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
-@onready var phase: Panel = $phase
+@onready var phase: Panel = $left_hud/phase
+@onready var left_hud: Control = $left_hud
+
+const LEFT_HUD_HIDDEN_POSITION := Vector2(-516.0, 0.0)
+const LEFT_HUD_SHOWN_POSITION := Vector2(0.0, 0.0)
 
 # Godot
 func _ready():
@@ -16,6 +20,7 @@ func _ready():
 	Signals.event_solved.connect(_on_event_solved)
 	Signals.change_camera.connect(_on_camera_change)
 	Signals.camera_restored.connect(_on_camera_restored)
+	Signals.day_ended.connect(_on_day_ended)
 
 # Interaction
 func show_hover_prompt(new_text: String):
@@ -29,11 +34,17 @@ func show_hover_prompt(new_text: String):
 func hide_hover_prompt():
 	hover_prompt.visible = false
 	
-func show_controls(item: Holdable):
-	var format: String = Constants.CONTROLS_FORMAT if item.get_throw_status() else Constants.CONTROLS_FORMAT_NO_THROW
+func show_controls(item: Holdable):	
+	var text = "[color=gold]%s\n%s"
+	var controls_copy: Dictionary = Constants.CONTROLS_FORMAT.duplicate_deep()
+	
+	if not item.get_throw_status():
+		controls_copy.erase("throw")
+	elif not item.get_use_status():
+		controls_copy.erase("use")
 	
 	$controls.visible = true
-	$controls.text = format % item.display_name
+	$controls.text = text % [item.display_name, "\n".join(controls_copy.values())]
 
 func hide_controls():
 	$controls.visible = false
@@ -79,8 +90,20 @@ func _on_phase_changed(new_phase: Globals.Phase):
 		Globals.Phase.NIGHT:
 			animation_player.play_backwards("afternoon_start")
 
+func _tween_hud(target_position: Vector2):
+	var tween: Tween = create_tween()
+	tween.tween_property(
+		left_hud,
+		"position",
+		target_position,
+		0.5
+	).set_trans(Tween.TRANS_SINE)
+
 func _on_camera_change(_position, _source):
-	animation_player.play("hide_hud")
+	_tween_hud(LEFT_HUD_HIDDEN_POSITION)
 	
 func _on_camera_restored():
-	animation_player.play_backwards("hide_hud")
+	_tween_hud(LEFT_HUD_SHOWN_POSITION)
+
+func _on_day_ended(_stats):
+	_tween_hud(LEFT_HUD_HIDDEN_POSITION)
