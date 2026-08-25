@@ -6,42 +6,40 @@ extends Node3D
 @onready var hand_marker: Marker3D = $camera/hand_marker
 @onready var camera: Camera3D = $camera
 
+const OUTLINE_MAT: ShaderMaterial = preload("res://shaders/interactable_outline.tres")
+
 # The current object being looked at
 var current_interactable_object: Interactable 
 # The current item being held
 var current_held_item: Holdable = null
 
 func _physics_process(_delta: float) -> void:
-	# Check if the raycast is hitting anything
 	if raycast.is_colliding():
-		# Get the CollisionObject3D the Raycast is hitting
 		var interactable_object = raycast.get_collider()
 		
-		# If there is none, do nothing
-		if not interactable_object or interactable_object == null: return
-		if not interactable_object.get_interact_status(): return
+		if not interactable_object:
+			_clear_highlight_and_prompt()
+			return
 		
-		# If the item we're looking at is an Interactable
-		if interactable_object.is_in_group("Interactables"):
-			# If it cannot be interacted with, do nothing
-			if not interactable_object.get_interact_status(): return
-			
-			# Set the object we're looking at to the current object
-			current_interactable_object = interactable_object
-			
-			# If we're holding an item and that is the one the object we're looking at needs
+		# If the item we're looking at is a valid Interactable
+		if interactable_object.is_in_group("Interactables") and interactable_object.get_interact_status():
+			# If we started looking at a new object, switch the outline
+			if current_interactable_object != interactable_object:
+				_set_object_highlight(current_interactable_object, false)
+				current_interactable_object = interactable_object
+				_set_object_highlight(current_interactable_object, true)
+
 			if current_held_item and current_interactable_object.get_item_needed() == current_held_item.id:
 				hud.call("show_hover_prompt", "[LMB] Use %s on %s" % [
 					current_held_item.display_name, 
 					current_interactable_object.display_name
 				])
-			# Otherwise just show the normal prompt
 			else:
 				hud.call("show_hover_prompt", current_interactable_object.get_hover_text())
-	else:
-		# Hide the HUD and clear current object
-		current_interactable_object = null
-		hud.call("hide_hover_prompt")
+			return
+
+	# Raycast hit nothing or an invalid object
+	_clear_highlight_and_prompt()
 	
 func _unhandled_input(event: InputEvent) -> void:
 	# If the player clicks E
@@ -96,6 +94,7 @@ func consume_held_item() -> void:
 
 func pick_up_item(item: Holdable) -> void:
 	current_held_item = item
+	_set_object_highlight(item, false)
 	var body: Node3D = item.carry_root if item.carry_root else item
 	
 	var original_scale: Vector3 = body.scale
@@ -186,3 +185,21 @@ func _enable_item_physics(body: Node3D) -> void:
 		rb.freeze = false
 		rb.linear_velocity = Vector3.ZERO
 		rb.angular_velocity = Vector3.ZERO
+
+func _clear_highlight_and_prompt() -> void:
+	if current_interactable_object:
+		_set_object_highlight(current_interactable_object, false)
+		current_interactable_object = null
+		
+	hud.call("hide_hover_prompt")
+
+func _set_object_highlight(object: Node, enabled: bool) -> void:
+	if not object: return
+	
+	# If this is a proxy entity (like an AI CharacterBody), outline the root body
+	var target_node: Node = object
+	if object is Holdable and (object as Holdable).carry_root:
+		target_node = (object as Holdable).carry_root
+		
+	for mesh: MeshInstance3D in target_node.find_children("*", "MeshInstance3D", true, false):
+		mesh.material_overlay = OUTLINE_MAT if enabled else null

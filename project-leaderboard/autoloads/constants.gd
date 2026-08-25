@@ -1,12 +1,16 @@
 extends Node
 
 # DayManager
-const AFTERNOON_LENGTH: float = 60.0
+const AFTERNOON_LENGTH: float = 80.0
 
 # EventManager
 const MAX_ACTIVE_EVENTS: int = 3 
 const INITAL_EVENT_SPAWN: int = 2
 const INITAL_EVENT_SPAWN_TIME: int = 1
+
+# Event Class
+const TIME_TO_CORRUPT_MIN := 8
+const TIME_TO_CORRUPT_MAX := 15
 
 # tank.gd
 const TURRET_DELAY_SPEED: float = 4.0
@@ -26,9 +30,9 @@ const COOKIE_COUNTER_FORMAT: String = "COOKIES: [color=green]%.1f"
 const TASK_FORMAT: String = "Task: [color=green]%s\n[color=white]%s\nProgress: [color=green]%d/%d"
 const TASK_COMPLETE_FORMAT: String = "Task: [color=green]%s\n[color=white]%s\n[color=gold]COMPLETE!"
 const CONTROLS_FORMAT: Dictionary[String, String] = {
-	"use": "[color=green][LMB] [color=white]Use",
-	"throw": "[color=green][R] [color=white]Throw",
-	"drop": "[color=green][T] [color=white]Drop"
+	"use": "[color=white]Use [color=green][LMB]",
+	"throw": "[color=white]Throw [color=green][R]",
+	"drop": "[color=white]Drop [color=green][T]"
 }
 const FELL_VOID_FORMAT: String = "[color=white]Fell into the Void [color=green]%d [color=white]%s"
 const ITEM_VOID_FOMRAT: String = "[color=green]%d [color=white]%s thrown into the Void"

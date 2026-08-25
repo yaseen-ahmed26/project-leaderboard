@@ -74,7 +74,7 @@ func _on_afternoon_timer(seconds_elapsed: int):
 		else:
 			spawn_event(1)
 			
-		spawn_next_event_at = total_seconds + randi_range(5, 14)
+		spawn_next_event_at = total_seconds + randi_range(16, 26)
 
 func get_event_stats():
 	return rt_stats.get("events")

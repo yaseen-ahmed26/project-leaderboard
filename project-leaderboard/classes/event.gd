@@ -40,7 +40,7 @@ func _on_state_changed(new_state: State):
 			EventManager.event_solved(event_data)
 			
 			seconds_elapsed = 0
-			time_to_corrupt = randi_range(5, 12)
+			time_to_corrupt = randi_range(Constants.TIME_TO_CORRUPT_MIN, Constants.TIME_TO_CORRUPT_MAX)
 			lifecycle_timer.start()
 			
 			var label = get_node_or_null("Label3D")

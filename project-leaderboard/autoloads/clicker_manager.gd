@@ -14,7 +14,7 @@ var rt_stats: Dictionary = {
 	"cookies_per_click": 1.0,
 	"click_multiplier": 1.0,
 	"passive_generation": 0.1,
-	"decay_multiplier": 1.5,
+	"decay_multiplier": 1.2,
 	"decay_rate": 0.01
 }
 
@@ -46,11 +46,11 @@ func click_cookie():
 
 func enable_decay():
 	state = State.DECAY
-	rt_stats["decay_multiplier"] = 1.5
+	rt_stats["decay_multiplier"] = 1.2
 
 func disable_decay():
 	state = State.DISABLED
-	Signals.autoclicker_decayed.emit("[color=gold]NONE!")
+	Signals.autoclicker_decayed.emit("[color=gold]NONE")
 
 # Connections
 func _on_timer_timeout():
@@ -68,7 +68,7 @@ func _on_timer_timeout():
 			state = State.DISABLED
 		
 		amount = _calculate_decay()
-		Signals.autoclicker_decayed.emit("%s" % (rt_stats["decay_multiplier"] * 100))
+		Signals.autoclicker_decayed.emit("%s%%" % (snapped(rt_stats["decay_multiplier"] * 100, 0.1)))
 		
 	PlayerManager.add_cookies(amount)
 	

@@ -16,17 +16,40 @@ var speed : float
 @export var air_control = 5.0
 @export var air_resistance = 2.0
 @export var lock_movement: bool = false
+# Headbob & Sway Settings
+@export var bob_frequency: float = 2.45
+@export var bob_amplitude: float = 0.13
+@export var idle_sway_frequency: float = 0.8
+@export var idle_sway_amplitude: float = 0.015
+@export var bob_lerp_speed: float = 10.0
+
+# Hand Sway & Bob Settings
+@export var hand_bob_amount: float = 0.025
+@export var hand_sway_amount: float = 0.04
+@export var hand_sway_rotation: float = 0.04
+@export var hand_lerp_speed: float = 12.0
+
+var default_hand_pos: Vector3 = Vector3.ZERO
+var default_hand_rot: Vector3 = Vector3.ZERO
+var mouse_input: Vector2 = Vector2.ZERO
+
+var bob_time: float = 0.0
+var default_camera_pos: Vector3 = Vector3.ZERO
 
 @onready var head = $head
 @onready var camera = $head/camera
 @onready var hud: Control = $CanvasLayer/hud
 @onready var flashlight: SpotLight3D = $head/camera/flashlight
+@onready var hand_marker: Marker3D = $head/camera/hand_marker
 
 var original_camera_transform: Transform3D
 var on_terminal: bool = false
 var camera_source: Globals.CameraSources
 
 func _ready():
+	default_camera_pos = camera.position
+	default_hand_pos = hand_marker.position
+	default_hand_rot = hand_marker.rotation
 	camera_source = Globals.CameraSources.PLAYER
 	
 	Signals.change_camera.connect(_on_change_camera)
@@ -61,6 +84,9 @@ func _unhandled_input(event):
 
 	if Input.is_action_just_pressed("action_shoot") and camera_source == Globals.CameraSources.TANK:
 		fire_tank()
+		
+	if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
+		mouse_input = event.relative
 
 func _physics_process(delta):
 	if lock_movement: return
@@ -100,6 +126,8 @@ func _physics_process(delta):
 		velocity.z = horizontal_velocity.z
 	
 	move_and_slide()
+	_process_headbob(delta, horizontal_velocity)
+	_process_hand_sway(delta, horizontal_velocity)
 
 # Signals
 func _on_change_camera(new_position: Transform3D, source: Globals.CameraSources):
@@ -206,3 +234,55 @@ func fire_tank():
 			target.on_tank_hit()
 		else:
 			print("Target doesn't have on_tank_hit method")
+
+func _process_headbob(delta: float, h_velocity: Vector3) -> void:
+	if camera_source != Globals.CameraSources.PLAYER or on_terminal:
+		return
+
+	var target_pos: Vector3 = default_camera_pos
+
+	if is_on_floor():
+		var move_speed := h_velocity.length()
+		
+		# walking (bob)
+		if move_speed > 0.2:
+			bob_time += delta * move_speed * bob_frequency
+			target_pos.y += sin(bob_time) * bob_amplitude
+			target_pos.x += cos(bob_time * 0.5) * (bob_amplitude * 0.6)
+		# idle (sway)
+		else:
+			bob_time += delta * idle_sway_frequency
+			target_pos.y += sin(bob_time) * idle_sway_amplitude
+			target_pos.x += cos(bob_time * 0.5) * (idle_sway_amplitude * 0.5)
+	else:
+		# airborne
+		target_pos = default_camera_pos
+
+	camera.position = camera.position.lerp(target_pos, delta * bob_lerp_speed)
+
+func _process_hand_sway(delta: float, h_velocity: Vector3) -> void:
+	if not hand_marker or camera_source != Globals.CameraSources.PLAYER:
+		return
+
+	var target_pos: Vector3 = default_hand_pos
+	var target_rot: Vector3 = default_hand_rot
+
+	# when looking around
+	target_pos.x -= mouse_input.x * (hand_sway_amount * 0.001)
+	target_pos.y += mouse_input.y * (hand_sway_amount * 0.001)
+	target_rot.z += mouse_input.x * (hand_sway_rotation * 0.001)
+	target_rot.x -= mouse_input.y * (hand_sway_rotation * 0.001)
+
+	mouse_input = Vector2.ZERO
+
+	#when walking
+	if is_on_floor() and h_velocity.length() > 0.2:
+		target_pos.y += sin(bob_time) * hand_bob_amount
+		target_pos.x += cos(bob_time * 0.5) * (hand_bob_amount * 0.6)
+		target_rot.z += cos(bob_time * 0.5) * (hand_bob_amount * 0.4)
+
+	# back to default
+	hand_marker.position = hand_marker.position.lerp(target_pos, delta * hand_lerp_speed)
+	hand_marker.rotation.x = lerp_angle(hand_marker.rotation.x, target_rot.x, delta * hand_lerp_speed)
+	hand_marker.rotation.y = lerp_angle(hand_marker.rotation.y, target_rot.y, delta * hand_lerp_speed)
+	hand_marker.rotation.z = lerp_angle(hand_marker.rotation.z, target_rot.z, delta * hand_lerp_speed)

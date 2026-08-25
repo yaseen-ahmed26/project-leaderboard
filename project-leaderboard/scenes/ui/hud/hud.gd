@@ -27,12 +27,24 @@ func show_hover_prompt(new_text: String):
 	hover_prompt.text = Constants.HOVER_TEXT_FORMAT % new_text
 	
 	if owner.on_terminal:
-		hover_prompt.visible = false
+		hide_hover_prompt()
 	else:
-		hover_prompt.visible = true
+		var fade_tween: Tween = create_tween()
+		fade_tween.tween_property(
+			hover_prompt,
+			"modulate:a",
+			1.0,
+			0.15
+		)
 
 func hide_hover_prompt():
-	hover_prompt.visible = false
+	var fade_tween: Tween = create_tween()
+	fade_tween.tween_property(
+		hover_prompt,
+		"modulate:a",
+		0.0,
+		0.15
+	)
 	
 func show_controls(item: Holdable):	
 	var text = "[color=gold]%s\n%s"
@@ -58,31 +70,46 @@ func _on_afternoon_timer(seconds_elapsed: int):
 	var minutes: int = (total_secs % 3600) / 60
 	var seconds: int = total_secs % 60
 	
-	$afternoon_timer.text = "TIME SURVIVED: [color=green]%02d:%02d" % [minutes, seconds]
+	$afternoon_timer.text = "[color=green]%02d:%02d" % [minutes, seconds]
 
 func _on_event_added(details: EventData):
 	var clone: RichTextLabel = template.duplicate()
+	$event_list/holder.add_child(clone)
 	
 	clone.name = Globals.get_lower_event_id(details.id)
-	clone.text = "[color=green]" + details.display_name
+	clone.text = "[color=green][!] [color=white]" + details.display_name
 	
 	var desc = clone.get_node("desc")
-	desc.text = details.task
+	desc.text = "- " + details.task
 	
 	clone.visible = true
 	
-	$event_list/holder.add_child(clone)
+	var tween: Tween = create_tween()
+	tween.tween_property(
+		clone,
+		"modulate:a",
+		1.0,
+		0.5
+	)
 
 func _on_event_solved(details: EventData):
 	var lower_id = Globals.get_lower_event_id(details.id)
 	var label = $event_list/holder.get_node_or_null(lower_id)
 	
 	if label:
+		var tween: Tween = create_tween()
+		tween.tween_property(
+			label,
+			"modulate:a",
+			0.0,
+			0.5
+		)
+		await tween.finished
 		label.queue_free()
 		
 func _on_phase_changed(new_phase: Globals.Phase):
 	var label = phase.get_node("label")
-	label.text = "[color=green]" + Globals.get_lower_phase(new_phase).to_upper()
+	label.text = Globals.get_lower_phase(new_phase).to_upper()
 	
 	match new_phase:
 		Globals.Phase.AFTERNOON:
@@ -101,9 +128,12 @@ func _tween_hud(target_position: Vector2):
 
 func _on_camera_change(_position, _source):
 	_tween_hud(LEFT_HUD_HIDDEN_POSITION)
+	$crosshair.visible = false
 	
 func _on_camera_restored():
 	_tween_hud(LEFT_HUD_SHOWN_POSITION)
+	$crosshair.visible = true
 
 func _on_day_ended(_stats):
 	_tween_hud(LEFT_HUD_HIDDEN_POSITION)
+	$crosshair.visible = false
