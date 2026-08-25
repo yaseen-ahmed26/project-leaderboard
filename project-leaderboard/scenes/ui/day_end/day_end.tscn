@@ -14,6 +14,7 @@ theme = ExtResource("1_1gds8")
 script = ExtResource("1_objty")
 
 [node name="background" type="ColorRect" parent="." unique_id=1374491303]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

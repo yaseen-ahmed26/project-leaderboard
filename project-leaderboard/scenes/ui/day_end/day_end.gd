@@ -7,9 +7,9 @@ func _ready() -> void:
 	Signals.day_ended.connect(setup)
 
 func setup(details: Dictionary):
-	$background/cookies_earnt.text = "Cookies Earnt: [color=green]%.1f" % details.get("cookies")
+	$background/cookies_earnt.text = "[color=green]%.1f [color=white]Cookies Earnt" % details.get("cookies")
 	$background/left_desk.text = "Left Desk: [color=green]%d [color=white]%s" % [details.get("left_desk"), "time" if details.get("left_desk") == 1 else "times"] 
-	$background/task_completed.text = "Task: [color=%s]%s" % [
+	$background/task_completed.text = "Task [color=%s]%s" % [
 		"green" if details.get("task_completed") else "red",
 		"Completed" if details.get("task_completed") else "Failed"
 	]

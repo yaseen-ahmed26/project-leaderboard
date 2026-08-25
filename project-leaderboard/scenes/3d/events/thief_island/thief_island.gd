@@ -1,6 +1,6 @@
 extends Event
 
-var entities: Array[CharacterBody3D] = []
+var entities: Array = []
 
 func _ready() -> void:
 	super()
@@ -12,7 +12,8 @@ func _ready() -> void:
 
 func _on_item_entered_void(body: Node3D):
 	if entities.is_empty(): return
-	if body in entities:
+	
+	if entities.has(body):
 		entities.erase(body)
 		body.queue_free()
 		
