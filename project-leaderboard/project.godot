@@ -18,16 +18,15 @@ config/icon="res://icon.svg"
 [autoload]
 
 Signals="*uid://bpoi7q8kfp3p6"
-Globals="*uid://ba2eljplumfkc"
-Constants="*uid://bnv4lyffn1idb"
 SaveManager="*uid://daqhkkgrsolmj"
-PlayerManager="*uid://teocpow8u311"
 DayManager="*uid://cvknwl3k3d4du"
-ConsumableManager="*uid://osky2nib04h5"
-ClickerManager="*uid://dw88ivhtwbu11"
-UpgradeManager="*uid://bhx144p2w62vm"
+Constants="*uid://bnv4lyffn1idb"
+PlayerManager="*uid://teocpow8u311"
 EventManager="*uid://dfqf0vkpoji8y"
+ClickerManager="*uid://dw88ivhtwbu11"
 TaskManager="*uid://dm3wpcwn3mdot"
+ConsumableManager="*uid://osky2nib04h5"
+UpgradeManager="*uid://bhx144p2w62vm"
 
 [debug]
 

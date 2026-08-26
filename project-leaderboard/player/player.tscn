@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://cnsk2cfmoiwhy"]
+
+[ext_resource type="Script" uid="uid://csmeo0q8o3yyt" path="res://player/player.gd" id="1_s6smf"]
+[ext_resource type="Script" uid="uid://bbrvbk0qqwg01" path="res://player/scripts/interaction.gd" id="2_bdlui"]
+[ext_resource type="PackedScene" uid="uid://gq8pjikacaul" path="res://ui/hud/hud.tscn" id="3_arw13"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_l7yjw"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_l7yjw"]
+
+[node name="player" type="CharacterBody3D" unique_id=634988134 groups=["player"]]
+collision_mask = 3
+script = ExtResource("1_s6smf")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1429813125]
+
+[node name="hud" parent="CanvasLayer" unique_id=922040254 instance=ExtResource("3_arw13")]
+visible = false
+
+[node name="capsule" type="MeshInstance3D" parent="." unique_id=699587306]
+mesh = SubResource("CapsuleMesh_l7yjw")
+
+[node name="collision" type="CollisionShape3D" parent="." unique_id=1129238314]
+shape = SubResource("CapsuleShape3D_l7yjw")
+
+[node name="head" type="Node3D" parent="." unique_id=571936968]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.78712106, 0)
+script = ExtResource("2_bdlui")
+
+[node name="camera" type="Camera3D" parent="head" unique_id=1026836517]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.12547386, -0.3000967)
+
+[node name="flashlight" type="SpotLight3D" parent="head/camera" unique_id=1002213097]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0011321306, 0.3000967)
+light_energy = 0.0
+light_indirect_energy = 2.0
+light_volumetric_fog_energy = 2.0
+light_size = 0.3
+spot_range = 4.668
+spot_angle = 65.88402
+
+[node name="raycast" type="RayCast3D" parent="head/camera" unique_id=582776265]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.07042897, -0.41338766)
+target_position = Vector3(0, 0, -1.5)
+collision_mask = 5
+collide_with_areas = true
+
+[node name="hand_marker" type="Marker3D" parent="head/camera" unique_id=165678571]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4493727, -0.19446635, -0.654098)

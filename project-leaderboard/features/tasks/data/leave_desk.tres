@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="TaskData" format=3 uid="uid://pswjfvhy6frc"]
+
+[ext_resource type="Script" uid="uid://dxvfesw1jf6ii" path="res://features/tasks/data/task_data.gd" id="1_uyl2b"]
+
+[resource]
+script = ExtResource("1_uyl2b")
+id = "leave_desk"
+display_name = "Can't stay still!"
+description = "Leave your desk 3 times."
+target_source = 2
+target_amount = 3
+target = 7
+metadata/_custom_type_script = "uid://dxvfesw1jf6ii"

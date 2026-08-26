@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="TaskData" format=3 uid="uid://cgn2jmmjilk3f"]
+
+[ext_resource type="Script" uid="uid://dxvfesw1jf6ii" path="res://features/tasks/data/task_data.gd" id="1_t8a8p"]
+
+[resource]
+script = ExtResource("1_t8a8p")
+id = "jumpy"
+display_name = "How high?"
+description = "Jump 5 times"
+target_source = 1
+target_amount = 5
+mode = 0
+target = 0
+metadata/_custom_type_script = "uid://dxvfesw1jf6ii"

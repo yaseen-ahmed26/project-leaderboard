@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="EventData" format=3 uid="uid://6jg47138qkms"]
+
+[ext_resource type="Script" uid="uid://yhbo18n3g6js" path="res://features/events/data/event_data.gd" id="1_m2ha3"]
+
+[resource]
+script = ExtResource("1_m2ha3")
+id = 1
+display_name = "Basketball"
+task = "Shoot and score!"
+metadata/_custom_type_script = "uid://yhbo18n3g6js"

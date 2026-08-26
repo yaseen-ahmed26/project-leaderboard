@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://bpssvrctvptjm"]
+
+[ext_resource type="Script" uid="uid://b24mhetp8tyxk" path="res://props/cannon/cannon.gd" id="1_fco0h"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_l7yjw"]
+size = Vector3(2, 2, 5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0j27r"]
+size = Vector3(2, 2, 5)
+
+[node name="cannon" type="StaticBody3D" unique_id=1928141998]
+script = ExtResource("1_fco0h")
+id = "cannon"
+display_name = "Cannon"
+hover_text = "Use Cannon"
+can_interact = null
+call_method = null
+item_needed = ""
+disable_at = 5
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1501428692]
+mesh = SubResource("BoxMesh_l7yjw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=155073814]
+shape = SubResource("BoxShape3D_0j27r")
+
+[node name="camera_marker" type="Marker3D" parent="." unique_id=778578406]
+transform = Transform3D(-0.7740087, 0, -0.63317496, 0, 1, 0, 0.63317496, 0, -0.7740087, -4.39381, 3.0194798, -1.9291222)

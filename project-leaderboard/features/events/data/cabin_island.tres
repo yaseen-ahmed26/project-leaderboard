@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="EventData" format=3 uid="uid://bk2bt55ladj8p"]
+
+[ext_resource type="Script" uid="uid://yhbo18n3g6js" path="res://features/events/data/event_data.gd" id="1_tngn1"]
+
+[resource]
+script = ExtResource("1_tngn1")
+display_name = "Cabin"
+task = "Place all the boxes inside the cabin"
+metadata/_custom_type_script = "uid://yhbo18n3g6js"

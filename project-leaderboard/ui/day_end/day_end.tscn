@@ -1,0 +1,186 @@
+[gd_scene format=3 uid="uid://bctk608adfe52"]
+
+[ext_resource type="Theme" uid="uid://d03lvrtjdihvb" path="res://assets/ui/standard.tres" id="1_1gds8"]
+[ext_resource type="Script" uid="uid://3fs03jffx26n" path="res://ui/day_end/day_end.gd" id="1_objty"]
+
+[node name="day_end" type="Control" unique_id=1918697368]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_1gds8")
+script = ExtResource("1_objty")
+
+[node name="background" type="ColorRect" parent="." unique_id=1374491303]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="items_in_void" type="RichTextLabel" parent="background" unique_id=302132763]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -488.0
+offset_top = -166.0
+offset_right = 488.0
+offset_bottom = -95.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 40
+bbcode_enabled = true
+text = "5 Items in the Void"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="fell_in_void" type="RichTextLabel" parent="background" unique_id=651189822]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -488.0
+offset_top = -230.0
+offset_right = 488.0
+offset_bottom = -159.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 40
+bbcode_enabled = true
+text = "Fell into the void 3 times"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="cookies_earnt" type="RichTextLabel" parent="background" unique_id=1148579934]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -488.0
+offset_top = -292.0
+offset_right = 488.0
+offset_bottom = -221.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 40
+bbcode_enabled = true
+text = "Cookies Earnt: 100"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="left_desk" type="RichTextLabel" parent="background" unique_id=1102616586]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -490.0
+offset_top = -104.0
+offset_right = 490.0
+offset_bottom = -29.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 40
+bbcode_enabled = true
+text = "Left Desk: 1 time"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="task_completed" type="RichTextLabel" parent="background" unique_id=646558390]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -561.0
+offset_top = -38.0
+offset_right = 561.0
+offset_bottom = 37.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 40
+bbcode_enabled = true
+text = "Task Completed: NONE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="islands_solved" type="RichTextLabel" parent="background" unique_id=1670955420]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -695.0
+offset_top = 5.0
+offset_right = 695.0
+offset_bottom = 264.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 40
+bbcode_enabled = true
+text = "Islands Solved
+Delivery"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="day" type="RichTextLabel" parent="background" unique_id=294378160]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -122.0
+offset_top = -477.0
+offset_right = 122.0
+offset_bottom = -380.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 54
+text = "Day 1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="thanks" type="RichTextLabel" parent="background" unique_id=725487914]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -828.0
+offset_top = 347.0
+offset_right = 828.0
+offset_bottom = 483.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 54
+text = "Thank you for playing Yes, I'm on Vacation!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="fade" type="ColorRect" parent="." unique_id=1486060955]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)

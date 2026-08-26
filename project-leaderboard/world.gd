@@ -5,7 +5,7 @@ extends Node3D
 @onready var player: CharacterBody3D = $player
 @onready var void_zone: Area3D = $void_zone
 
-@export var event_scenes: Dictionary[Globals.EventIDs, PackedScene]
+@export var event_scenes: Dictionary[Constants.EventIDs, PackedScene]
 
 var markers: Array[Node] = []
 
@@ -29,7 +29,7 @@ func _on_event_added(event_data: EventData):
 	
 	var scene = event_scenes.get(event_data.id)
 	var clone: Node3D = scene.instantiate()
-	clone.name = Globals.get_lower_event_id(event_data.id)
+	clone.name = Constants.get_lower_event_id(event_data.id)
 	added_events.add_child(clone)
 	
 	var random_marker: Marker3D = markers.pick_random()
@@ -39,7 +39,7 @@ func _on_event_added(event_data: EventData):
 	clone.global_position = random_marker.global_position
 
 func _on_event_solved(event_data: EventData):
-	var scene = added_events.get_node_or_null(Globals.get_lower_event_id(event_data.id))
+	var scene = added_events.get_node_or_null(Constants.get_lower_event_id(event_data.id))
 
 	if scene:
 		var recovered_marker = scene.get_meta("marker_node") 
@@ -69,12 +69,12 @@ func _clear_all_events():
 		
 		tween.finished.connect(event.queue_free)
 
-func _on_phase_changed(new_phase: Globals.Phase):
+func _on_phase_changed(new_phase: Constants.Phase):
 	match new_phase:
-		Globals.Phase.MORNING:
+		Constants.Phase.MORNING:
 			player.visible = true
 			player.get_node("head/camera").current = true
-		Globals.Phase.NIGHT:
+		Constants.Phase.NIGHT:
 			void_zone.set_collision_mask_value(1, false)
 			void_zone.set_collision_mask_value(2, false)
 			_clear_all_events()

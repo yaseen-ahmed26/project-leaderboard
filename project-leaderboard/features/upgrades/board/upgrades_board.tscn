@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://c4iew6umqecxi"]
+
+[ext_resource type="Script" uid="uid://ckl3yd0fonq5j" path="res://features/upgrades/board/upgrades_board.gd" id="1_s8p0k"]
+[ext_resource type="PackedScene" uid="uid://cme1a03y8yacj" path="res://ui/upgrades/upgrades.tscn" id="2_3uh6k"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nny7t"]
+size = Vector3(1.7246094, 1, 0.09790039)
+
+[sub_resource type="QuadMesh" id="QuadMesh_l7yjw"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_84oj4"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ln1aj"]
+resource_local_to_scene = true
+albedo_color = Color(1, 1, 1, 0)
+albedo_texture = SubResource("ViewportTexture_84oj4")
+
+[node name="upgrades_board" type="Area3D" unique_id=1943268639 groups=["Interactables"]]
+script = ExtResource("1_s8p0k")
+camera_source = 3
+id = "upgrades_board"
+display_name = "Upgrades"
+hover_text = "View Upgrades"
+
+[node name="SubViewport" type="SubViewport" parent="." unique_id=2017176015]
+size = Vector2i(1920, 1080)
+
+[node name="upgrades" parent="SubViewport" unique_id=1845973147 instance=ExtResource("2_3uh6k")]
+
+[node name="Marker3D" type="Marker3D" parent="." unique_id=188186575]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.73248506)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=793806003]
+shape = SubResource("BoxShape3D_nny7t")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=133539945]
+transform = Transform3D(1.6, 0, 0, 0, 1, 0, 0, 0, 0.8, 0, 0, 0)
+mesh = SubResource("QuadMesh_l7yjw")
+surface_material_override/0 = SubResource("StandardMaterial3D_ln1aj")
